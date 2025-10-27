@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Flagaholic - Hong Kong based CTF team focusing on Web, Pwn, Crypto, Forensics, and Misc.">
   
@@ -135,16 +135,24 @@
 								const res = await fetch(href);
 								if (!res.ok) return;
 
-								const html = await res.text();
+								let html = await res.text();
+
+								const temp = document.createElement('div');
+								temp.innerHTML = html;
+								const header = temp.querySelector('header');
+								if (header) header.remove();
+								html = temp.innerHTML;
 
 								previewDiv = document.createElement('div');
 								previewDiv.className = 'writeup-preview';
 
+								const maxWidth = Math.min(window.innerWidth * 0.6, 900);
+								const maxHeight = Math.min(window.innerHeight * 0.6, 700);
+
 								const iframe = document.createElement('iframe');
 								iframe.sandbox = 'allow-same-origin';
-								iframe.style.width = '400px';
-								iframe.style.height = '300px';
-								iframe.style.border = '1px solid #ccc';
+								iframe.style.width = `${maxWidth}px`;
+								iframe.style.height = `${maxHeight}px`;
 								previewDiv.appendChild(iframe);
 
 								document.body.appendChild(previewDiv);
@@ -155,20 +163,29 @@
 								doc.close();
 
 								const rect = wuLink.getBoundingClientRect();
-								const x = rect.right + 20;
-								const y = rect.top;
+								let x = rect.right + 20;
+								let y = rect.top;
 
+								// prevent it from going off screen
+								if (x + maxWidth > window.innerWidth) x = rect.left - maxWidth - 20;
+								if (y + maxHeight > window.innerHeight) y = window.innerHeight - maxHeight - 20;
+
+								previewDiv.style.position = 'fixed';
 								previewDiv.style.left = `${x}px`;
 								previewDiv.style.top = `${y}px`;
+								previewDiv.style.zIndex = '9999';
+								previewDiv.style.opacity = '0';
+								previewDiv.style.transition = 'opacity 0.2s ease-in-out';
 
 								requestAnimationFrame(() => {
-									previewDiv.classList.add('visible');
+									previewDiv.style.opacity = '1';
 								});
 							} catch (err) {
 								console.error('Preview failed:', err);
 							}
 						}, 500);
 					});
+
 
 					wuLink.addEventListener('mouseleave', () => {
 						clearTimeout(previewTimeout);
