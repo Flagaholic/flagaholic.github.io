@@ -1,97 +1,119 @@
 <!doctype html>
 <html lang="en">
 <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Flagaholic - Hong Kong based CTF team focusing on Web, Pwn, Crypto, Forensics, and Misc.">
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon/favicon-16x16.png">
+  <link rel="manifest" href="./assets/favicon/site.webmanifest">
+  <meta name="msapplication-TileColor" content="#0f1720">
+  <meta name="theme-color" content="#0f1720">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  
   <link rel="stylesheet" href="./css/site.css">
-  <div id="header-placeholder">
-    <script>
-    const TITLE = "Achievements";
-    const OTHER_CSS = '<link rel="stylesheet" href="./css/achievements.css">';
+  <link rel="stylesheet" href="./css/achievements.css">
+  
+  <title>Achievements — Flagaholic</title>
+</head>
 
-    fetch('./includes/header.html')
-      .then(response => response.text())
-      .then(html => {
-        html = html.replace(/%TITLE%/g, TITLE)
-        html = html.replace(/%OTHER_CSS%/g, OTHER_CSS);
-        document.getElementById('header-placeholder').outerHTML = html;
-      });
-    </script>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <img class="logo" src="./assets/teamlogo/teampfp.png" alt="Flagaholic" width="40" height="40" loading="eager" decoding="async">
+        <strong>Flagaholic</strong>
+      </div>
+      <nav>
+        <a href="./index.html">Home</a>
+        <a href="./members.html">Members</a>
+        <a href="./achievements.html">Achievements</a>
+        <a href="./writeups.html">Writeups</a>
+        <a href="./contact.html">Contact</a>
+      </nav>
+    </header>
+    
+    <main class="main">
+      <div class="card achievements-card">
+        <h1>Achievements</h1>
+        <p class="lead">Recent contest results and highlights.</p>
+        <ul class="achievements-list">
+          <!--
+          <li class="achievement-item">
+            <time datetime="YYYY-MM-DD" class="date">YYYY-MM-DD</time>
+            <div class="detail">
+              <strong>Comp</strong> — Rank n/m
+              <div class="note">OPTIONAL NOTES</div>
+            </div>
+          </li>
+          -->
+
+          <li class="achievement-item">
+            <time datetime="2025-10-25" class="date">2025-10-25</time>
+            <div class="detail">
+              <strong>osu!gaming CTF 2025</strong> — Rank 38/740
+            </div>
+          </li>
+
+          <li class="achievement-item">
+            <time datetime="2025-09-28" class="date">2025-09-28</time>
+            <div class="detail">
+              <strong>CUHKCTF 2025</strong> — Rank 3/158
+              <div class="note">2nd place in Guest Division, 10 division first bloods</div>
+            </div>
+          </li>
+
+          <li class="achievement-item">
+            <time datetime="2025-09-05" class="date">2025-09-05</time>
+            <div class="detail">
+              <strong>ImaginaryCTF 2025</strong> — Rank 49/1414
+            </div>
+          </li>
+
+          <li class="achievement-item">
+            <time datetime="2025-08-31" class="date">2025-08-31</time>
+            <div class="detail">
+              <strong>Full Weak Engineer CTF 2025</strong> — Rank 25/733
+            </div>
+          </li>
+
+          <li class="achievement-item">
+            <time datetime="2025-07-25" class="date">2025-07-25</time>
+            <div class="detail">
+              <strong>DeadSec CTF 2025</strong> — Rank 64/639
+            </div>
+          </li>
+
+          <li class="achievement-item">
+            <time datetime="2025-07-05" class="date">2025-07-05</time>
+            <div class="detail">
+              <strong>BlitzCTF 2025</strong> — Rank 37/381
+            </div>
+          </li>
+
+          <li class="achievement-item">
+            <time datetime="2025-06-24" class="date">2025-06-24</time>
+            <div class="detail">
+              <strong>BCACTF 2025</strong> — Rank 17/276
+              <div class="note">First blooded a few OSINT chall<br>
+                <sub>@tien (STILL HAVEN'T) gifted a badge</sub></div>
+            </div>
+          </li>
+
+          <li class="achievement-item">
+            <time datetime="2025-04-21" class="date">2025-04-21</time>
+            <div class="detail">
+              <strong>PolyUCTF 2025</strong> — Rank 36/92
+              <div class="note">4th place in Sub-Degree Division, 1 division first blood</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </main>
   </div>
-
-  <main class="main">
-    <div class="card achievements-card">
-      <h1>Achievements</h1>
-      <p class="lead">Recent contest results and highlights.</p>
-      <ul class="achievements-list">
-        <!--
-        <li class="achievement-item">
-          <time datetime="YYYY-MM-DD" class="date">YYYY-MM-DD</time>
-          <div class="detail">
-            <strong>Comp</strong> — Rank n/m
-            <div class="note">OPTIONAL NOTES</div>
-          </div>
-        </li>
-        -->
-
-        <li class="achievement-item">
-          <time datetime="2025-10-25" class="date">2025-10-25</time>
-          <div class="detail">
-            <strong>osu!gaming CTF 2025</strong> — Rank 38/740
-          </div>
-        </li>
-
-        <li class="achievement-item">
-          <time datetime="2025-09-28" class="date">2025-09-28</time>
-          <div class="detail">
-            <strong>CUHKCTF 2025</strong> — Rank 3/158
-            <div class="note">2nd place in Guest Division, 10 division first bloods</div>
-          </div>
-        </li>
-
-        <li class="achievement-item">
-          <time datetime="2025-09-05" class="date">2025-09-05</time>
-          <div class="detail">
-            <strong>ImaginaryCTF 2025</strong> — Rank 49/1414
-          </div>
-        </li>
-
-        <li class="achievement-item">
-          <time datetime="2025-08-31" class="date">2025-08-31</time>
-          <div class="detail">
-            <strong>Full Weak Engineer CTF 2025</strong> — Rank 25/733
-          </div>
-        </li>
-
-        <li class="achievement-item">
-          <time datetime="2025-07-25" class="date">2025-07-25</time>
-          <div class="detail">
-            <strong>DeadSec CTF 2025</strong> — Rank 64/639
-          </div>
-        </li>
-
-        <li class="achievement-item">
-          <time datetime="2025-07-05" class="date">2025-07-05</time>
-          <div class="detail">
-            <strong>BlitzCTF 2025</strong> — Rank 37/381
-          </div>
-        </li>
-
-        <li class="achievement-item">
-          <time datetime="2025-06-24" class="date">2025-06-24</time>
-          <div class="detail">
-            <strong>BCACTF 2025</strong> — Rank 17/276
-            <div class="note">First blooded a few OSINT chall<br>
-              <sub>@tien (STILL HAVEN'T) gifted a badge</sub></div>
-          </div>
-        </li>
-
-        <li class="achievement-item">
-          <time datetime="2025-04-21" class="date">2025-04-21</time>
-          <div class="detail">
-            <strong>PolyUCTF 2025</strong> — Rank 36/92
-            <div class="note">4th place in Sub-Degree Division, 1 division first blood</div>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </main>
-</div></body></html>
+</body></html>

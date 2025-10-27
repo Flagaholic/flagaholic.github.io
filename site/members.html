@@ -1,137 +1,159 @@
 <!doctype html>
 <html lang="en">
 <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Flagaholic - Hong Kong based CTF team focusing on Web, Pwn, Crypto, Forensics, and Misc.">
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon/favicon-16x16.png">
+  <link rel="manifest" href="./assets/favicon/site.webmanifest">
+  <meta name="msapplication-TileColor" content="#0f1720">
+  <meta name="theme-color" content="#0f1720">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  
   <link rel="stylesheet" href="./css/site.css">
-  <div id="header-placeholder">
-    <script>
-    const TITLE = "Members";
-    const OTHER_CSS = '<link rel="stylesheet" href="./css/members.css">';
+  <link rel="stylesheet" href="./css/members.css">
+  
+  <title>Members — Flagaholic</title>
+</head>
 
-    fetch('./includes/header.html')
-      .then(response => response.text())
-      .then(html => {
-        html = html.replace(/%TITLE%/g, TITLE)
-        html = html.replace(/%OTHER_CSS%/g, OTHER_CSS);
-        document.getElementById('header-placeholder').outerHTML = html;
-      });
-    </script>
-  </div>
-  <main class="main">
-    <div class="card">
-      <h1>Members</h1>
-      <div class="members-grid">
-        <!-- 
-        <div class="member-card">
-          <img src="./assets/playerlogo/{img}.jpg" alt="usr" class="member-avatar">
-          <h3>usr</h3>
-          <div class="member-skills">
-            <span>skill</span>
-          </div>
-        </div>
-        -->
-        <div class="member-card hk special" content="leader">
-          <img src="./assets/playerlogo/youstube.jpg" alt="youstube_" class="member-avatar">
-          <h3>youstube_</h3>
-          <p class="member-role">Team Leader</p>
-          <div class="member-skills">
-            <span>Misc</span>
-            <span>Forensics</span>
-            <span>OSINT</span>
-          </div>
-        </div>
-        
-        <div class="member-card hk">
-          <img src="./assets/playerlogo/thomas.png" alt="bug1nst0m@ch" class="member-avatar">
-          <h3>bug1nst0m@ch</h3>
-          <p class="member-role">Not even computer major</p>
-          <div class="member-skills">
-            <span>Misc</span>
-            <span>Forensics</span>
-          </div>
-        </div>
-        
-        <div class="member-card hk">
-          <img src="./assets/playerlogo/OwO.png" alt="sunny7890987" class="member-avatar">
-          <h3>sunny7890987(OWO)</h3>
-          <div class="member-skills">
-            <span>Web</span>
-          </div>
-        </div>
-        
-        <div class="member-card hk">
-          <img src="./assets/playerlogo/NSN.png" alt="Nsn" class="member-avatar">
-          <h3>Nsn</h3>
-          <div class="member-skills">
-            <span>Hardware</span>
-          </div>
-        </div>
-        
-        <div class="member-card hk special" content="dumbass">
-          <img src="./assets/playerlogo/taokyle.jpeg" alt="Taokyle" class="member-avatar">
-          <h3>Taokyle</h3>
-          <p class="member-role">website maintainer</p>
-          <div class="member-skills">
-            <span>Misc</span>
-            <span>Web</span>
-            <span>Forensics</span>
-          </div>
-        </div>
-        
-        <div class="member-card hk special" content="english level U">
-          <img src="./assets/playerlogo/sisubeny.png" alt="SISUBENY" class="member-avatar">
-          <h3>SISUBENY</h3>
-          <div class="member-skills">
-            <span>Rev</span>
-            <span>Pwn</span>
-          </div>
-        </div>
-        
-        <div class="member-card hk special" content="roblox lover">
-          <img src="./assets/playerlogo/twopus.png" alt="twopus" class="member-avatar">
-          <h3>twopus</h3>
-          <p class="member-role">differentiating "ur" & "ure"</p>
-          <div class="member-skills">
-            <span>Uhh</span>
-          </div>
-        </div>
-        <div class="member-card hk special" content="A Snorlax?">
-          <img src="./assets/playerlogo/harrybob.jpg" alt="harrybob" class="member-avatar">
-          <h3>HarryBOB</h3>
-          <div class="member-skills">
-            <span>Blockchain</span>
-          </div>
-        </div>
-        <div class="member-card nonhk">
-          <img src="./assets/playerlogo/B34RN00B.png" alt="B34RN00B" class="member-avatar">
-          <h3>B34RN00B</h3>
-          <div class="member-skills">
-            <span>OSINT</span>
-            <span>Forensics</span>
-          </div>
-        </div>
-        
-        <div class="member-card nonhk">
-          <img src="./assets/playerlogo/damwan.jpg" alt="damwan21" class="member-avatar">
-          <h3>damwan21</h3>
-          <div class="member-skills">
-            <span>OSINT</span>
-            <span>Crypto</span>
-          </div>
-        </div>
-        
-        <div class="member-card former hk special" content="former">
-          <img src="./assets/playerlogo/kazuya.png" alt="Kazuya" class="member-avatar">
-          <h3>Kazuya</h3>
-          <p class="member-role">Former teammate</p>
-          <div class="member-skills">
-            <span>Rev</span>
-            <span>Web</span>
-          </div>
-        </div>
-
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <img class="logo" src="./assets/teamlogo/teampfp.png" alt="Flagaholic" width="40" height="40" loading="eager" decoding="async">
+        <strong>Flagaholic</strong>
       </div>
-    </div>
-  </main>
-</div>
+      <nav>
+        <a href="./index.html">Home</a>
+        <a href="./members.html">Members</a>
+        <a href="./achievements.html">Achievements</a>
+        <a href="./writeups.html">Writeups</a>
+        <a href="./contact.html">Contact</a>
+      </nav>
+    </header>
+    
+    <main class="main">
+      <div class="card">
+        <h1>Members</h1>
+        <div class="members-grid">
+          <!-- 
+          <div class="member-card">
+            <img src="./assets/playerlogo/{img}.jpg" alt="usr" class="member-avatar">
+            <h3>usr</h3>
+            <div class="member-skills">
+              <span>skill</span>
+            </div>
+          </div>
+          -->
+          <div class="member-card hk special" content="leader">
+            <img src="./assets/playerlogo/youstube.jpg" alt="youstube_" class="member-avatar">
+            <h3>youstube_</h3>
+            <p class="member-role">Team Leader</p>
+            <div class="member-skills">
+              <span>Misc</span>
+              <span>Forensics</span>
+              <span>OSINT</span>
+            </div>
+          </div>
+          
+          <div class="member-card hk">
+            <img src="./assets/playerlogo/thomas.png" alt="bug1nst0m@ch" class="member-avatar">
+            <h3>bug1nst0m@ch</h3>
+            <p class="member-role">Not even computer major</p>
+            <div class="member-skills">
+              <span>Misc</span>
+              <span>Forensics</span>
+            </div>
+          </div>
+          
+          <div class="member-card hk">
+            <img src="./assets/playerlogo/OwO.png" alt="sunny7890987" class="member-avatar">
+            <h3>sunny7890987(OWO)</h3>
+            <div class="member-skills">
+              <span>Web</span>
+            </div>
+          </div>
+          
+          <div class="member-card hk">
+            <img src="./assets/playerlogo/NSN.png" alt="Nsn" class="member-avatar">
+            <h3>Nsn</h3>
+            <div class="member-skills">
+              <span>Hardware</span>
+            </div>
+          </div>
+          
+          <div class="member-card hk special" content="dumbass">
+            <img src="./assets/playerlogo/taokyle.jpeg" alt="Taokyle" class="member-avatar">
+            <h3>Taokyle</h3>
+            <p class="member-role">website maintainer</p>
+            <div class="member-skills">
+              <span>Misc</span>
+              <span>Web</span>
+              <span>Forensics</span>
+            </div>
+          </div>
+          
+          <div class="member-card hk special" content="english level U">
+            <img src="./assets/playerlogo/sisubeny.png" alt="SISUBENY" class="member-avatar">
+            <h3>SISUBENY</h3>
+            <div class="member-skills">
+              <span>Rev</span>
+              <span>Pwn</span>
+            </div>
+          </div>
+          
+          <div class="member-card hk special" content="roblox lover">
+            <img src="./assets/playerlogo/twopus.png" alt="twopus" class="member-avatar">
+            <h3>twopus</h3>
+            <p class="member-role">differentiating "ur" & "ure"</p>
+            <div class="member-skills">
+              <span>Uhh</span>
+            </div>
+          </div>
+          <div class="member-card hk special" content="A Snorlax?">
+            <img src="./assets/playerlogo/harrybob.jpg" alt="harrybob" class="member-avatar">
+            <h3>HarryBOB</h3>
+            <div class="member-skills">
+              <span>Blockchain</span>
+            </div>
+          </div>
+          <div class="member-card nonhk">
+            <img src="./assets/playerlogo/B34RN00B.png" alt="B34RN00B" class="member-avatar">
+            <h3>B34RN00B</h3>
+            <div class="member-skills">
+              <span>OSINT</span>
+              <span>Forensics</span>
+            </div>
+          </div>
+          
+          <div class="member-card nonhk">
+            <img src="./assets/playerlogo/damwan.jpg" alt="damwan21" class="member-avatar">
+            <h3>damwan21</h3>
+            <div class="member-skills">
+              <span>OSINT</span>
+              <span>Crypto</span>
+            </div>
+          </div>
+          
+          <div class="member-card former hk special" content="former">
+            <img src="./assets/playerlogo/kazuya.png" alt="Kazuya" class="member-avatar">
+            <h3>Kazuya</h3>
+            <p class="member-role">Former teammate</p>
+            <div class="member-skills">
+              <span>Rev</span>
+              <span>Web</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </main>
+  </div>
 </body>
 </html>

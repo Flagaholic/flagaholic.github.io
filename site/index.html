@@ -1,21 +1,42 @@
 <!doctype html>
 <html lang="en">
 <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Flagaholic - Hong Kong based CTF team focusing on Web, Pwn, Crypto, Forensics, and Misc.">
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon/favicon-16x16.png">
+  <link rel="manifest" href="./assets/favicon/site.webmanifest">
+  <meta name="msapplication-TileColor" content="#0f1720">
+  <meta name="theme-color" content="#0f1720">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  
   <link rel="stylesheet" href="./css/site.css">
-  <div id="header-placeholder">
-    <script>
-    const TITLE = "HK CTF Team";
-    const OTHER_CSS = '';
+  
+  <title>HK CTF Team — Flagaholic</title>
+</head>
 
-    fetch('./includes/header.html')
-      .then(response => response.text())
-      .then(html => {
-        html = html.replace(/%TITLE%/g, TITLE)
-        html = html.replace(/%OTHER_CSS%/g, OTHER_CSS);
-        document.getElementById('header-placeholder').outerHTML = html;
-      });
-    </script>
-  </div>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <img class="logo" src="./assets/teamlogo/teampfp.png" alt="Flagaholic" width="40" height="40" loading="eager" decoding="async">
+        <strong>Flagaholic</strong>
+      </div>
+      <nav>
+        <a href="./index.html">Home</a>
+        <a href="./members.html">Members</a>
+        <a href="./achievements.html">Achievements</a>
+        <a href="./writeups.html">Writeups</a>
+        <a href="./contact.html">Contact</a>
+      </nav>
+    </header>
+    
     <main class="main">
       <section class="card">
         <h1>We hunt flags. We build tools. We share what we learn.</h1>
