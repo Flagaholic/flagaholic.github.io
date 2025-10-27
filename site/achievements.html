@@ -1,6 +1,20 @@
 <!doctype html>
 <html lang="en">
 <head>
+<div id="header-placeholder">
+  <script>
+  const TITLE = "Achievements";
+  const OTHER_CSS = '<link rel="stylesheet" href="./css/achievements.css">';
+
+  fetch('./includes/header.html')
+    .then(response => response.text())
+    .then(html => {
+      html = html.replace(/%TITLE%/g, TITLE)
+      html = html.replace(/%OTHER_CSS%/g, OTHER_CSS);
+      document.getElementById('header-placeholder').outerHTML = html;
+    });
+  </script>
+</div>
   </header>
 
   <main class="main">
