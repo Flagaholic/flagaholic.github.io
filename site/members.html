@@ -1,21 +1,21 @@
 <!doctype html>
 <html lang="en">
 <head>
-<div id="header-placeholder">
-  <script>
-  const TITLE = "Members";
-  const OTHER_CSS = '<link rel="stylesheet" href="./css/members.css">';
+  <link rel="stylesheet" href="./css/site.css">
+  <div id="header-placeholder">
+    <script>
+    const TITLE = "Members";
+    const OTHER_CSS = '<link rel="stylesheet" href="./css/members.css">';
 
-  fetch('./includes/header.html')
-    .then(response => response.text())
-    .then(html => {
-      html = html.replace(/%TITLE%/g, TITLE)
-      html = html.replace(/%OTHER_CSS%/g, OTHER_CSS);
-      document.getElementById('header-placeholder').outerHTML = html;
-    });
-  </script>
-</div>
-  </header>
+    fetch('./includes/header.html')
+      .then(response => response.text())
+      .then(html => {
+        html = html.replace(/%TITLE%/g, TITLE)
+        html = html.replace(/%OTHER_CSS%/g, OTHER_CSS);
+        document.getElementById('header-placeholder').outerHTML = html;
+      });
+    </script>
+  </div>
   <main class="main">
     <div class="card">
       <h1>Members</h1>

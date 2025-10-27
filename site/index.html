@@ -1,21 +1,21 @@
 <!doctype html>
 <html lang="en">
 <head>
-<div id="header-placeholder">
-  <script>
-  const TITLE = "HK CTF Team";
-  const OTHER_CSS = '';
+  <link rel="stylesheet" href="./css/site.css">
+  <div id="header-placeholder">
+    <script>
+    const TITLE = "HK CTF Team";
+    const OTHER_CSS = '';
 
-  fetch('./includes/header.html')
-    .then(response => response.text())
-    .then(html => {
-      html = html.replace(/%TITLE%/g, TITLE)
-      html = html.replace(/%OTHER_CSS%/g, OTHER_CSS);
-      document.getElementById('header-placeholder').outerHTML = html;
-    });
-  </script>
-</div>
-  </header>
+    fetch('./includes/header.html')
+      .then(response => response.text())
+      .then(html => {
+        html = html.replace(/%TITLE%/g, TITLE)
+        html = html.replace(/%OTHER_CSS%/g, OTHER_CSS);
+        document.getElementById('header-placeholder').outerHTML = html;
+      });
+    </script>
+  </div>
     <main class="main">
       <section class="card">
         <h1>We hunt flags. We build tools. We share what we learn.</h1>
