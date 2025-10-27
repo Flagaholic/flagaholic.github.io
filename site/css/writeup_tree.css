@@ -178,3 +178,31 @@
 .readme-close:hover {
     opacity: 1;
 }
+
+.writeup-preview {
+    position: fixed;
+    max-width: 600px;
+    max-height: 400px;
+    overflow: auto;
+    background: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+}
+
+.writeup-preview.visible {
+    opacity: 1;
+}
+
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+    .writeup-preview {
+        background: #0a0a0a;
+        border-color: #444;
+    }
+}

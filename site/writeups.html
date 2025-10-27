@@ -105,42 +105,10 @@
 				}
 
 				let writeupCount = 0;
-				const readmeDiv = document.getElementById('readme');
 				
 				function updateStats() {
 					const countSpan = document.getElementById('writeup-count');
 					countSpan.textContent = `${writeupCount} writeups found`;
-				}
-
-				async function previewReadme(url) {
-					if (!readmeDiv) return;
-					
-					readmeDiv.innerHTML = '<div class="readme-header"><h3>Preview</h3><span class="readme-close">×</span></div><p>Loading...</p>';
-					readmeDiv.classList.add('loading');
-					
-					try {
-						const res = await fetch(url);
-						if (!res.ok) throw new Error('Failed to load README');
-						
-						const text = await res.text();
-						const html = marked.parse(text);
-						
-						readmeDiv.innerHTML = `
-							<div class="readme-header">
-								<h3>Preview</h3>
-								<span class="readme-close">×</span>
-							</div>
-							${html}
-						`;
-						
-						// Scroll preview into view
-						readmeDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
-					} catch (err) {
-						readmeDiv.innerHTML = '<p>Failed to load preview</p>';
-						console.error(err);
-					} finally {
-						readmeDiv.classList.remove('loading');
-					}
 				}
 
 				function appendWuIfNotExists(compUl, href, display, files) {
@@ -150,22 +118,54 @@
 						try { return new URL(a.getAttribute('href'), window.location.href).href === resolved; } catch (e) { return false; }
 					})) return false;
 
-					// Check for README.md or other .md files
-					const readmeFile = files.find(f => f.toLowerCase() === 'readme.md');
-					const mdFile = files.find(f => f.toLowerCase().endsWith('.md'));
-					
-					if (!readmeFile && !mdFile) return false;
+					if (!files.some(f => f.toLowerCase() === 'readme.md')) return false;
 
 					const wuLi = document.createElement('li');
 					wuLi.setAttribute('data-auto', '1');
 					const wuLink = document.createElement('a');
-					wuLink.href = href + (readmeFile || mdFile);
+					wuLink.href = href;
 					wuLink.textContent = display.replace(/[-_]/g, ' ');
 					
-					// Add preview functionality
-					wuLink.addEventListener('click', (e) => {
-						e.preventDefault();
-						previewReadme(wuLink.href);
+					let previewTimeout;
+					let previewDiv;
+					
+					// hover preview even tho the preview is different from the actual rendered one lol
+					wuLink.addEventListener('mouseenter', async () => {
+						previewTimeout = setTimeout(async () => {
+							try {
+								const res = await fetch(href + 'README.md');
+								if (!res.ok) return;
+								
+								const text = await res.text();
+								
+								previewDiv = document.createElement('div');
+								previewDiv.className = 'writeup-preview';
+								previewDiv.innerHTML = marked.parse(text);
+								
+								document.body.appendChild(previewDiv);
+								
+								const rect = wuLink.getBoundingClientRect();
+								const x = rect.right + 20;
+								const y = rect.top;
+								
+								previewDiv.style.left = `${x}px`;
+								previewDiv.style.top = `${y}px`;
+								
+								requestAnimationFrame(() => {
+									previewDiv.classList.add('visible');
+								});
+							} catch (err) {
+								console.error('Preview failed:', err);
+							}
+						}, 500);
+					});
+
+					wuLink.addEventListener('mouseleave', () => {
+						clearTimeout(previewTimeout);
+						if (previewDiv) {
+							previewDiv.remove();
+							previewDiv = null;
+						}
 					});
 
 					wuLi.appendChild(wuLink);
@@ -175,14 +175,6 @@
 					return true;
 				}
 
-				// Add click handler for readme close button
-				document.addEventListener('click', (e) => {
-					if (e.target.classList.contains('readme-close')) {
-						readmeDiv.innerHTML = '';
-					}
-				});
-
-				// 
 				async function fetchTreeInstead(apiBaseUrl) {
 					const match = apiBaseUrl.match(/^https:\/\/api\.github\.com\/repos\/([^/]+)\/([^/]+)\/contents\/(.+)$/);
 					if (!match) return null;
@@ -326,7 +318,6 @@
 					<!-- <li><a href="./writeups/YEAR/COMP/CHAL/">[DISPLAY NAME]</a></li> -->
 					<!-- </ul></li> -->
 				</ul>
-				<!-- <div id="readme" style="margin-top:1em;"></div> -->
 			</div>
 		</main>
 	</div>
