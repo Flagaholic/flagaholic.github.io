@@ -38,7 +38,6 @@
       </nav>
     </header>
 
-		<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 		<script>
 			async function loadDirectory() {
 				const apiBase = 'https://api.github.com/repos/Flagaholic/flagaholic.github.io/contents/site/writeups/';
@@ -129,28 +128,39 @@
 					let previewTimeout;
 					let previewDiv;
 					
-					// hover preview even tho the preview is different from the actual rendered one lol
+					// hover preview
 					wuLink.addEventListener('mouseenter', async () => {
 						previewTimeout = setTimeout(async () => {
 							try {
-								const res = await fetch(href + 'README.md');
+								const res = await fetch(href);
 								if (!res.ok) return;
-								
-								const text = await res.text();
-								
+
+								const html = await res.text();
+
 								previewDiv = document.createElement('div');
 								previewDiv.className = 'writeup-preview';
-								previewDiv.innerHTML = marked.parse(text);
-								
+
+								const iframe = document.createElement('iframe');
+								iframe.sandbox = 'allow-same-origin';
+								iframe.style.width = '400px';
+								iframe.style.height = '300px';
+								iframe.style.border = '1px solid #ccc';
+								previewDiv.appendChild(iframe);
+
 								document.body.appendChild(previewDiv);
-								
+
+								const doc = iframe.contentDocument || iframe.contentWindow.document;
+								doc.open();
+								doc.write(html);
+								doc.close();
+
 								const rect = wuLink.getBoundingClientRect();
 								const x = rect.right + 20;
 								const y = rect.top;
-								
+
 								previewDiv.style.left = `${x}px`;
 								previewDiv.style.top = `${y}px`;
-								
+
 								requestAnimationFrame(() => {
 									previewDiv.classList.add('visible');
 								});
