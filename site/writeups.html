@@ -38,6 +38,7 @@
       </nav>
     </header>
 
+		<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 		<script>
 			async function loadDirectory() {
 				const apiBase = 'https://api.github.com/repos/Flagaholic/flagaholic.github.io/contents/site/writeups/';
@@ -103,23 +104,83 @@
 					return { compLi, compUl };
 				}
 
-				function appendWuIfNotExists(compUl, href, display) {
+				let writeupCount = 0;
+				const readmeDiv = document.getElementById('readme');
+				
+				function updateStats() {
+					const countSpan = document.getElementById('writeup-count');
+					countSpan.textContent = `${writeupCount} writeups found`;
+				}
+
+				async function previewReadme(url) {
+					if (!readmeDiv) return;
+					
+					readmeDiv.innerHTML = '<div class="readme-header"><h3>Preview</h3><span class="readme-close">×</span></div><p>Loading...</p>';
+					readmeDiv.classList.add('loading');
+					
+					try {
+						const res = await fetch(url);
+						if (!res.ok) throw new Error('Failed to load README');
+						
+						const text = await res.text();
+						const html = marked.parse(text);
+						
+						readmeDiv.innerHTML = `
+							<div class="readme-header">
+								<h3>Preview</h3>
+								<span class="readme-close">×</span>
+							</div>
+							${html}
+						`;
+						
+						// Scroll preview into view
+						readmeDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
+					} catch (err) {
+						readmeDiv.innerHTML = '<p>Failed to load preview</p>';
+						console.error(err);
+					} finally {
+						readmeDiv.classList.remove('loading');
+					}
+				}
+
+				function appendWuIfNotExists(compUl, href, display, files) {
 					const resolved = new URL(href, window.location.href).href;
-					// skip if manual entry exists for this href
 					if (manualLinks.has(resolved)) return false;
-					// skip if compUl already contains a link with same href
 					if (Array.from(compUl.querySelectorAll('a')).some(a => {
 						try { return new URL(a.getAttribute('href'), window.location.href).href === resolved; } catch (e) { return false; }
 					})) return false;
+
+					// Check for README.md or other .md files
+					const readmeFile = files.find(f => f.toLowerCase() === 'readme.md');
+					const mdFile = files.find(f => f.toLowerCase().endsWith('.md'));
+					
+					if (!readmeFile && !mdFile) return false;
+
 					const wuLi = document.createElement('li');
 					wuLi.setAttribute('data-auto', '1');
 					const wuLink = document.createElement('a');
-					wuLink.href = href;
+					wuLink.href = href + (readmeFile || mdFile);
 					wuLink.textContent = display.replace(/[-_]/g, ' ');
+					
+					// Add preview functionality
+					wuLink.addEventListener('click', (e) => {
+						e.preventDefault();
+						previewReadme(wuLink.href);
+					});
+
 					wuLi.appendChild(wuLink);
 					compUl.appendChild(wuLi);
+					writeupCount++;
+					updateStats();
 					return true;
 				}
+
+				// Add click handler for readme close button
+				document.addEventListener('click', (e) => {
+					if (e.target.classList.contains('readme-close')) {
+						readmeDiv.innerHTML = '';
+					}
+				});
 
 				// 
 				async function fetchTreeInstead(apiBaseUrl) {
@@ -175,7 +236,7 @@
 								const { compLi, compUl } = getOrCreateCompNode(yearUl, comp);
 								for (const [wu, files] of [...wuMap.entries()].sort((a, b) => a[0].localeCompare(b[0]))) {
 									const href = `../${basePath}/${encodeURIComponent(year)}/${encodeURIComponent(comp)}/${encodeURIComponent(wu)}/`;
-									appendWuIfNotExists(compUl, href, wu);
+									appendWuIfNotExists(compUl, href, wu, files);
 								}
 							}
 						}

@@ -105,8 +105,7 @@
         background: rgba(255, 255, 255, 0.05);
     }
 }
-
-/* Print mode */
+ 
 @media print {
     #writeups-list li:not(.no-tree):before,
     #writeups-list li:not(.no-tree):after {
@@ -120,4 +119,62 @@
     #writeups-list ul {
         padding-left: 40px;
     }
+}
+
+.writeups-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 1rem;
+}
+
+.writeups-stats {
+    font-size: 0.9rem;
+    color: var(--muted);
+}
+
+#writeup-count {
+    font-weight: 500;
+}
+
+#filter-info {
+    margin-left: 1rem;
+    padding: 0.25rem 0.5rem;
+    background: rgba(0, 255, 0, 0.1);
+    border-radius: 4px;
+    display: none;
+}
+
+#filter-info.active {
+    display: inline-block;
+}
+
+#readme {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+}
+
+#readme.loading {
+    opacity: 0.7;
+}
+
+.readme-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.readme-close {
+    cursor: pointer;
+    padding: 0.5rem;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+
+.readme-close:hover {
+    opacity: 1;
 }
