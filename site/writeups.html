@@ -123,7 +123,7 @@
 					wuLi.setAttribute('data-auto', '1');
 					const wuLink = document.createElement('a');
 					wuLink.href = href;
-					wuLink.textContent = display.replace(/[-_]/g, ' ');
+					wuLink.textContent = (display.lastIndexOf('-') !== -1) ? display.substring(0, display.lastIndexOf('-')) + '-' + display.substring(display.lastIndexOf('-') + 1).replace(/[-_]/g, ' ') : display;
 					
 					let previewTimeout;
 					let previewDiv;
