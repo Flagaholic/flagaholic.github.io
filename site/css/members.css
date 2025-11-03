@@ -43,6 +43,7 @@
     color: #888;
     margin: 0.25rem 0;
     font-size: 0.9rem;
+    min-height: 1.2rem; /* reserve space so cards align even when role text missing */
 }
 
 .member-skills {
@@ -104,66 +105,92 @@
     content: "Non-HK";
 }
 
+/* Side social bubble - hidden by default, slides out on hover */
 .member-social {
     position: absolute;
-    left: 50%;
-    bottom: 12px;
-    transform: translateX(-50%) translateY(12px);
+    right: -10px;
+    top: 50%;
+    transform: translateX(110%) translateY(-50%) scale(0.96);
     opacity: 0;
     pointer-events: none;
     display: flex;
+    flex-direction: column;
     gap: 0.5rem;
-    transition: opacity 0.18s ease, transform 0.18s ease;
-    z-index: 3;
-    backdrop-filter: blur(4px);
+    transition: opacity 220ms cubic-bezier(.2,.9,.2,1), transform 220ms cubic-bezier(.2,.9,.2,1);
+    z-index: 30;
+    background: linear-gradient(180deg, rgba(10,18,12,0.6), rgba(6,12,10,0.5));
+    border-radius: 12px;
+    padding: 0.45rem;
+    box-shadow: 0 10px 30px rgba(3,8,6,0.45), inset 0 1px 0 rgba(255,255,255,0.02);
+    backdrop-filter: blur(6px) saturate(1.1);
+    border: 1px solid rgba(40,60,55,0.12);
+}
+
+/* placeholder for async loading so the bubble height is stable */
+.member-social-placeholder {
+    width: 34px;
+    height: 34px;
+    display: inline-block;
+    border-radius: 9px;
+    background: rgba(255,255,255,0.02);
 }
 
 .member-social-link {
+    width: 34px;
+    height: 34px;
     display: inline-flex;
     align-items: center;
-    gap: 0.4rem;
-    background: rgba(20,20,20,0.95);
+    justify-content: center;
+    gap: 0;
+    background: rgba(20,20,20,0.9);
     color: #cfcfcf;
-    padding: 0.35rem 0.6rem;
-    border-radius: 12px;
+    padding: 0;
+    border-radius: 8px;
     font-size: 0.8rem;
     text-decoration: none;
-    border: 1px solid #2a2a2a;
+    border: 1px solid rgba(255,255,255,0.03);
+}
+
+.member-social-link .member-social-label {
+    position: absolute !important;
+    width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0 0 0 0); border: 0;
 }
 
 .member-social-icon {
-    width: 16px;
-    height: 16px;
-    display: inline-block;
-    object-fit: cover;
-    border-radius: 3px;
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    border-radius: 4px;
 }
 
+/* fallback emoji size */
 .member-social-emoji {
-    display: inline-block;
-    font-size: 16px;
+    font-size: 18px;
     line-height: 1;
-}
-
-.member-social-label {
-    color: #cfcfcf;
 }
 
 .member-card:hover .member-social,
 .member-card:focus-within .member-social {
     opacity: 1;
-    transform: translateX(-50%) translateY(0);
+    transform: translateX(0) translateY(-50%) scale(1);
     pointer-events: auto;
 }
 
+/* pill layout for thin screens*/
 @media (max-width: 480px) {
     .member-social {
+        right: 50%;
         left: 50%;
-        bottom: 8px;
-        transform: translateX(-50%) translateY(10px);
+        top: auto;
+        bottom: 12px;
+        transform: translateX(-50%) translateY(12px);
+        flex-direction: row;
+        padding: 0.35rem;
     }
-    .member-social a { font-size: 0.75rem; padding: 0.25rem 0.45rem; }
-    .member-social-icon { width:14px; height:14px; }
+    .member-social-placeholder { width: 28px; height: 28px; }
+    .member-social-link { width: auto; height: auto; padding: 0.25rem 0.45rem; border-radius: 10px; }
+    .member-social-icon { width: 16px; height: 16px; }
 }
 
 @media (max-width: 768px) {

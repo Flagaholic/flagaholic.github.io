@@ -17,7 +17,13 @@ html,body{
   height:100%;
   font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
   font:16px/1.6 system-ui,Segoe UI,Inter,Roboto;
-  background: linear-gradient(180deg,#071023 0%, #071827 60%);
+  background: linear-gradient(180deg,
+    #071023 0%,
+    #071427 25%,
+    #07182a 55%,
+    #07202a 80%,
+    #05121a 100%);
+  background-attachment: fixed;
   color: #e6eef6;
   margin:0;
   -webkit-font-smoothing:antialiased;
