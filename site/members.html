@@ -43,7 +43,7 @@
         <h1>Members</h1>
         <div class="members-grid">
           <!-- 
-          <div class="member-card">
+          <div class="member-card" data-social="key:url;key:url:icon;">
             <img src="./assets/playerlogo/{img}.jpg" alt="usr" class="member-avatar">
             <h3>usr</h3>
             <p class="member-role"> </p>
@@ -52,7 +52,7 @@
             </div>
           </div>
           -->
-          <div class="member-card hk special" content="leader">
+          <div class="member-card hk special" content="leader" data-social="github:https://github.com/codestube">
             <img src="./assets/playerlogo/youstube.jpg" alt="youstube_" class="member-avatar">
             <h3>youstube_</h3>
             <p class="member-role">Team Leader</p>
@@ -91,7 +91,7 @@
             </div>
           </div>
           
-          <div class="member-card hk special" content="dumbass">
+          <div class="member-card hk special" content="dumbass" data-social="github:https://github.com/TaokyleYT">
             <img src="./assets/playerlogo/taokyle.jpeg" alt="Taokyle" class="member-avatar">
             <h3>Taokyle</h3>
             <p class="member-role">website maintainer</p>
@@ -102,7 +102,7 @@
             </div>
           </div>
           
-          <div class="member-card hk special" content="english level U">
+          <div class="member-card hk special" content="english level U" data-social="github:https://github.com/SISUBEN">
             <img src="./assets/playerlogo/sisubeny.png" alt="SISUBENY" class="member-avatar">
             <h3>SISUBENY</h3>
             <p class="member-role"> </p>
@@ -112,7 +112,7 @@
             </div>
           </div>
           
-          <div class="member-card hk special" content="roblox lover">
+          <div class="member-card hk special" content="roblox lover" data-social="github:https://github.com/twopus">
             <img src="./assets/playerlogo/twopus.png" alt="twopus" class="member-avatar">
             <h3>twopus</h3>
             <p class="member-role">differentiating "ur" & "ure"</p>
@@ -121,7 +121,7 @@
             </div>
           </div>
 
-          <div class="member-card hk special" content="A Snorlax?">
+          <div class="member-card hk special" content="A Snorlax?" data-social="github:https://github.com/harry-bob">
             <img src="./assets/playerlogo/harrybob.jpg" alt="harrybob" class="member-avatar">
             <h3>HarryBOB</h3>
             <p class="member-role"> </p>
@@ -140,7 +140,7 @@
             </div>
           </div>
           
-          <div class="member-card nonhk">
+          <div class="member-card nonhk" data-social="github:https://github.com/xzhiyouu62">
             <img src="./assets/playerlogo/Nelson.jpg" alt="Nelson" class="member-avatar">
             <h3>xzhiyouu(Nelson)</h3>
             <p class="member-role"> </p>
@@ -184,5 +184,112 @@
       </div>
     </main>
   </div>
+
+  <script>
+    (function(){
+      function makeIconElement(href, overrideIcon, fallbackEmoji) {
+        if (overrideIcon) {
+          const img = document.createElement('img');
+          img.src = overrideIcon;
+          img.alt = '';
+          img.className = 'member-social-icon';
+          img.onerror = () => {
+            const span = document.createElement('span');
+            span.className = 'member-social-emoji';
+            span.textContent = fallbackEmoji || '🔗';
+            img.replaceWith(span);
+          };
+          return img;
+        }
+
+        try {
+          const url = new URL(href);
+          // use favicon service to fetch icon (Google S2 first, DuckDuckGo as fallback)
+          const google = `https://www.google.com/s2/favicons?domain=${url.hostname}&sz=64`;
+          const ddg = `https://icons.duckduckgo.com/ip3/${url.hostname}.ico`;
+          const img = document.createElement('img');
+          img.src = google;
+          img.alt = '';
+          img.className = 'member-social-icon';
+          img.onerror = () => {
+            img.onerror = null;
+            img.src = ddg;
+            img.onerror = () => {
+              const span = document.createElement('span');
+              span.className = 'member-social-emoji';
+              span.textContent = fallbackEmoji || '🔗';
+              img.replaceWith(span);
+            };
+          };
+          return img;
+        } catch (e) {
+          const span = document.createElement('span');
+          span.className = 'member-social-emoji';
+          span.textContent = fallbackEmoji || '🔗';
+          return span;
+        }
+      }
+
+      function makeAnchor(iconNode, label, href) {
+        const a = document.createElement('a');
+        a.className = 'member-social-link';
+        a.href = href || '#';
+        if (!href || !/^https?:\/\//i.test(href)) a.setAttribute('role','button');
+        if (href && /^https?:\/\//i.test(href)) { a.target = '_blank'; a.rel = 'noopener noreferrer'; }
+        // iconNode can be <img> or <span>
+        if (iconNode) a.appendChild(iconNode);
+        const txt = document.createElement('span');
+        txt.className = 'member-social-label';
+        txt.textContent = ' ' + label;
+        a.appendChild(txt);
+        return a;
+      }
+
+      const fallbackMap = {
+        github: '🐙',
+        git: '🐙',
+        discord: '💬',
+        dc: '💬',
+        instagram: '📸',
+        insta: '📸',
+        ig: '📸',
+        email: '✉️',
+        mail: '✉️',
+        gmail: '✉️',
+      };
+
+      document.querySelectorAll('.member-card').forEach(card => {
+        if (card.querySelector('.member-social')) return;
+        const raw = card.getAttribute('data-social');
+        if (!raw) return;
+        const container = document.createElement('div');
+        container.className = 'member-social';
+        raw.split(';').map(s => s.trim()).filter(Boolean).forEach(entry => {
+          // either key:url or key:url:icon=... and please do NOT mess up the order I will happily scream at you for breaking the site
+          const parts = entry.split(':');
+          if (parts.length < 2) return;
+          const key = parts[0].trim().toLowerCase();
+          const rest = parts.slice(1).join(':').trim();
+
+          let url = rest;
+          let overrideIcon = null;
+          const iconMatch = rest.match(/(?:^|;| )icon=(https?:\/\/\S+)/i);
+          if (iconMatch) {
+            overrideIcon = iconMatch[1].replace(/[),.]+$/,'');
+            url = rest.replace(iconMatch[0],'').trim().replace(/^[;:]/,'');
+          }
+
+          const label = (key === 'discord') ? rest : (key.charAt(0).toUpperCase() + key.slice(1));
+          const fallbackEmoji = fallbackMap[key] || '🔗';
+          const iconNode = (url && /^https?:\/\//i.test(url)) ? makeIconElement(url, overrideIcon, fallbackEmoji) : (overrideIcon ? makeIconElement(null, overrideIcon, fallbackEmoji) : (function(){ const s = document.createElement('span'); s.className='member-social-emoji'; s.textContent = fallbackEmoji; return s; })());
+
+          // discord isnt url but still make a url-like thingy
+          const href = (/^https?:\/\//i.test(url) ? url : (key === 'discord' ? null : url));
+          container.appendChild(makeAnchor(iconNode, (key === 'discord' && !href) ? url : label, href));
+        });
+        card.appendChild(container);
+      });
+    })();
+  </script>
 </body>
 </html>
