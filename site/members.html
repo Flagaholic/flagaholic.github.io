@@ -52,7 +52,7 @@
             </div>
           </div>
           -->
-          <div class="member-card hk special" content="leader" data-social="github:https://github.com/codestube">
+          <div class="member-card hk special" content="leader" data-social="github:https://github.com/codestube;instagram:https://www.instagram.com/youstube__">
             <img src="./assets/playerlogo/youstube.jpg" alt="youstube_" class="member-avatar">
             <h3>youstube_</h3>
             <p class="member-role">Team Leader</p>
@@ -91,7 +91,7 @@
             </div>
           </div>
           
-          <div class="member-card hk special" content="dumbass" data-social="github:https://github.com/TaokyleYT">
+          <div class="member-card hk special" content="dumbass" data-social="github:https://github.com/TaokyleYT;instagram:https://www.instagram.com/taokyle415">
             <img src="./assets/playerlogo/taokyle.jpeg" alt="Taokyle" class="member-avatar">
             <h3>Taokyle</h3>
             <p class="member-role">website maintainer</p>
@@ -102,7 +102,7 @@
             </div>
           </div>
           
-          <div class="member-card hk special" content="english level U" data-social="github:https://github.com/SISUBEN">
+          <div class="member-card hk special" content="english level U" data-social="github:https://github.com/SISUBEN;twitter:https://x.com/SISUBENY;blog:https://sisubeny.space">
             <img src="./assets/playerlogo/sisubeny.png" alt="SISUBENY" class="member-avatar">
             <h3>SISUBENY</h3>
             <p class="member-role"> </p>
@@ -305,6 +305,8 @@
         email: '✉️',
         mail: '✉️',
         gmail: '✉️',
+        twitter: '🐦',
+        x: '🐦',
       };
 
       document.querySelectorAll('.member-card').forEach(card => {
@@ -324,6 +326,7 @@
         (async () => {
           const nodes = [];
           for (const entry of entries) {
+            // accepts key:url and key:url;icon=url, can add more attributes later seperated by semicolon (I'm assuming non of you will paste in prospero protocol links, if so please reconsider what kind of social connection are you trying to disclose)
             const parts = entry.split(':');
             if (parts.length < 2) continue;
             const key = parts[0].trim().toLowerCase();
