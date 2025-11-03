@@ -101,20 +101,23 @@
 
 				function getOrCreateCompNode(yearUl, compNameRaw) {
 					fetchFile('site/writeups/' + encodeURIComponent(yearUl.parentElement.textContent.trim()) + '/' + encodeURIComponent(compNameRaw) + '/README.md').then(text => {
-					    if (text) {
-								// if special title
-								FirstLine = text.split('\n')[0].trim();
-								if (FirstLine.startsWith('# ')) {
-									const displayName = FirstLine.substring(2).trim();
-								} else {
-									const displayName = compNameRaw.replace(/[-_]/g, ' ');
-								}
-								const compLink = text.match(/https?:\/\/[^\s]+.[^\s]{2,4}\/[^\s]*/);
-								if (compLink) {
-									const compLinkA = document.createElement('a');
-									compLinkA.href = compLink[0];
-									compLinkA.textContent = displayName;
-								}
+						if (text) {
+							// if special title
+							FirstLine = text.split('\n')[0].trim();
+							if (FirstLine.startsWith('# ')) {
+								const displayName = FirstLine.substring(2).trim();
+							} else {
+								const displayName = compNameRaw.replace(/[-_]/g, ' ');
+							}
+							const compLink = text.match(/https?:\/\/[^\s]+.[^\s]{2,4}\/[^\s]*/);
+							if (compLink) {
+								const compLinkA = document.createElement('a');
+								compLinkA.href = compLink[0];
+								compLinkA.textContent = displayName;
+							}
+						} else {
+							const displayName = compNameRaw.replace(/[-_]/g, ' ');
+							const compLink = null;
 						}
 					});
 					// try to find existing comp li inside yearUl (manual or auto)
@@ -360,9 +363,7 @@
 					});
 
 				} catch (err) {
-					if (!manualLinks.size) {
-						ul.insertAdjacentHTML('beforeend', '<li>Error loading writeups. If you didn\'t change anything please scream at us in discord with the console logged error :pray:</li>');
-					}
+					ul.insertAdjacentHTML('beforeend', '<li>Error loading writeups. If you didn\'t change anything please scream at us in discord with the console logged error :pray:</li>');
 					console.error(err);
 				} finally {
 					if (loadingNotice && loadingNotice.parentElement) loadingNotice.parentElement.removeChild(loadingNotice);
