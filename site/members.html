@@ -196,8 +196,8 @@
             <template class="socials-data">
             {
                 "github": {
-                    "url": "https://github.com/harrybob",
-                    "username": "harrybob"
+                    "url": "https://github.com/harry-bob",
+                    "username": "harry-bob"
                 }
             }
             </template>
@@ -260,7 +260,6 @@
             {
                 "discord": {
                     "username": "b34rn00by",
-                    "discriminator": "0000",
                     "url": "https://discord.com/users/1379831907784855712"
                 }
             }
@@ -284,226 +283,276 @@
   </div>
 
   <script>
-    document.addEventListener('DOMContentLoaded', ( async function () {
-       // create an icon node (fallbacks to emoji)
-      async function createIconNode(href, overrideIcon, fallbackEmoji) {
-        const emojiEl = document.createElement('span');
-        emojiEl.className = 'member-social-emoji';
-        emojiEl.textContent = fallbackEmoji || '🔗';
+  document.addEventListener('DOMContentLoaded', (async function () {
+    // Detect desired size param from candidate url (sz or size)
+    function desiredSizeFromUrl(src) {
+      try {
+        const m = src.match(/[?&](?:sz|size)=([0-9]+)/i);
+        return m ? parseInt(m[1], 10) : null;
+      } catch (e) { return null; }
+    }
 
-        const srcCandidates = [];
-        if (overrideIcon) srcCandidates.push(overrideIcon);
-        if (href) {
-          try {
-            // find the site's /favicon.ico, google s2 fast fallback, ddg slower fallback, favic.one even more fallback
-            const u = new URL(href);
-            srcCandidates.push(`${u.origin}/favicon.ico`);
-            srcCandidates.push(`https://www.google.com/s2/favicons?domain=${u.hostname}&sz=64`);
-            srcCandidates.push(`https://icons.duckduckgo.com/ip3/${u.hostname}.ico`);
-            srcCandidates.push(`https://favic.one/api/favicon?url=${u.hostname}&size=64`);
-          } catch (e) { }
-        }
-
-        for (const src of srcCandidates) {
-          if (!src) continue;
-          try {
-            const img = document.createElement('img');
-            img.className = 'member-social-icon';
-            img.alt = '';
-            // allow CORS when available but we won't read pixels
-            img.crossOrigin = 'anonymous';
-
-            const ok = await new Promise((res) => {
-              let done = false;
-              const finish = (v) => { if (!done) { done = true; res(v); } };
-              img.onload = () => {
-                try {
-                  const w = img.naturalWidth || img.width || 32;
-                  const h = img.naturalHeight || img.height || 32;
-                  // consider square-ish with small tolerance -> circle
-                  const tolerance = Math.max(2, Math.round(Math.min(w,h) * 0.06));
-                  if (Math.abs(w - h) <= tolerance) {
-                    img.style.borderRadius = '50%';
-                  } else {
-                    img.style.borderRadius = '8px';
-                  }
-                  img.style.objectFit = 'cover';
-                } catch (e) { }
-                finish(true);
-              };
-              img.onerror = () => finish(false);
-              setTimeout(() => finish(false), 2200);
-              img.src = src;
-            });
-
-            if (ok) return img;
-          } catch (e) { }
-        }
-
-        return emojiEl;
-      }
-
-      function extractUsernameFromUrl(url) {
+    // Load favicon and check dimensions if size param specified
+    async function fetchFavicon(src, timeout = 2500) {
+      return new Promise((resolve) => {
         try {
-          // typical URL patterns
-          const u = new URL(url);
-          const host = u.hostname.replace(/^www\./,'').toLowerCase();
-          const parts = u.pathname.replace(/\/+$/,'').split('/').filter(Boolean);
-          if (host.includes('github.com') && parts[0]) return parts[0];
-          if ((host.includes('twitter.com') || host.includes('x.com') || host.includes('t.co')) && parts[0]) return parts[0];
-          if (host.includes('instagram.com') && parts[0]) return parts[0];
-          if (host.includes('linkedin.com') && parts.includes('in')) {
-            const idx = parts.indexOf('in'); if (parts[idx+1]) return parts[idx+1];
-          }
-          if (host.includes('mailto:')) return u.pathname;
-          return null;
-        } catch (e) { return null; }
-      }
+          const img = new Image();
+          img.crossOrigin = 'anonymous';
+          let done = false;
+          const finish = (res) => { if (!done) { done = true; resolve(res); } };
+          const t = setTimeout(() => finish(null), timeout);
 
-      // platform label templates, feel free to add more
-      const PLATFORM_TEMPLATES = {
-        github: '{username} @ GitHub',
-        instagram: '@{username} (IG)',
-        twitter: '@{username} (X)',
-        discord: '{username}#{discriminator}',
-        default: '{username}'
-      };
-
-      function formatLabel(platform, data, rawUrl) {
-        const tpl = PLATFORM_TEMPLATES[platform] || PLATFORM_TEMPLATES.default;
-        let label = tpl;
-        if (data && typeof data === 'object') {
-          for (const [k,v] of Object.entries(data)) {
-            label = label.replace(new RegExp(`\\{${k}\\}`,'g'), v);
-          }
-        }
-        // if username placeholder still present, try to fill from URL
-        if (label.includes('{username}')) {
-          const uname = extractUsernameFromUrl(rawUrl) || (data && data.username) || rawUrl;
-          label = label.replace(/\{username\}/g, uname || rawUrl);
-        }
-        return label.replace(/\{discriminator\}/g, (data && data.discriminator) || '');
-      }
-
-      function makeAnchor(iconNode, title, href) {
-        const a = document.createElement('a');
-        a.className = 'member-social-link';
-        if (href && /^https?:\/\//i.test(href)) {
-          a.href = href;
-          a.target = '_blank';
-          a.rel = 'noopener noreferrer';
-        } else {
-          a.setAttribute('role','button');
-        }
-        a.title = title || '';
-        a.setAttribute('aria-label', title || '');
-        if (iconNode) a.appendChild(iconNode);
-        return a;
-      }
-
-      // Parse old but functional data-social string format (as fallback in case this new thing messed up)
-      function parseDataSocialString(raw) {
-        const out = [];
-        if (!raw) return out;
-        const parts = raw.split(';').map(s => s.trim()).filter(Boolean);
-        for (const p of parts) {
-          const idx = p.indexOf(':');
-          if (idx === -1) continue;
-          const key = p.slice(0, idx).trim().toLowerCase();
-          let rest = p.slice(idx+1).trim();
-          // allow inline icon param like "...;icon=https://..."
-          let overrideIcon = null;
-          const m = rest.match(/icon=(https?:\/\/\S+)/i);
-          if (m) {
-            overrideIcon = m[1].replace(/[),.]+$/,'');
-            rest = rest.replace(m[0],'').trim().replace(/^[:;]+/,'');
-          }
-          out.push({ platform: key, url: rest || null, overrideIcon });
-        }
-        return out;
-      }
-
-      const cards = Array.from(document.querySelectorAll('.member-card'));
-      for (const card of cards) {
-        if (card.dataset.socialProcessed) continue;
-        card.dataset.socialProcessed = '1';
-
-        const container = document.createElement('div');
-        container.className = 'member-social';
-        card.appendChild(container);
-
-        const tpl = card.querySelector('template.socials-data');
-        let entries = [];
-        if (tpl && tpl.innerHTML && tpl.innerHTML.trim()) {
-          try {
-            const parsed = JSON.parse(tpl.innerHTML);
-            for (const [platform, pdata] of Object.entries(parsed)) {
-              entries.push({ platform: platform.toLowerCase(), data: pdata });
-            }
-          } catch (e) {
-            // if JSON fails, fallback to data-social attribute below, and also logs so if I notice this whoever pushed that faulty update (usually me) can be blamed
-            console.error('socials-data JSON parse failed for card ', card, e);
-          }
-        }
-
-        // fallback to legacy data-social attribute (format key:url;key:url:icon=imgUrl;)
-        if (entries.length === 0) {
-          const raw = card.getAttribute('data-social');
-          if (raw) {
-            const parsed = parseDataSocialString(raw);
-            parsed.forEach(p => entries.push({ platform: p.platform, url: p.url, overrideIcon: p.overrideIcon }));
-          }
-        }
-
-        const placeholders = [];
-        for (let i = 0; i < entries.length; i++) {
-          const ph = document.createElement('span');
-          ph.className = 'member-social-placeholder';
-          container.appendChild(ph);
-          placeholders.push(ph);
-        }
-
-        (async () => {
-          const nodes = [];
-          for (const entry of entries) {
+          img.onload = () => {
+            clearTimeout(t);
             try {
-              const platform = (entry.platform || '').toLowerCase();
-              const rawUrl = entry.url || (entry.data && entry.data.url) || null;
-              const overrideIcon = entry.overrideIcon || (entry.data && entry.data.iconUrl) || null;
-              const fallbackEmoji = {
-                github: '🐙', discord: '💬', instagram: '📸', twitter: '🐦', blog: '📝'
-              }[platform] || '🔗';
+              // Check if we need to validate dimensions
+              const desired = desiredSizeFromUrl(src);
+              const w = img.naturalWidth || img.width || 64;
+              const h = img.naturalHeight || img.height || 64;
 
-              const iconNode = await createIconNode(rawUrl, overrideIcon, fallbackEmoji);
+              // If size param exists, require exact match
+              if (desired && (w !== desired || h !== desired)) {
+                finish(null);
+                return;
+              }
 
-              // choose label using template JSON data or heuristics
-              const label = formatLabel(platform, entry.data, rawUrl);
-
-              const href = rawUrl && /^https?:\/\//i.test(rawUrl) ? rawUrl : null;
-              const anchor = makeAnchor(iconNode, label, href);
-              nodes.push(anchor);
-            } catch (e) {
-              console.error('Failed to create social node', e);
-              nodes.push(null);
+              finish(src);
+            } catch (err) {
+              finish(null);
             }
-          }
+          };
 
-          // Replace placeholders
-          nodes.forEach((n, idx) => {
-            const ph = placeholders[idx];
-            if (!ph) {
-              if (n) container.appendChild(n);
-              return;
-            }
-            if (n) ph.replaceWith(n);
-            else ph.remove();
+          img.onerror = () => { clearTimeout(t); finish(null); };
+          img.src = src;
+        } catch (e) {
+          resolve(null);
+        }
+      });
+    }
+
+    // create an icon node (falls back to emoji)
+    async function createIconNode(href, overrideIcon, fallbackEmoji) {
+      const emojiEl = document.createElement('span');
+      emojiEl.className = 'member-social-emoji';
+      emojiEl.textContent = fallbackEmoji || '🔗';
+
+      const srcCandidates = [];
+      if (overrideIcon) srcCandidates.push(overrideIcon);
+      if (href) {
+        try {
+          // find the site's /favicon.ico, google s2 fast fallback, ddg slower fallback, favic.one even more fallback
+          const u = new URL(href);
+          srcCandidates.push(`${u.origin}/favicon.ico`);
+          srcCandidates.push(`https://www.google.com/s2/favicons?domain=${u.hostname}&sz=64`);
+          srcCandidates.push(`https://icons.duckduckgo.com/ip3/${u.hostname}.ico`);
+          srcCandidates.push(`https://favic.one/api/favicon?url=${u.hostname}&size=64`);
+        } catch (e) { }
+      }
+
+      for (const src of srcCandidates) {
+        if (!src) continue;
+        try {
+          const processed = await fetchFavicon(src);
+          if (!processed) continue;
+
+          const img = document.createElement('img');
+          img.className = 'member-social-icon';
+          img.alt = '';
+          // allow CORS when available but we won't read pixels
+          img.crossOrigin = 'anonymous';
+
+          const ok = await new Promise((res) => {
+            let done = false;
+            const finish = (v) => { if (!done) { done = true; res(v); } };
+            img.onload = () => {
+              try {
+                const w = img.naturalWidth || img.width || 32;
+                const h = img.naturalHeight || img.height || 32;
+                // consider square-ish with small tolerance -> circle
+                const tolerance = Math.max(2, Math.round(Math.min(w, h) * 0.06));
+                if (Math.abs(w - h) <= tolerance) {
+                  img.style.borderRadius = '50%';
+                } else {
+                  img.style.borderRadius = '8px';
+                }
+                img.style.objectFit = 'cover';
+              } catch (e) { }
+              finish(true);
+            };
+            img.onerror = () => finish(false);
+            setTimeout(() => finish(false), 2200);
+            img.src = processed;
           });
 
-          // if container empty afterwards, remove it
-          if (!container.querySelector('.member-social-link')) container.remove();
-        })();
+          if (ok) return img;
+        } catch (e) { }
       }
-    }));
-  </script>
+
+      return emojiEl;
+    }
+
+    function extractUsernameFromUrl(url) {
+      try {
+        // typical URL patterns
+        const u = new URL(url);
+        const host = u.hostname.replace(/^www\./, '').toLowerCase();
+        const parts = u.pathname.replace(/\/+$/, '').split('/').filter(Boolean);
+        if (host.includes('github.com') && parts[0]) return parts[0];
+        if ((host.includes('twitter.com') || host.includes('x.com') || host.includes('t.co')) && parts[0]) return parts[0];
+        if (host.includes('instagram.com') && parts[0]) return parts[0];
+        if (host.includes('linkedin.com') && parts.includes('in')) {
+          const idx = parts.indexOf('in');
+          if (parts[idx + 1]) return parts[idx + 1];
+        }
+        if (host.includes('mailto:')) return u.pathname;
+        return null;
+      } catch (e) { return null; }
+    }
+
+    // platform label templates, feel free to add more
+    const PLATFORM_TEMPLATES = {
+      github: '{username} @ GitHub',
+      instagram: '@{username} (IG)',
+      twitter: '@{username} (X)',
+      discord: '{username}#{discriminator}',
+      default: '{username}'
+    };
+
+    function formatLabel(platform, data, rawUrl) {
+      const tpl = PLATFORM_TEMPLATES[platform] || PLATFORM_TEMPLATES.default;
+      let label = tpl;
+      if (data && typeof data === 'object') {
+        for (const [k, v] of Object.entries(data)) {
+          label = label.replace(new RegExp(`\\{${k}\\}`, 'g'), v);
+        }
+      }
+      // if username placeholder still present, try to fill from URL
+      if (label.includes('{username}')) {
+        const uname = extractUsernameFromUrl(rawUrl) || (data && data.username) || rawUrl;
+        label = label.replace(/\{username\}/g, uname || rawUrl);
+      }
+      return label.replace(/\{discriminator\}/g, (data && data.discriminator) || '');
+    }
+
+    function makeAnchor(iconNode, title, href) {
+      const a = document.createElement('a');
+      a.className = 'member-social-link';
+      if (href && /^https?:\/\//i.test(href)) {
+        a.href = href;
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+      } else {
+        a.setAttribute('role', 'button');
+      }
+      a.title = title || '';
+      a.setAttribute('aria-label', title || '');
+      if (iconNode) a.appendChild(iconNode);
+      return a;
+    }
+
+    // Parse old but functional data-social string format (as fallback in case this new thing messed up)
+    function parseDataSocialString(raw) {
+      const out = [];
+      if (!raw) return out;
+      const parts = raw.split(';').map(s => s.trim()).filter(Boolean);
+      for (const p of parts) {
+        const idx = p.indexOf(':');
+        if (idx === -1) continue;
+        const key = p.slice(0, idx).trim().toLowerCase();
+        let rest = p.slice(idx + 1).trim();
+        // allow inline icon param like "...;icon=https://..."
+        let overrideIcon = null;
+        const m = rest.match(/icon=(https?:\/\/\S+)/i);
+        if (m) {
+          overrideIcon = m[1].replace(/[),.]+$/, '');
+          rest = rest.replace(m[0], '').trim().replace(/^[:;]+/, '');
+        }
+        out.push({ platform: key, url: rest || null, overrideIcon });
+      }
+      return out;
+    }
+
+    const cards = Array.from(document.querySelectorAll('.member-card'));
+    for (const card of cards) {
+      if (card.dataset.socialProcessed) continue;
+      card.dataset.socialProcessed = '1';
+
+      const container = document.createElement('div');
+      container.className = 'member-social';
+      card.appendChild(container);
+
+      const tpl = card.querySelector('template.socials-data');
+      let entries = [];
+      if (tpl && tpl.innerHTML && tpl.innerHTML.trim()) {
+        try {
+          const parsed = JSON.parse(tpl.innerHTML);
+          for (const [platform, pdata] of Object.entries(parsed)) {
+            entries.push({ platform: platform.toLowerCase(), data: pdata });
+          }
+        } catch (e) {
+          // if JSON fails, fallback to data-social attribute below, and also logs so if I notice this whoever pushed that faulty update (usually me) can be blamed
+          console.error('socials-data JSON parse failed for card ', card, e);
+        }
+      }
+
+      // fallback to legacy data-social attribute (format key:url;key:url:icon=imgUrl;)
+      if (entries.length === 0) {
+        const raw = card.getAttribute('data-social');
+        if (raw) {
+          const parsed = parseDataSocialString(raw);
+          parsed.forEach(p => entries.push({ platform: p.platform, url: p.url, overrideIcon: p.overrideIcon }));
+        }
+      }
+
+      const placeholders = [];
+      for (let i = 0; i < entries.length; i++) {
+        const ph = document.createElement('span');
+        ph.className = 'member-social-placeholder';
+        container.appendChild(ph);
+        placeholders.push(ph);
+      }
+
+      (async () => {
+        const nodes = [];
+        for (const entry of entries) {
+          try {
+            const platform = (entry.platform || '').toLowerCase();
+            const rawUrl = entry.url || (entry.data && entry.data.url) || null;
+            const overrideIcon = entry.overrideIcon || (entry.data && entry.data.iconUrl) || null;
+            const fallbackEmoji = {
+              github: '🐙', discord: '💬', instagram: '📸', twitter: '🐦', blog: '📝'
+            }[platform] || '🔗';
+
+            const iconNode = await createIconNode(rawUrl, overrideIcon, fallbackEmoji);
+
+            // choose label using template JSON data or heuristics
+            const label = formatLabel(platform, entry.data, rawUrl);
+
+            const href = rawUrl && /^https?:\/\//i.test(rawUrl) ? rawUrl : null;
+            const anchor = makeAnchor(iconNode, label, href);
+            nodes.push(anchor);
+          } catch (e) {
+            console.error('Failed to create social node', e);
+            nodes.push(null);
+          }
+        }
+
+        // Replace placeholders
+        nodes.forEach((n, idx) => {
+          const ph = placeholders[idx];
+          if (!ph) {
+            if (n) container.appendChild(n);
+            return;
+          }
+          if (n) ph.replaceWith(n);
+          else ph.remove();
+        });
+
+        // if container empty afterwards, remove it
+        if (!container.querySelector('.member-social-link')) container.remove();
+      })();
+    }
+  }));
+</script>
 </body>
 </html>
