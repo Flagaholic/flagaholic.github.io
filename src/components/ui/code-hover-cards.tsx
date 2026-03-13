@@ -229,7 +229,7 @@ function HoverCard({
       {/* Character Matrix */}
       {isMounted && (
         <div className="absolute inset-0 opacity-20">
-          <div
+          <motion.div
             className="absolute inset-0 text-text-muted text-xs font-mono leading-none select-none"
             style={{
               maskImage: isHovered ? maskImage : undefined,
@@ -257,7 +257,7 @@ function HoverCard({
               {char}
             </motion.span>
           ))}
-          </div>
+          </motion.div>
         </div>
       )}
 
