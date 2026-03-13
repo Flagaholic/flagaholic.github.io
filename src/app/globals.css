@@ -1,0 +1,105 @@
+@import "tailwindcss";
+
+@theme {
+  /* 主色調 - 基於你提供的顏色 */
+  --color-deep-green: #005F02;        /* 深森林綠 - 主要品牌色 */
+  --color-forest-green: #427A43;      /* 森林綠 - 次要綠色 */
+  --color-warm-gold: #C0B87A;         /* 溫暖金棕 - 重點色 */
+  --color-cream: #F2E3BB;             /* 奶茶色 - 淺色背景 */
+
+  /* 延伸色彩 */
+  --color-dark-forest: #003A01;       /* 更深的森林綠 */
+  --color-sage-green: #6B8F6C;        /* 淺森林綠 */
+  --color-rich-gold: #B5A56B;         /* 濃郁金色 */
+  --color-light-cream: #F8F2E6;       /* 淺奶茶色 */
+
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+/* Light Mode (Default) */
+:root {
+  --background: #F6F0D7;
+  --foreground: #89986D;
+
+  /* 中性淺色調 - 使用你提供的顏色 */
+  --color-charcoal: #F6F0D7;          /* 最淺背景 */
+  --color-warm-gray: #F6F0D7;         /* 淺主背景 */
+  --color-stone-gray: #C5D89D;        /* 卡片背景 */
+  --color-soft-gray: #7A8B6E;         /* 邊框 - 更深 */
+
+  /* 文字色彩 - 淺色模式 */
+  --color-text-primary: #2D3E1F;      /* 主要文字 - 深綠(更深) */
+  --color-text-secondary: #005F02;    /* 次要文字 - 深森林綠 */
+  --color-text-muted: #546649;        /* 靜音文字 - 深中綠 */
+  --color-text-dark: #2D3E1F;         /* 深色文字 */
+
+  /* 背景系統 - 淺色模式 */
+  --color-bg-primary: #F6F0D7;        /* 主背景 - 最淺色 */
+  --color-bg-secondary: #C5D89D;      /* 次要背景 - 淺綠 */
+  --color-bg-elevated: #FFFFFF;       /* 提升背景 - 純白 */
+  --color-bg-light: #F6F0D7;          /* 淺色背景 */
+  --color-bg-cream: #C5D89D;          /* 奶茶背景 - 淺綠 */
+
+  /* 狀態色彩 - 調整對比度 */
+  --color-success: #005F02;           /* 成功 - 深森林綠 */
+  --color-warning: #8B6914;           /* 警告 - 深金棕色 */
+  --color-info: #427A43;              /* 資訊 - 森林綠 */
+}
+
+/* Dark Mode */
+.dark {
+  --background: #1A1A1A;
+  --foreground: #F8F2E6;
+
+  /* 中性深色調 */
+  --color-charcoal: #1A1A1A;          /* 深炭色 - 最深背景 */
+  --color-warm-gray: #2D2B26;         /* 暖灰色 - 主背景 */
+  --color-stone-gray: #3C3A35;        /* 石灰色 - 卡片背景 */
+  --color-soft-gray: #5A5650;         /* 柔和灰 - 邊框(更亮) */
+
+  /* 文字色彩 - 深色模式 */
+  --color-text-primary: #F8F2E6;      /* 主要文字 - 亮色 */
+  --color-text-secondary: #C0B87A;    /* 次要文字 - 金棕色 */
+  --color-text-muted: #A39580;        /* 靜音文字 - 更亮 */
+  --color-text-dark: #2D2B26;         /* 深色文字 */
+
+  /* 背景系統 - 深色模式 */
+  --color-bg-primary: #2D2B26;        /* 主背景 - 暗色 */
+  --color-bg-secondary: #3C3A35;      /* 次要背景 */
+  --color-bg-elevated: #4A4843;       /* 提升背景 */
+  --color-bg-light: #3C3A35;          /* 淺色背景替代 */
+  --color-bg-cream: #2D2B26;          /* 奶茶背景替代 */
+
+  /* 狀態色彩 */
+  --color-success: #427A43;           /* 成功 - 森林綠 */
+  --color-warning: #C0B87A;           /* 警告 - 金棕色 */
+  --color-info: #6B8F6C;              /* 資訊 - 淺森林綠 */
+}
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+html:not(.dark) {
+  color-scheme: light;
+}
+
+body {
+  font-family: var(--font-sans), system-ui, sans-serif;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+* {
+  box-sizing: border-box;
+}
