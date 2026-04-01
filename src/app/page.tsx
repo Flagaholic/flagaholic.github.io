@@ -9,7 +9,7 @@ export default function Home() {
     <div style={{ textAlign: 'center' }}>
       <b>NoFlag既holic</b>
       <br />
-      <img src="/asset2/trollfaceONE.png" alt="Trollface" />
+      <img src="/assets2/trollfaceONE.png" alt="Trollface" />
       <br />
       <b>April fools<br />btw that means no website for u tdy</b>
       <br />

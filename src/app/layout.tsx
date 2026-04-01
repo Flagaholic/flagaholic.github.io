@@ -8,7 +8,7 @@ export default function RootLayout({
       <body>
         {/* not audio */}
         <iframe
-          src="/asset2/silence.mp3"
+          src="/assets2/silence.mp3"
           allow="autoplay"
           id="audio"
           style={{ display: 'none' }}
@@ -16,8 +16,8 @@ export default function RootLayout({
 
         {/* trololololo lololo lololo yeyeyeyeye dididididi */}
         <audio autoPlay loop>
-          <source src="/asset2/trololo.ogg" type="audio/ogg" />
-          <source src="/asset2/trololo.mp3" type="audio/mpeg" />
+          <source src="/assets2/trololo.ogg" type="audio/ogg" />
+          <source src="/assets2/trololo.mp3" type="audio/mpeg" />
         </audio>
 
         {/* Bg image */}
@@ -25,7 +25,7 @@ export default function RootLayout({
           fontFamily: 'Arial',
           color: 'white',
           fontSize: '50px',
-          backgroundImage: 'url(/asset2/bg.png)',
+          backgroundImage: 'url(/assets2/bg.png)',
           backgroundAttachment: 'fixed',
           minHeight: '100vh',
           display: 'flex',
