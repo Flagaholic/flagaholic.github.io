@@ -84,12 +84,13 @@ export const currentMembers: TeamMember[] = [
     socials: {
       github: { url: "https://github.com/codestube", username: "codestube" },
       instagram: { url: "https://www.instagram.com/youstube__", username: "youstube__" }
-    }
+    },
+    quote: "leader"
   },
   {
     id: "2",
     name: "xzhiyouu (Nelson)",
-    role: "Contributor",
+    role: "Website Maintainer",
     specialties: ["Misc", "Forensics"],
     avatar: "/assets/playerlogo/Nelson.jpg",
     socials: {
@@ -105,12 +106,13 @@ export const currentMembers: TeamMember[] = [
   {
     id: "4",
     name: "bug1nst0m@ch",
+    role: "Not even computer major",
     specialties: ["Misc", "Forensics"],
     avatar: "/assets/playerlogo/thomas.png"
   },
   {
     id: "5",
-    name: "owo (sunny7890987)",
+    name: "owo",
     specialties: ["Web"],
     avatar: "/assets/playerlogo/OwO.png"
   },
@@ -128,9 +130,10 @@ export const currentMembers: TeamMember[] = [
     avatar: "/assets/playerlogo/taokyle.jpeg",
     socials: {
       github: { url: "https://github.com/TaokyleYT", username: "TaokyleYT" },
-      instagram: { url: "https://www.instagram.com/taokyle415", username: "taokyle415" }
+      instagram: { url: "https://www.instagram.com/taokyle415", username: "taokyle415" },
+      discord: { url: "https://discord.com/users/681426499794239519", username: "taokyle" }
     },
-    quote: "website maintainer"
+    quote: "dumbass++"
   },
   {
     id: "8",
@@ -178,7 +181,10 @@ export const currentMembers: TeamMember[] = [
     name: "Demonster",
     role: "Raccoon goes maur maur",
     specialties: ["Web"],
-    avatar: "/assets/playerlogo/demonster.png"
+    avatar: "/assets/playerlogo/demonster.png",
+    socials: {
+      linkedin: { url: "https://www.linkedin.com/in/daniel-agatan/", username: "daniel-agatan" }
+    }
   },
   {
     id: "13",
@@ -193,7 +199,8 @@ export const currentMembers: TeamMember[] = [
     id: "14",
     name: "damwan21",
     specialties: ["OSINT", "Crypto"],
-    avatar: "/assets/playerlogo/damwan.jpg"
+    avatar: "/assets/playerlogo/damwan.jpg",
+    quote: "weird?"
   },
   { id: "15", name: "Zwique" },
   { id: "16", name: "Laggy" },

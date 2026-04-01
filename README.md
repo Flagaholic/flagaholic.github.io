@@ -1,5 +1,7 @@
-Official website for Sanrioholic (flagaholic), a Hong Kong-based CTF team: https://www.flagaholic.xyz. 
+Official website for Sanrioholic (flagaholic), a Hong Kong-based CTF team: https://www.flagaholic.xyz.
 
 Note: light theme text and color pairing still needs adjustment.
 
-last change by xzhiyouu and his powerful claude pro: D     <- trust me this is real lol
+Note: the writeups are non-functioning rn, please ignore the page or sth
+
+last change by taokyle and his leftover bugs

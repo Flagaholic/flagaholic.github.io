@@ -1,0 +1,7 @@
+# The EPOCH 2
+
+Hey Unix time 1 is 19700101000001
+
+Thats pretty good!!
+
+**THIS IS A PLACEHOLDER WRITEUP FOR TESTING ONLY**

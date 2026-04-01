@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { GlassCard } from "@/components/ui/glass-card";
@@ -59,12 +58,11 @@ function SocialIcon({ type, social }: { type: string; social: any }) {
 export function MembersContent() {
   return (
     <>
-      {/* Members Grid */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.4, duration: 0.8 }}
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 justify-items-center"
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
       >
         {currentMembers.map((member, index) => (
           <motion.div
@@ -73,67 +71,74 @@ export function MembersContent() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.05 * index, duration: 0.5 }}
             whileHover={{ y: -5 }}
+            className="flex"
           >
-            <GlassCard className="w-full max-w-xs h-auto overflow-hidden hover:shadow-xl transition-shadow">
-              <div className="text-center space-y-3 p-5">
-                {/* Avatar */}
-                <div className="mx-auto w-24 h-24 bg-gradient-to-br from-deep-green to-forest-green rounded-full flex items-center justify-center mb-4 overflow-hidden flex-shrink-0">
-                  {member.avatar ? (
-                    <Image
-                      src={member.avatar}
-                      alt={member.name}
-                      width={96}
-                      height={96}
-                      className="w-full h-full object-cover"
-                      priority={index < 4}
-                    />
-                  ) : (
-                    <div className="text-4xl">👤</div>
+            <GlassCard className="w-full h-full flex flex-col overflow-hidden hover:shadow-xl transition-all duration-300">
+              <div className="flex flex-col flex-1 p-6 text-center">
+                <div className="flex flex-col items-center mb-2">
+                  {/* Avatar */}
+                  <div className="w-24 h-24 bg-gradient-to-br from-deep-green to-forest-green rounded-full flex items-center justify-center overflow-hidden mb-4">
+                    {member.avatar ? (
+                      <Image
+                        src={member.avatar}
+                        alt={member.name}
+                        width={96}
+                        height={96}
+                        className="w-full h-full object-cover"
+                        priority={index < 4}
+                      />
+                    ) : (
+                      <div className="text-4xl">👤</div>
+                    )}
+                  </div>
+
+                  {/* Name */}
+                  <h3 className="text-lg font-bold text-text-primary">{member.name}</h3>
+                  {/* Role */}
+                  {member.role && (
+                    <p className="text-sm text-warm-gold">{member.role}</p>
                   )}
                 </div>
 
-                {/* Name */}
-                <h3 className="text-lg font-bold text-text-primary truncate">
-                  {member.name}
-                </h3>
-
-                {/* Role */}
-                {member.role && (
-                  <p className="text-sm text-warm-gold">{member.role}</p>
-                )}
-
                 {/* Quote */}
-                {member.quote && (
-                  <p className="text-xs text-text-muted italic">
-                    "{member.quote}"
-                  </p>
-                )}
+                <div className="flex-1 flex items-center justify-center min-h-[30px]">
+                  {member.quote ? (
+                    <p className="text-xs text-text-muted italic px-2">
+                      "{member.quote}"
+                    </p>
+                  ) : (
+                    <div className="h-4" />
+                  )}
+                </div>
 
                 {/* Specialties */}
-                {member.specialties && member.specialties.length > 0 && (
-                  <div className="flex flex-wrap gap-1 justify-center pt-2">
-                    {member.specialties.map((skill) => (
-                      <span
-                        key={skill}
-                        className="px-2 py-1 bg-warm-gold/20 border border-warm-gold/30 rounded-md text-xs text-warm-gold"
-                      >
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
-                )}
+                <div className="min-h-[20px] flex flex-wrap gap-1 justify-center items-center mb-6">
+                  {member.specialties?.map((skill) => (
+                    <span
+                      key={skill}
+                      className="px-3 py-1 bg-warm-gold/20 border border-warm-gold/30 rounded-md text-xs text-warm-gold"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
 
-                {/* Social Links */}
-                {member.socials && (
-                  <div className="flex gap-3 justify-center pt-3 border-t border-text-secondary/10">
-                    <SocialIcon type="github" social={member.socials.github} />
-                    <SocialIcon type="twitter" social={member.socials.twitter} />
-                    <SocialIcon type="instagram" social={member.socials.instagram} />
-                    <SocialIcon type="discord" social={member.socials.discord} />
-                    <SocialIcon type="blog" social={member.socials.blog} />
-                    <SocialIcon type="linkedin" social={member.socials.linkedin} />
+                {/* Socials */}
+                <div className="mt-auto pt-5 border-t border-text-secondary/10">
+                  <div className="flex gap-5 justify-center">
+                    {member.socials && (
+                      <>
+                        <SocialIcon type="github" social={member.socials.github} />
+                        <SocialIcon type="twitter" social={member.socials.twitter} />
+                        <SocialIcon type="instagram" social={member.socials.instagram} />
+                        <SocialIcon type="discord" social={member.socials.discord} />
+                        <SocialIcon type="linkedin" social={member.socials.linkedin} />
+                        <SocialIcon type="blog" social={member.socials.blog} />
+                      </>
+                    )}
                   </div>
-                )}
+                </div>
+
               </div>
             </GlassCard>
           </motion.div>
