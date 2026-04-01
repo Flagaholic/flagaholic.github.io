@@ -77,6 +77,14 @@ export function Footer() {
               </li>
               <li>
                 <Link
+                  href="/writeups"
+                  className="text-text-secondary hover:text-warm-gold transition-colors"
+                >
+                  Writeups
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="/contact"
                   className="text-text-secondary hover:text-warm-gold transition-colors"
                 >

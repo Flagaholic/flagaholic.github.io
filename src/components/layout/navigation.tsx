@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { Home, Users, Trophy, Mail, Menu, X } from "lucide-react";
+import { Home, Users, Trophy, Mail, Menu, X, BookOpen } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { ToggleTheme } from "@/components/ui/toggle-theme";
 
@@ -28,6 +28,11 @@ const navItems: NavItem[] = [
     name: "Achievements",
     link: "/achievements",
     icon: <Trophy className="h-4 w-4" />,
+  },
+  {
+    name: "Writeups",
+    link: "/writeups",
+    icon: <BookOpen className="h-4 w-4" />,
   },
   {
     name: "Contact",

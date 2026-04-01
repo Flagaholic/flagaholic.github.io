@@ -1,3 +1,8 @@
+export interface SocialLink {
+  url: string;
+  username?: string;
+}
+
 export interface TeamMember {
   id: string;
   name: string;
@@ -5,6 +10,15 @@ export interface TeamMember {
   specialties?: string[];
   joinDate?: Date;
   avatar?: string;
+  socials?: {
+    github?: SocialLink;
+    twitter?: SocialLink;
+    instagram?: SocialLink;
+    discord?: SocialLink;
+    blog?: SocialLink;
+    linkedin?: SocialLink;
+  };
+  quote?: string;
 }
 
 export interface Achievement {
@@ -61,25 +75,131 @@ export const teamStats: TeamStats = {
 };
 
 export const currentMembers: TeamMember[] = [
-  { id: "1", name: "Zwique" },
-  { id: "2", name: "xzhiyouu" },
-  { id: "3", name: "Laggy" },
-  { id: "4", name: "HarryBOB" },
-  { id: "5", name: "damwan21" },
-  { id: "6", name: "B34RN00B" },
-  { id: "7", name: "danielagatan" },
-  { id: "8", name: "codestube" },
-  { id: "9", name: "Kazuya" },
-  { id: "10", name: "bug1nst0m@ch" },
-  { id: "11", name: "owo" },
-  { id: "12", name: "Taokyle" },
-  { id: "13", name: "SISUBENY" },
-  { id: "14", name: "Acacia" },
-  { id: "15", name: "igtanova06" },
-  { id: "16", name: "zuytrinh" },
-  { id: "17", name: "Nsnzero" },
-  { id: "18", name: "Carz" },
-  { id: "19", name: "twopus" },
+  {
+    id: "1",
+    name: "youstube_",
+    role: "Team Leader",
+    specialties: ["Misc", "Forensics", "OSINT"],
+    avatar: "/assets/playerlogo/youstube.jpg",
+    socials: {
+      github: { url: "https://github.com/codestube", username: "codestube" },
+      instagram: { url: "https://www.instagram.com/youstube__", username: "youstube__" }
+    }
+  },
+  {
+    id: "2",
+    name: "xzhiyouu (Nelson)",
+    role: "Contributor",
+    specialties: ["Misc", "Forensics"],
+    avatar: "/assets/playerlogo/Nelson.jpg",
+    socials: {
+      github: { url: "https://github.com/xzhiyouu62", username: "xzhiyouu62" }
+    }
+  },
+  {
+    id: "3",
+    name: "Kazuya",
+    specialties: ["Rev", "Web"],
+    avatar: "/assets/playerlogo/kazuya.png"
+  },
+  {
+    id: "4",
+    name: "bug1nst0m@ch",
+    specialties: ["Misc", "Forensics"],
+    avatar: "/assets/playerlogo/thomas.png"
+  },
+  {
+    id: "5",
+    name: "owo (sunny7890987)",
+    specialties: ["Web"],
+    avatar: "/assets/playerlogo/OwO.png"
+  },
+  {
+    id: "6",
+    name: "Nsnzero",
+    specialties: ["Hardware"],
+    avatar: "/assets/playerlogo/NSN.png"
+  },
+  {
+    id: "7",
+    name: "Taokyle",
+    role: "Website Maintainer",
+    specialties: ["Misc", "Web", "Forensics"],
+    avatar: "/assets/playerlogo/taokyle.jpeg",
+    socials: {
+      github: { url: "https://github.com/TaokyleYT", username: "TaokyleYT" },
+      instagram: { url: "https://www.instagram.com/taokyle415", username: "taokyle415" }
+    },
+    quote: "website maintainer"
+  },
+  {
+    id: "8",
+    name: "SISUBENY",
+    specialties: ["Rev", "Pwn"],
+    avatar: "/assets/playerlogo/sisubeny.png",
+    socials: {
+      github: { url: "https://github.com/SISUBEN", username: "SISUBEN" },
+      twitter: { url: "https://x.com/SISUBENY", username: "SISUBENY" },
+      blog: { url: "https://sisubeny.space" }
+    },
+    quote: "english level U"
+  },
+  {
+    id: "9",
+    name: "twopus",
+    role: `differentiating "ur" & "ure"`,
+    specialties: ["Uhh"],
+    avatar: "/assets/playerlogo/twopus.png",
+    socials: {
+      github: { url: "https://github.com/twopus", username: "twopus" }
+    },
+    quote: "roblox lover"
+  },
+  {
+    id: "10",
+    name: "HarryBOB",
+    specialties: ["Blockchain"],
+    avatar: "/assets/playerlogo/harrybob.jpg",
+    socials: {
+      github: { url: "https://github.com/harry-bob", username: "harry-bob" }
+    },
+    quote: "A Snorlax?"
+  },
+  {
+    id: "11",
+    name: "Carz",
+    role: "a car",
+    specialties: ["Crypto", "Forensics"],
+    avatar: "/assets/playerlogo/carz.jpeg",
+    quote: "KA CHOW!"
+  },
+  {
+    id: "12",
+    name: "Demonster",
+    role: "Raccoon goes maur maur",
+    specialties: ["Web"],
+    avatar: "/assets/playerlogo/demonster.png"
+  },
+  {
+    id: "13",
+    name: "B34RN00B",
+    specialties: ["OSINT", "Forensics"],
+    avatar: "/assets/playerlogo/B34RN00B.png",
+    socials: {
+      discord: { url: "https://discord.com/users/1379831907784855712", username: "b34rn00by" }
+    }
+  },
+  {
+    id: "14",
+    name: "damwan21",
+    specialties: ["OSINT", "Crypto"],
+    avatar: "/assets/playerlogo/damwan.jpg"
+  },
+  { id: "15", name: "Zwique" },
+  { id: "16", name: "Laggy" },
+  { id: "17", name: "Acacia" },
+  { id: "18", name: "igtanova06" },
+  { id: "19", name: "zuytrinh" },
   { id: "20", name: "Kaiyasi" },
   { id: "21", name: "Akitenten" }
 ];

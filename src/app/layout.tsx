@@ -1,52 +1,40 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-import { Navigation } from "@/components/layout/navigation";
-import { Footer } from "@/components/layout/footer";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-export const metadata: Metadata = {
-  title: "Sanrioholic | flagaholic CTF Team",
-  description: "Sanrioholic (flagaholic) - A Hong Kong-based CTF Team conquering challenges worldwide. Ranked #126 globally, #2 in Hong Kong.",
-  keywords: ["CTF", "Capture The Flag", "Hong Kong", "Cybersecurity", "flagaholic", "Sanrioholic"],
-  authors: [{ name: "Sanrioholic CTF Team" }],
-  openGraph: {
-    title: "Sanrioholic | flagaholic CTF Team",
-    description: "A Hong Kong-based CTF Team conquering challenges worldwide.",
-    url: "https://www.flagaholic.xyz",
-    siteName: "Sanrioholic",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Sanrioholic | flagaholic CTF Team",
-    description: "A Hong Kong-based CTF Team conquering challenges worldwide.",
-  },
-};
-
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="en" className="dark">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-        suppressHydrationWarning={true}
-      >
-        <Navigation />
-        {children}
-        <Footer />
+    <html lang="en">
+      <body>
+        {/* not audio */}
+        <iframe
+          src="/asset2/silence.mp3"
+          allow="autoplay"
+          id="audio"
+          style={{ display: 'none' }}
+        ></iframe>
+
+        {/* trololololo lololo lololo yeyeyeyeye dididididi */}
+        <audio autoPlay loop>
+          <source src="/asset2/trololo.ogg" type="audio/ogg" />
+          <source src="/asset2/trololo.mp3" type="audio/mpeg" />
+        </audio>
+
+        {/* Bg image */}
+        <div style={{
+          fontFamily: 'Arial',
+          color: 'white',
+          fontSize: '50px',
+          backgroundImage: 'url(/asset2/bg.png)',
+          backgroundAttachment: 'fixed',
+          minHeight: '100vh',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          flexDirection: 'column'
+        }}>
+          {children}
+        </div>
       </body>
     </html>
   );
