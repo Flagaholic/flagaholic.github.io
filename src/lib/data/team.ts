@@ -79,7 +79,7 @@ export const currentMembers: TeamMember[] = [
     id: "1",
     name: "youstube_",
     role: "Team Leader",
-    specialties: ["Misc", "Forensics", "OSINT"],
+    specialties: ["OSINT", "Forensics", "Misc"],
     avatar: "/assets/playerlogo/youstube.jpg",
     socials: {
       github: { url: "https://github.com/codestube", username: "codestube" },
@@ -91,7 +91,7 @@ export const currentMembers: TeamMember[] = [
     id: "2",
     name: "xzhiyouu (Nelson)",
     role: "Website Maintainer",
-    specialties: ["Misc", "Forensics"],
+    specialties: ["AI", "Misc"],
     avatar: "/assets/playerlogo/Nelson.jpg",
     socials: {
       github: { url: "https://github.com/xzhiyouu62", username: "xzhiyouu62" }
@@ -100,27 +100,27 @@ export const currentMembers: TeamMember[] = [
   {
     id: "3",
     name: "Kazuya",
-    specialties: ["Rev", "Web"],
+    specialties: ["Web", "Rev"],
     avatar: "/assets/playerlogo/kazuya.png"
   },
   {
     id: "4",
     name: "bug1nst0m@ch",
     role: "Not even computer major",
-    specialties: ["Misc", "Forensics"],
+    specialties: ["Misc"],
     avatar: "/assets/playerlogo/thomas.png"
   },
   {
     id: "5",
     name: "owo",
     specialties: ["Web"],
-    avatar: "/assets/playerlogo/OwO.png"
+    avatar: "/assets/playerlogo/owo.png"
   },
   {
     id: "6",
     name: "Nsnzero",
     specialties: ["Hardware"],
-    avatar: "/assets/playerlogo/NSN.png"
+    avatar: "/assets/playerlogo/nsn.png"
   },
   {
     id: "7",
@@ -190,7 +190,7 @@ export const currentMembers: TeamMember[] = [
     id: "13",
     name: "B34RN00B",
     specialties: ["OSINT", "Forensics"],
-    avatar: "/assets/playerlogo/B34RN00B.png",
+    avatar: "/assets/playerlogo/bearnoob.png",
     socials: {
       discord: { url: "https://discord.com/users/1379831907784855712", username: "b34rn00by" }
     }
@@ -202,13 +202,46 @@ export const currentMembers: TeamMember[] = [
     avatar: "/assets/playerlogo/damwan.jpg",
     quote: "weird?"
   },
-  { id: "15", name: "Zwique" },
-  { id: "16", name: "Laggy" },
-  { id: "17", name: "Acacia" },
-  { id: "18", name: "igtanova06" },
-  { id: "19", name: "zuytrinh" },
-  { id: "20", name: "Kaiyasi" },
-  { id: "21", name: "Akitenten" }
+  { id: "15", 
+    name: "Zwique",
+    specialties: ["Hardware"],
+    avatar: "/assets/playerlogo/zwique.png"
+  },
+  { id: "16", 
+    name: "Laggy",
+    specialties: ["Hardware"],
+    avatar: "/assets/playerlogo/laggy.png"
+  },
+  { id: "17", 
+    name: "Acacia",
+    specialties: ["Hardware"],
+    avatar: "/assets/playerlogo/acacia.png"
+  },
+  { id: "18", 
+    name: "igtanova06",
+    specialties: ["Hardware"],
+    avatar: "/assets/playerlogo/igtanova.png"
+  },
+  { id: "19", 
+    name: "zuytrinh",
+    specialties: ["Forensics, Crypto"],
+    avatar: "/assets/playerlogo/zuytrinh.png"
+  },
+  { id: "20", 
+    name: "Kaiyasi",
+    specialties: ["AI"],
+    avatar: "/assets/playerlogo/kaiyasi.png"
+  },
+  { id: "21", 
+    name: "Akitenten",
+    specialties: ["OSINT"],
+    avatar: "/assets/playerlogo/aki.png"
+  },
+  { id: "22", 
+    name: "shay",
+    specialties: ["OSINT"],
+    avatar: "/assets/playerlogo/shay.png"
+  }
 ];
 
 export const achievements2026: Achievement[] = [

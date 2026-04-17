@@ -7,7 +7,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: '*',
       allow: '/',
-      disallow: ['/admin', '/private'],
+      disallow: ['/admin', '/private', '/thereisnoflaghere'],
       crawlDelay: 1,
     },
     sitemap: 'https://www.flagaholic.xyz/sitemap.xml',

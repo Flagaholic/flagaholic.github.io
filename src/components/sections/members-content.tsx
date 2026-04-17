@@ -5,7 +5,8 @@ import { motion } from "framer-motion";
 import { GlassCard } from "@/components/ui/glass-card";
 import { MagneticButton } from "@/components/ui/magnetic-button";
 import { currentMembers, teamInfo } from "@/lib/data/team";
-import { Github, Twitter, Instagram, Mail, ExternalLink, Linkedin, MessageCircle } from "lucide-react";
+import { Mail, ExternalLink, MessageCircle } from "lucide-react";
+import { FaGithub, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
 
 function SocialIcon({ type, social }: { type: string; social: any }) {
   if (!social || !social.url) return null;
@@ -15,15 +16,15 @@ function SocialIcon({ type, social }: { type: string; social: any }) {
 
   switch (type) {
     case "github":
-      icon = <Github className="h-4 w-4" />;
+      icon = <FaGithub className="h-4 w-4" />;
       label = "GitHub";
       break;
     case "twitter":
-      icon = <Twitter className="h-4 w-4" />;
+      icon = <FaTwitter className="h-4 w-4" />;
       label = "Twitter";
       break;
     case "instagram":
-      icon = <Instagram className="h-4 w-4" />;
+      icon = <FaInstagram className="h-4 w-4" />;
       label = "Instagram";
       break;
     case "discord":
@@ -31,7 +32,7 @@ function SocialIcon({ type, social }: { type: string; social: any }) {
       label = "Discord";
       break;
     case "linkedin":
-      icon = <Linkedin className="h-4 w-4" />;
+      icon = <FaLinkedin className="h-4 w-4" />;
       label = "LinkedIn";
       break;
     case "blog":
