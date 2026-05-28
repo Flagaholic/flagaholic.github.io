@@ -107,20 +107,26 @@ export const currentMembers: TeamMember[] = [
     id: "4",
     name: "bug1nst0m@ch",
     role: "Not even computer major",
-    specialties: ["Misc"],
+    specialties: ["Misc", "OSINT"],
     avatar: "/assets/playerlogo/thomas.png"
   },
   {
     id: "5",
     name: "owo",
     specialties: ["Web"],
-    avatar: "/assets/playerlogo/owo.png"
+    avatar: "/assets/playerlogo/owo.png",
+    socials: {
+      github: { url: "https://github.com/sunny7890987", username: "owo"}
+    }
   },
   {
     id: "6",
     name: "Nsnzero",
     specialties: ["Hardware"],
-    avatar: "/assets/playerlogo/nsn.png"
+    avatar: "/assets/playerlogo/nsn.png",
+    socials: {
+      github: { url: "https://github.com/nsnzero", username: "nsnzero" },
+    }
   },
   {
     id: "7",
@@ -166,7 +172,7 @@ export const currentMembers: TeamMember[] = [
     socials: {
       github: { url: "https://github.com/harry-bob", username: "harry-bob" }
     },
-    quote: "A Snorlax?"
+    quote: "A Snorlax that loves ice cweam :3"
   },
   {
     id: "11",
@@ -204,32 +210,35 @@ export const currentMembers: TeamMember[] = [
   },
   { id: "15", 
     name: "Zwique",
-    specialties: ["Hardware"],
-    avatar: "/assets/playerlogo/zwique.png"
+    specialties: ["Crypto", "OSINT", "Forensics"],
+    avatar: "/assets/playerlogo/zwique.png",
+    socials: {
+      github: { url: "https://github.com/Zwique", username: "Zwique"}
+    }
   },
   { id: "16", 
     name: "Laggy",
-    specialties: ["Hardware"],
+    specialties: ["Pwn", "Rev"],
     avatar: "/assets/playerlogo/laggy.png"
   },
   { id: "17", 
     name: "Acacia",
-    specialties: ["Hardware"],
+    specialties: ["Web"],
     avatar: "/assets/playerlogo/acacia.png"
   },
   { id: "18", 
     name: "igtanova06",
-    specialties: ["Hardware"],
+    specialties: ["Rev"],
     avatar: "/assets/playerlogo/igtanova.png"
   },
   { id: "19", 
     name: "zuytrinh",
-    specialties: ["Forensics, Crypto"],
+    specialties: ["Forensics", "Misc"],
     avatar: "/assets/playerlogo/zuytrinh.png"
   },
   { id: "20", 
     name: "Kaiyasi",
-    specialties: ["AI"],
+    specialties: ["Web", "AI"],
     avatar: "/assets/playerlogo/kaiyasi.png"
   },
   { id: "21", 
