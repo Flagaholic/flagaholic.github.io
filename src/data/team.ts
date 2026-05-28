@@ -111,13 +111,13 @@ export const members = [
   },
   {
     name: "Carz",
-    role: "Player",
+    role: "A car",
     focus: ["Crypto", "Forensics"],
     avatar: "/assets/playerlogo/carz.jpeg",
   },
   {
     name: "B34RN00B",
-    role: "Player",
+    role: "a bear with limited wifi",
     focus: ["OSINT", "Forensics"],
     avatar: "/assets/playerlogo/bearnoob.png",
     socials: {
@@ -126,41 +126,46 @@ export const members = [
   },
   {
     name: "damwan21",
-    role: "Player",
+    role: "always fatshaming",
     focus: ["OSINT", "Crypto"],
     avatar: "/assets/playerlogo/damwan.jpg",
-    quote: "weird?",
+    quote: "weirdo?",
   },
   {
     name: "Zwique",
-    role: "Player",
+    role: "so good at everything",
     focus: ["Crypto", "OSINT", "Forensics"],
     avatar: "/assets/playerlogo/zwique.png",
     socials: {
       github: "https://github.com/Zwique",
+      blog: "https://zwique.gitbook.io/zwique_notes",
     },
   },
   {
     name: "Laggy",
-    role: "Player",
+    role: "the carry of our team orz orz orz",
     focus: ["Pwn", "Rev"],
     avatar: "/assets/playerlogo/laggy.png",
+    socials: {
+      github: "https://github.com/alaggydev",
+      blog: "https://alaggydev.github.io/",
+    }
   },
   {
     name: "Acacia",
-    role: "Player",
+    role: "viet 1",
     focus: ["Web"],
     avatar: "/assets/playerlogo/acacia.png",
   },
   {
     name: "igtanova06",
-    role: "Player",
+    role: "viet 2",
     focus: ["Rev"],
     avatar: "/assets/playerlogo/igtanova.png",
   },
   {
     name: "zuytrinh",
-    role: "Player",
+    role: "viet 3",
     focus: ["Forensics", "Misc"],
     avatar: "/assets/playerlogo/zuytrinh.png",
   },
@@ -181,6 +186,22 @@ export const members = [
     role: "Player",
     focus: ["OSINT"],
     avatar: "/assets/playerlogo/shay.png",
+  },
+  {
+    name: "JustCat",
+    role: "Player",
+    focus: ["Pwn", "Rev", "Misc"],
+    avatar: "/assets/playerlogo/jst.png",
+    socials: {
+      github: "https://github.com/AJustcaTA",
+      blog: "https://ajustcata.github.io/",
+    }
+  },
+  {
+    name: "Chung",
+    role: "Player",
+    focus: ["OSINT"],
+    avatar: "/assets/playerlogo/chung.png",
   },
   {
     name: "Kazuya",

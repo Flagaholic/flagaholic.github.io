@@ -2,6 +2,9 @@
 
 re-written with [astro js](https://astro.build/)
 
+## site
+[www.flagaholic.xyz](https://www.flagaholic.xyz)
+
 ## features
 have overview, members, achievements, writeups and contact section
 
