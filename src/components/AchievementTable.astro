@@ -1,0 +1,26 @@
+---
+import ctftime from "../data/ctftime.json";
+
+const events = ctftime.highestRatedEvents;
+---
+
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Event</th>
+        <th>Place</th>
+        <th>Rating</th>
+      </tr>
+    </thead>
+    <tbody>
+      {events.map((item) => (
+        <tr>
+          <td><strong>{item.title}</strong></td>
+          <td>#{item.place}</td>
+          <td>{item.ratingPoints?.toFixed(3) ?? "--"}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>

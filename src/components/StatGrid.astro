@@ -1,0 +1,22 @@
+---
+import { members } from "../data/team";
+import ctftime from "../data/ctftime.json";
+
+const stats = [
+  { label: "Ranked", value: ctftime.currentYear.globalRank ? `#${ctftime.currentYear.globalRank}` : "--", note: "Globally" },
+  { label: "Ranked", value: ctftime.currentYear.countryRank ? `#${ctftime.currentYear.countryRank}` : "--", note: "in Hong Kong" },
+  { label: "Rated", value: ctftime.currentYear.ratingPoints ? ctftime.currentYear.ratingPoints.toFixed(3) : "--", note: "points" },
+  { label: "Listed", value: String(members.length), note: "members" },
+];
+---
+
+<div class="summary-strip">
+  <p class="stats-source">according to CTFTime</p>
+  {stats.map((stat) => (
+    <article class="summary-item">
+      <div class="metric-label">{stat.label}</div>
+      <span class="metric-value">{stat.value}</span>
+      <p class="muted">{stat.note}</p>
+    </article>
+  ))}
+</div>

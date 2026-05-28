@@ -1,0 +1,36 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { team } from "../data/team";
+---
+
+<BaseLayout title="Contact / flagaholic">
+  <main class="page page-narrow">
+    <div class="section-head contact-head">
+      <div>
+        <p class="eyebrow">holic&#123;c0n74ct_/_r3crui7m3nt&#125;</p>
+        <h1>Recruitment / Contact</h1>
+        <p>If you newbie / beginner / good / great / goat / godlike at: crypto, pwn, web. Come join us and play CTF togetherrrr (PLEASE JOIN PLEASE)</p>
+        <p>If you're from HK then feel free to join us too!</p>
+      </div>
+    </div>
+
+    <section class="contact-section" aria-label="Recruitment">
+      <h2>Recruitment</h2>
+      <div class="contact-row">
+        <a class="contact-cta" href={team.discordInvite}>Apply via our discord application</a>
+        <span class="contact-or">or</span>
+        <span>DM youtubeshort @ Discord!! :></span>
+      </div>
+    </section>
+
+    <section class="contact-section" aria-label="Contact methods">
+      <h2>Contact / Connect with us here! </h2>
+      <div class="contact-row">
+        <a href={`mailto:${team.email}`}>Email</a>
+        <a href={team.instagramUrl}>Instagram</a>
+        <a href={team.githubUrl}>GitHub</a>
+        <a href={team.ctftimeUrl}>CTFTime</a>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

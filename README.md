@@ -1,7 +1,13 @@
-Official website for Sanrioholic (flagaholic), a Hong Kong-based CTF team: https://www.flagaholic.xyz.
+# website for flagaholic
 
-Note: light theme text and color pairing still needs adjustment.
+re-written with [astro js](https://astro.build/)
 
-Note: the writeups are non-functioning rn, please ignore the page or sth
+## features
+have overview, members, achievements, writeups and contact section
 
-last change by taokyle and his leftover bugs
+## fun things in future
+will fix the writeup section to be more interactive / fun to read
+
+
+
+> created & maintained by youstube, taokyle, xzhiyouu

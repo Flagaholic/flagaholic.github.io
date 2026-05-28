@@ -1,0 +1,55 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import WriteupList from "../components/WriteupList.astro";
+import { getCollection } from "astro:content";
+
+const writeups = await getCollection("writeups");
+const tags = Array.from(new Set(writeups.flatMap((writeup) => writeup.data.tags || []))).sort();
+---
+
+<BaseLayout title="Writeups / flagaholic">
+  <main class="page page-narrow">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">holic&#123;wri73ups_fr0m_t34mm4t3sss&#125;</p>
+        <h1>Writeups</h1>
+        <p>writeups from goated teammates for demonstration!! (WIP)</p>
+        <!-- taokyle please fix this site thanks -->
+      </div>
+    </div>
+    <div class="filter-bar" data-writeup-filters>
+      <button class="is-active" type="button" data-filter="all">All</button>
+      {tags.map((tag) => (
+        <button type="button" data-filter={tag}>{tag}</button>
+      ))}
+    </div>
+    <WriteupList writeups={writeups} />
+  </main>
+</BaseLayout>
+
+<script>
+  function setupWriteupFilters() {
+    const filterRoot = document.querySelector("[data-writeup-filters]");
+    const writeupRows = Array.from(document.querySelectorAll(".writeup-row"));
+    if (!filterRoot) return;
+
+    filterRoot.addEventListener("click", (event) => {
+      const button = event.target instanceof HTMLElement ? event.target.closest("button") : null;
+      if (!button) return;
+
+      const selected = button.dataset.filter || "all";
+      filterRoot.querySelectorAll("button").forEach((item) => item.classList.toggle("is-active", item === button));
+
+      writeupRows.forEach((row) => {
+        const tags = row.getAttribute("data-tags") || "";
+        row.toggleAttribute("hidden", selected !== "all" && !tags.split(" ").includes(selected));
+      });
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", setupWriteupFilters);
+  } else {
+    setupWriteupFilters();
+  }
+</script>

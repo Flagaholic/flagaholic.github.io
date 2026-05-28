@@ -1,0 +1,579 @@
+{
+  "fetchedAt": "2026-05-28T19:30:46.633Z",
+  "fetchMs": 5975,
+  "team": {
+    "id": 113364,
+    "name": "flagaholic",
+    "country": "HK"
+  },
+  "currentYear": {
+    "year": 2026,
+    "globalRank": 144,
+    "countryRank": 3,
+    "ratingPoints": 250.757299283
+  },
+  "events": [
+    {
+      "eventId": "3269",
+      "title": "0xV01D CTF 2026",
+      "year": 2026,
+      "date": "2026-05-18",
+      "place": 4,
+      "points": 7903,
+      "ratingPoints": 21.139
+    },
+    {
+      "eventId": "3195",
+      "title": "TJCTF 2026",
+      "year": 2026,
+      "date": "2026-05-15",
+      "place": 44,
+      "points": 10672,
+      "ratingPoints": 46.33
+    },
+    {
+      "eventId": "3267",
+      "title": "Maltego Community OSINT CTF",
+      "year": 2026,
+      "date": "2026-05-09",
+      "place": 37,
+      "points": 181,
+      "ratingPoints": 11.175
+    },
+    {
+      "eventId": "3102",
+      "title": "DawgCTF 2026",
+      "year": 2026,
+      "date": "2026-04-10",
+      "place": 131,
+      "points": 6150,
+      "ratingPoints": 33.667
+    },
+    {
+      "eventId": "3184",
+      "title": "Hack for a Change 2026 March: UN SDG 3",
+      "year": 2026,
+      "date": "2026-03-31",
+      "place": 137,
+      "points": 700,
+      "ratingPoints": 5.089
+    },
+    {
+      "eventId": "3131",
+      "title": "Codegate CTF 2026 Preliminary",
+      "year": 2026,
+      "date": "2026-03-28",
+      "place": 263,
+      "points": 500,
+      "ratingPoints": 5.927
+    },
+    {
+      "eventId": "2983",
+      "title": "KalmarCTF 2026",
+      "year": 2026,
+      "date": "2026-03-27",
+      "place": 323,
+      "points": 100,
+      "ratingPoints": 0.867
+    },
+    {
+      "eventId": "3130",
+      "title": "TexSAW 2026",
+      "year": 2026,
+      "date": "2026-03-27",
+      "place": 69,
+      "points": 2331,
+      "ratingPoints": 18.499
+    },
+    {
+      "eventId": "3204",
+      "title": "AITU CTF 2026 Quals",
+      "year": 2026,
+      "date": "2026-03-23",
+      "place": 114,
+      "points": 600,
+      "ratingPoints": 4.16
+    },
+    {
+      "eventId": "2987",
+      "title": "Undutmaning 2026",
+      "year": 2026,
+      "date": "2026-03-21",
+      "place": 165,
+      "points": 810,
+      "ratingPoints": 8.95
+    },
+    {
+      "eventId": "3095",
+      "title": "TAMUctf 2026",
+      "year": 2026,
+      "date": "2026-03-20",
+      "place": 117,
+      "points": 1247,
+      "ratingPoints": 47.751
+    },
+    {
+      "eventId": "3105",
+      "title": "Midnight Flag CTF - EXECUTION",
+      "year": 2026,
+      "date": "2026-03-13",
+      "place": 55,
+      "points": 2638,
+      "ratingPoints": 14.84
+    },
+    {
+      "eventId": "3171",
+      "title": "ApoorvCTF 2026",
+      "year": 2026,
+      "date": "2026-03-06",
+      "place": 32,
+      "points": 5282,
+      "ratingPoints": 14.638
+    },
+    {
+      "eventId": "3043",
+      "title": "Srdnlen CTF 2026 Quals",
+      "year": 2026,
+      "date": "2026-02-28",
+      "place": 144,
+      "points": 200,
+      "ratingPoints": 2.283
+    },
+    {
+      "eventId": "3127",
+      "title": "EHAX CTF 2026",
+      "year": 2026,
+      "date": "2026-02-27",
+      "place": 196,
+      "points": 818,
+      "ratingPoints": 2.143
+    },
+    {
+      "eventId": "3098",
+      "title": "Batman's Kitchen CTF 2026",
+      "year": 2026,
+      "date": "2026-02-21",
+      "place": 40,
+      "points": 7864,
+      "ratingPoints": 14.629
+    },
+    {
+      "eventId": "3088",
+      "title": "THJCC CTF 2026",
+      "year": 2026,
+      "date": "2026-02-21",
+      "place": 42,
+      "points": 3019,
+      "ratingPoints": 0
+    },
+    {
+      "eventId": "3122",
+      "title": "BITSCTF 2026",
+      "year": 2026,
+      "date": "2026-02-20",
+      "place": 153,
+      "points": 884,
+      "ratingPoints": 6.373
+    },
+    {
+      "eventId": "3086",
+      "title": "TaipanByte’s Chart CTF",
+      "year": 2026,
+      "date": "2026-02-14",
+      "place": 105,
+      "points": 3330,
+      "ratingPoints": 8.995
+    },
+    {
+      "eventId": "3081",
+      "title": "0xFUN CTF 2026",
+      "year": 2026,
+      "date": "2026-02-12",
+      "place": 1154,
+      "points": 2,
+      "ratingPoints": 0.018
+    },
+    {
+      "eventId": "2767",
+      "title": "PascalCTF 2026",
+      "year": 2026,
+      "date": "2026-01-31",
+      "place": 12,
+      "points": 7403,
+      "ratingPoints": 25.935
+    },
+    {
+      "eventId": "3053",
+      "title": "KnightCTF 2026",
+      "year": 2026,
+      "date": "2026-01-20",
+      "place": 159,
+      "points": 1400,
+      "ratingPoints": 8.227
+    },
+    {
+      "eventId": "2986",
+      "title": "SWIMMER OSINT CTF",
+      "year": 2026,
+      "date": "2026-01-17",
+      "place": 19,
+      "points": 3971,
+      "ratingPoints": 0
+    },
+    {
+      "eventId": "3021",
+      "title": "New Year CTF 2026",
+      "year": 2026,
+      "date": "2026-01-10",
+      "place": 129,
+      "points": 1150,
+      "ratingPoints": 2.512
+    },
+    {
+      "eventId": "2969",
+      "title": "UofTCTF 2026",
+      "year": 2026,
+      "date": "2026-01-10",
+      "place": 188,
+      "points": 591,
+      "ratingPoints": 4.313
+    },
+    {
+      "eventId": "2981",
+      "title": "Scarlet CTF 2026",
+      "year": 2026,
+      "date": "2026-01-09",
+      "place": 19,
+      "points": 6303,
+      "ratingPoints": 13.329
+    }
+  ],
+  "latestEvents": [
+    {
+      "eventId": "3269",
+      "title": "0xV01D CTF 2026",
+      "year": 2026,
+      "date": "2026-05-18",
+      "place": 4,
+      "points": 7903,
+      "ratingPoints": 21.139
+    },
+    {
+      "eventId": "3195",
+      "title": "TJCTF 2026",
+      "year": 2026,
+      "date": "2026-05-15",
+      "place": 44,
+      "points": 10672,
+      "ratingPoints": 46.33
+    },
+    {
+      "eventId": "3267",
+      "title": "Maltego Community OSINT CTF",
+      "year": 2026,
+      "date": "2026-05-09",
+      "place": 37,
+      "points": 181,
+      "ratingPoints": 11.175
+    },
+    {
+      "eventId": "3102",
+      "title": "DawgCTF 2026",
+      "year": 2026,
+      "date": "2026-04-10",
+      "place": 131,
+      "points": 6150,
+      "ratingPoints": 33.667
+    },
+    {
+      "eventId": "3184",
+      "title": "Hack for a Change 2026 March: UN SDG 3",
+      "year": 2026,
+      "date": "2026-03-31",
+      "place": 137,
+      "points": 700,
+      "ratingPoints": 5.089
+    },
+    {
+      "eventId": "3131",
+      "title": "Codegate CTF 2026 Preliminary",
+      "year": 2026,
+      "date": "2026-03-28",
+      "place": 263,
+      "points": 500,
+      "ratingPoints": 5.927
+    },
+    {
+      "eventId": "2983",
+      "title": "KalmarCTF 2026",
+      "year": 2026,
+      "date": "2026-03-27",
+      "place": 323,
+      "points": 100,
+      "ratingPoints": 0.867
+    },
+    {
+      "eventId": "3130",
+      "title": "TexSAW 2026",
+      "year": 2026,
+      "date": "2026-03-27",
+      "place": 69,
+      "points": 2331,
+      "ratingPoints": 18.499
+    },
+    {
+      "eventId": "3204",
+      "title": "AITU CTF 2026 Quals",
+      "year": 2026,
+      "date": "2026-03-23",
+      "place": 114,
+      "points": 600,
+      "ratingPoints": 4.16
+    },
+    {
+      "eventId": "2987",
+      "title": "Undutmaning 2026",
+      "year": 2026,
+      "date": "2026-03-21",
+      "place": 165,
+      "points": 810,
+      "ratingPoints": 8.95
+    },
+    {
+      "eventId": "3095",
+      "title": "TAMUctf 2026",
+      "year": 2026,
+      "date": "2026-03-20",
+      "place": 117,
+      "points": 1247,
+      "ratingPoints": 47.751
+    },
+    {
+      "eventId": "3105",
+      "title": "Midnight Flag CTF - EXECUTION",
+      "year": 2026,
+      "date": "2026-03-13",
+      "place": 55,
+      "points": 2638,
+      "ratingPoints": 14.84
+    },
+    {
+      "eventId": "3171",
+      "title": "ApoorvCTF 2026",
+      "year": 2026,
+      "date": "2026-03-06",
+      "place": 32,
+      "points": 5282,
+      "ratingPoints": 14.638
+    },
+    {
+      "eventId": "3043",
+      "title": "Srdnlen CTF 2026 Quals",
+      "year": 2026,
+      "date": "2026-02-28",
+      "place": 144,
+      "points": 200,
+      "ratingPoints": 2.283
+    },
+    {
+      "eventId": "3127",
+      "title": "EHAX CTF 2026",
+      "year": 2026,
+      "date": "2026-02-27",
+      "place": 196,
+      "points": 818,
+      "ratingPoints": 2.143
+    },
+    {
+      "eventId": "3098",
+      "title": "Batman's Kitchen CTF 2026",
+      "year": 2026,
+      "date": "2026-02-21",
+      "place": 40,
+      "points": 7864,
+      "ratingPoints": 14.629
+    },
+    {
+      "eventId": "3088",
+      "title": "THJCC CTF 2026",
+      "year": 2026,
+      "date": "2026-02-21",
+      "place": 42,
+      "points": 3019,
+      "ratingPoints": 0
+    },
+    {
+      "eventId": "3122",
+      "title": "BITSCTF 2026",
+      "year": 2026,
+      "date": "2026-02-20",
+      "place": 153,
+      "points": 884,
+      "ratingPoints": 6.373
+    },
+    {
+      "eventId": "3086",
+      "title": "TaipanByte’s Chart CTF",
+      "year": 2026,
+      "date": "2026-02-14",
+      "place": 105,
+      "points": 3330,
+      "ratingPoints": 8.995
+    },
+    {
+      "eventId": "3081",
+      "title": "0xFUN CTF 2026",
+      "year": 2026,
+      "date": "2026-02-12",
+      "place": 1154,
+      "points": 2,
+      "ratingPoints": 0.018
+    },
+    {
+      "eventId": "2767",
+      "title": "PascalCTF 2026",
+      "year": 2026,
+      "date": "2026-01-31",
+      "place": 12,
+      "points": 7403,
+      "ratingPoints": 25.935
+    },
+    {
+      "eventId": "3053",
+      "title": "KnightCTF 2026",
+      "year": 2026,
+      "date": "2026-01-20",
+      "place": 159,
+      "points": 1400,
+      "ratingPoints": 8.227
+    },
+    {
+      "eventId": "2986",
+      "title": "SWIMMER OSINT CTF",
+      "year": 2026,
+      "date": "2026-01-17",
+      "place": 19,
+      "points": 3971,
+      "ratingPoints": 0
+    },
+    {
+      "eventId": "3021",
+      "title": "New Year CTF 2026",
+      "year": 2026,
+      "date": "2026-01-10",
+      "place": 129,
+      "points": 1150,
+      "ratingPoints": 2.512
+    },
+    {
+      "eventId": "2969",
+      "title": "UofTCTF 2026",
+      "year": 2026,
+      "date": "2026-01-10",
+      "place": 188,
+      "points": 591,
+      "ratingPoints": 4.313
+    },
+    {
+      "eventId": "2981",
+      "title": "Scarlet CTF 2026",
+      "year": 2026,
+      "date": "2026-01-09",
+      "place": 19,
+      "points": 6303,
+      "ratingPoints": 13.329
+    }
+  ],
+  "highestRatedEvents": [
+    {
+      "eventId": "3095",
+      "title": "TAMUctf 2026",
+      "year": 2026,
+      "date": "2026-03-20",
+      "place": 117,
+      "points": 1247,
+      "ratingPoints": 47.751
+    },
+    {
+      "eventId": "3195",
+      "title": "TJCTF 2026",
+      "year": 2026,
+      "date": "2026-05-15",
+      "place": 44,
+      "points": 10672,
+      "ratingPoints": 46.33
+    },
+    {
+      "eventId": "3102",
+      "title": "DawgCTF 2026",
+      "year": 2026,
+      "date": "2026-04-10",
+      "place": 131,
+      "points": 6150,
+      "ratingPoints": 33.667
+    },
+    {
+      "eventId": "2767",
+      "title": "PascalCTF 2026",
+      "year": 2026,
+      "date": "2026-01-31",
+      "place": 12,
+      "points": 7403,
+      "ratingPoints": 25.935
+    },
+    {
+      "eventId": "3269",
+      "title": "0xV01D CTF 2026",
+      "year": 2026,
+      "date": "2026-05-18",
+      "place": 4,
+      "points": 7903,
+      "ratingPoints": 21.139
+    },
+    {
+      "eventId": "3130",
+      "title": "TexSAW 2026",
+      "year": 2026,
+      "date": "2026-03-27",
+      "place": 69,
+      "points": 2331,
+      "ratingPoints": 18.499
+    },
+    {
+      "eventId": "3105",
+      "title": "Midnight Flag CTF - EXECUTION",
+      "year": 2026,
+      "date": "2026-03-13",
+      "place": 55,
+      "points": 2638,
+      "ratingPoints": 14.84
+    },
+    {
+      "eventId": "3171",
+      "title": "ApoorvCTF 2026",
+      "year": 2026,
+      "date": "2026-03-06",
+      "place": 32,
+      "points": 5282,
+      "ratingPoints": 14.638
+    },
+    {
+      "eventId": "3098",
+      "title": "Batman's Kitchen CTF 2026",
+      "year": 2026,
+      "date": "2026-02-21",
+      "place": 40,
+      "points": 7864,
+      "ratingPoints": 14.629
+    },
+    {
+      "eventId": "2981",
+      "title": "Scarlet CTF 2026",
+      "year": 2026,
+      "date": "2026-01-09",
+      "place": 19,
+      "points": 6303,
+      "ratingPoints": 13.329
+    }
+  ]
+}

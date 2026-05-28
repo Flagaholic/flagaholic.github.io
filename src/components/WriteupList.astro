@@ -1,0 +1,29 @@
+---
+import { sortWriteups, writeupSlug, type WriteupEntry } from "../lib/writeups";
+
+interface Props {
+  writeups: WriteupEntry[];
+  compact?: boolean;
+}
+
+const { writeups, compact = false } = Astro.props;
+---
+
+<div class:list={["list", compact && "compact-list"]}>
+  {writeups.sort(sortWriteups).map((item) => (
+    <a class="list-row writeup-row" href={`/writeups/${writeupSlug(item)}/`} data-tags={(item.data.tags || []).join(" ")}>
+      <span class="row-kicker">{item.data.category}</span>
+      <span>
+        <strong>{item.data.title}</strong>
+        <br />
+        <span class="muted">{item.data.event} / {item.data.author}</span>
+        {!compact && item.data.tags && (
+          <span class="inline-tags">
+            {item.data.tags.map((tag) => <span>{tag}</span>)}
+          </span>
+        )}
+      </span>
+      <span class="muted">{item.data.date}</span>
+    </a>
+  ))}
+</div>

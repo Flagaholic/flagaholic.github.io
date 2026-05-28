@@ -1,0 +1,111 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getCollection, render } from "astro:content";
+import { readFile } from "node:fs/promises";
+import { writeupSlug, type WriteupEntry } from "../../lib/writeups";
+
+export async function getStaticPaths() {
+  const writeups = await getCollection("writeups");
+
+  return writeups.map((writeup) => ({
+    params: { slug: writeupSlug(writeup) },
+    props: { writeup },
+  }));
+}
+
+interface Props {
+  writeup: WriteupEntry;
+}
+
+const { writeup } = Astro.props;
+const { Content } = await render(writeup);
+const meta = writeup.data;
+const attachments = await Promise.all(
+  meta.attachments.map(async (attachment) => {
+    try {
+      const href = attachment.href.startsWith("/") ? attachment.href : `/${attachment.href}`;
+      const file = new URL(`../../../public${href}`, import.meta.url);
+      const preview = await readFile(file, "utf-8");
+      const extension = attachment.name.split(".").pop() || "txt";
+      return { ...attachment, preview: preview.trimEnd(), extension };
+    } catch {
+      return { ...attachment, preview: "", extension: "txt" };
+    }
+  })
+);
+const attachmentPreviews = attachments.map((attachment) => ({
+  href: attachment.href.startsWith("/") ? attachment.href : `/${attachment.href}`,
+  name: attachment.name,
+  type: attachment.type,
+  preview: attachment.preview,
+}));
+---
+
+<BaseLayout title={`${meta.title} / flagaholic`}>
+  <main class="page page-narrow">
+    <a class="back-link" href="/writeups/">Back to writeups</a>
+    <article class="writeup-article">
+      <header class="article-head">
+        <p class="eyebrow">{meta.event} / {meta.category}</p>
+        <h1>{meta.title}</h1>
+        <p class="muted">{meta.author} / {meta.date}</p>
+        {meta.tags && meta.tags.length > 0 && (
+          <div class="inline-tags article-tags">
+            {meta.tags.map((tag) => <span>{tag}</span>)}
+          </div>
+        )}
+      </header>
+      <div class="prose">
+        <Content />
+      </div>
+    </article>
+  </main>
+</BaseLayout>
+
+<script define:vars={{ attachmentPreviews }}>
+  function setupFilePreviews() {
+    const previews = new Map(attachmentPreviews.map((item) => [item.href, item]));
+    const article = document.querySelector(".writeup-article");
+    if (!article) return;
+
+    article.querySelectorAll(".prose a[href]").forEach((link) => {
+      const path = new URL(link.href, window.location.href).pathname;
+      const item = previews.get(path);
+      if (!item) return;
+
+      link.classList.add("file-preview-link");
+      link.addEventListener("click", (event) => {
+        event.preventDefault();
+
+        const existing = article.querySelector(`[data-file-preview="${CSS.escape(path)}"]`);
+        if (existing) {
+          existing.remove();
+          return;
+        }
+
+        const preview = document.createElement("div");
+        preview.className = "inline-file-preview";
+        preview.dataset.filePreview = path;
+
+        const title = document.createElement("div");
+        title.className = "inline-file-title";
+        title.textContent = item.name;
+
+        const pre = document.createElement("pre");
+        const code = document.createElement("code");
+        code.textContent = item.preview || "Preview unavailable.";
+        pre.append(code);
+
+        preview.append(title, pre);
+        const target = link.closest("p") || link;
+        target.insertAdjacentElement("afterend", preview);
+      });
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", setupFilePreviews);
+  } else {
+    setupFilePreviews();
+  }
+</script>
