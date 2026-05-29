@@ -74,7 +74,7 @@ export const members = [
   {
     name: "twopus",
     role: "Web maintainer",
-    focus: ["Misc"],
+    focus: ["Brainrot", "Roblox"],
     avatar: "/assets/playerlogo/twopus.png",
     quote: "roblox lover",
     socials: {
