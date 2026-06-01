@@ -1,0 +1,100 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { albumImages } from "../data/album";
+---
+
+<BaseLayout title="Album / flagaholic">
+  <main class="page page-medium">
+    <div class="section-head album-head">
+      <div>
+        <p class="eyebrow">holic&#123;4lbummm_r00m&#125;</p>
+        <h1>flagaholic album room</h1>
+      </div>
+    </div>
+
+    {albumImages.length ? (
+      <div class="album-grid">
+        {albumImages.map((image, index) => (
+          <button class="album-thumb" type="button" data-album-index={index} aria-label={`Open ${image.alt}`}>
+            <img src={image.src} alt={image.alt} loading="lazy" />
+          </button>
+        ))}
+      </div>
+    ) : (
+      <p class="album-empty">no screenshots in the album yet.</p>
+    )}
+  </main>
+
+  <div class="album-lightbox" data-album-lightbox hidden>
+    <button class="album-close" type="button" aria-label="Close image">&times;</button>
+    <button class="album-cycle album-prev" type="button" aria-label="Previous image">&lt;</button>
+    <figure>
+      <img data-album-full alt="" />
+      <figcaption data-album-caption></figcaption>
+    </figure>
+    <button class="album-cycle album-next" type="button" aria-label="Next image">&gt;</button>
+  </div>
+
+  <script define:vars={{ albumImages }}>
+    const lightbox = document.querySelector("[data-album-lightbox]");
+    const fullImage = document.querySelector("[data-album-full]");
+    const caption = document.querySelector("[data-album-caption]");
+    const closeButton = document.querySelector(".album-close");
+    const previousButton = document.querySelector(".album-prev");
+    const nextButton = document.querySelector(".album-next");
+    let currentIndex = 0;
+    let dragStartX = null;
+
+    const showImage = (index) => {
+      if (!albumImages.length) return;
+      currentIndex = (index + albumImages.length) % albumImages.length;
+      const image = albumImages[currentIndex];
+      fullImage.src = image.src;
+      fullImage.alt = image.alt;
+      caption.textContent = image.description;
+    };
+
+    const openLightbox = (index) => {
+      showImage(index);
+      lightbox.hidden = false;
+      document.body.classList.add("album-open");
+      closeButton.focus();
+    };
+
+    const closeLightbox = () => {
+      lightbox.hidden = true;
+      document.body.classList.remove("album-open");
+    };
+
+    document.querySelectorAll("[data-album-index]").forEach((button) => {
+      button.addEventListener("click", () => openLightbox(Number(button.dataset.albumIndex)));
+    });
+
+    closeButton.addEventListener("click", closeLightbox);
+    previousButton.addEventListener("click", () => showImage(currentIndex - 1));
+    nextButton.addEventListener("click", () => showImage(currentIndex + 1));
+
+    lightbox.addEventListener("click", (event) => {
+      if (event.target === lightbox) closeLightbox();
+    });
+
+    lightbox.addEventListener("pointerdown", (event) => {
+      dragStartX = event.clientX;
+    });
+
+    lightbox.addEventListener("pointerup", (event) => {
+      if (dragStartX === null) return;
+      const distance = event.clientX - dragStartX;
+      dragStartX = null;
+      if (Math.abs(distance) < 48) return;
+      showImage(currentIndex + (distance < 0 ? 1 : -1));
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (lightbox.hidden) return;
+      if (event.key === "Escape") closeLightbox();
+      if (event.key === "ArrowLeft") showImage(currentIndex - 1);
+      if (event.key === "ArrowRight") showImage(currentIndex + 1);
+    });
+  </script>
+</BaseLayout>

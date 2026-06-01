@@ -26,6 +26,54 @@ export const accomplishments = [
   },
 ];
 
+// Replace the placeholder entries as the team history is filled in.
+// Keep the entries ordered from oldest to newest.
+// Use \n inside detail for a line break. Use detailParts for inline links.
+type TimelineDetailPart = {
+  text: string;
+  href?: string;
+};
+
+type TimelineItem = {
+  date: string;
+  title: string;
+  detail?: string;
+  detailParts?: TimelineDetailPart[];
+  rank?: string;
+  origin?: boolean;
+};
+
+export const timeline: TimelineItem[] = [
+  {
+    date: "2025 May",
+    title: "Start of flagaholic",
+    detail: "i made flagaholic cuz polyuctf 2025.",
+    origin: true,
+  },
+  {
+    date: "2025 May",
+    title: "WSUCTF",
+    rank: "#1",
+    detailParts: [
+      { text: "we all cleared " },
+      { text: "WSUCTF", href: "https://ctftime.org/event/2757" },
+      { text: " (still no scoreboard) -v-" },
+    ],
+  },
+  {
+    date: "2025 June",
+    title: "BCACTF",
+    rank: "#17",
+    detail: "almost solo beat prime blitzhack :skull:\nalso tien STILL havent give me the badge",
+  },
+  {
+    date: "2025 Oct",
+    title: "CUHKCTF #3",
+    rank: "#2 in guest div.",
+    detail: "we blooded 10 challs :>",
+  },
+];
+
 export const members = [
   {
     name: "youstube_",

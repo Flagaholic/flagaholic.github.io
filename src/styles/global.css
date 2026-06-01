@@ -330,7 +330,7 @@ h3 {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 22px;
-  padding: 14px 0;
+  padding: 14px 0 34px;
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
 }
@@ -1008,6 +1008,375 @@ tr:last-child td {
   color: var(--accent);
 }
 
+.timeline-preview + .timeline-preview {
+  border-top: 1px solid var(--line);
+  margin-top: 76px;
+  padding-top: 42px;
+}
+
+.timeline-preview-label {
+  color: var(--soft);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  font-size: 12px;
+  margin-bottom: 32px;
+  text-transform: uppercase;
+}
+
+.symbol-timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.timeline-entry time {
+  display: block;
+  color: var(--green);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+
+.timeline-entry h2 {
+  font-size: 16px;
+  margin-bottom: 6px;
+}
+
+.timeline-entry p {
+  color: var(--muted);
+  font-size: 14px;
+  margin-bottom: 0;
+  white-space: pre-line;
+}
+
+.timeline-entry p a {
+  color: var(--green);
+}
+
+.timeline-entry p a:hover {
+  color: var(--accent);
+}
+
+.symbol-item {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 108px minmax(0, 1fr);
+  align-items: center;
+  min-height: 58px;
+  position: relative;
+}
+
+.symbol-origin {
+  display: block;
+  text-align: center;
+}
+
+.symbol-origin .timeline-entry {
+  width: min(340px, 100%);
+  margin: 0 auto;
+}
+
+.symbol-left .timeline-entry {
+  grid-column: 1;
+  text-align: right;
+}
+
+.symbol-right .timeline-entry {
+  grid-column: 3;
+}
+
+.symbol-flow,
+.symbol-branch {
+  color: var(--green);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: -1px;
+  line-height: 1.3;
+  white-space: pre;
+}
+
+.symbol-flow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 108px minmax(0, 1fr);
+  min-height: 30px;
+  position: relative;
+}
+
+.symbol-branch {
+  grid-column: 2;
+  grid-row: 1;
+  align-self: stretch;
+  position: relative;
+  width: 100%;
+}
+
+.symbol-flow::before,
+.symbol-branch::before {
+  background: linear-gradient(
+    to right,
+    transparent 0 3px,
+    var(--green) 3px 5px,
+    transparent 5px 11px,
+    var(--green) 11px 13px,
+    transparent 13px
+  );
+  bottom: -2px;
+  content: "";
+  left: 50%;
+  position: absolute;
+  top: -2px;
+  transform: translateX(-50%);
+  width: 16px;
+}
+
+.symbol-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.symbol-right .symbol-arrow {
+  left: calc(50% + 8px);
+}
+
+.symbol-left .symbol-arrow {
+  right: calc(50% + 8px);
+}
+
+.tree-timeline,
+.tree-events {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tree-timeline {
+  margin-left: 54px;
+  position: relative;
+}
+
+.tree-timeline::before,
+.tree-events::before {
+  border-left: 1px solid var(--line-strong);
+  content: "";
+  position: absolute;
+}
+
+.tree-timeline::before {
+  bottom: 0;
+  left: 0;
+  top: 0;
+}
+
+.tree-year {
+  padding: 0 0 56px 48px;
+  position: relative;
+}
+
+.tree-year:last-child {
+  padding-bottom: 0;
+}
+
+.tree-year::before,
+.tree-events > li::before {
+  border-top: 1px solid var(--line-strong);
+  content: "";
+  left: 0;
+  position: absolute;
+  top: 18px;
+  width: 25px;
+}
+
+.tree-year h2 {
+  font-size: 22px;
+  margin-bottom: 22px;
+}
+
+.tree-events {
+  margin-left: 38px;
+  position: relative;
+}
+
+.tree-events::before {
+  bottom: 54px;
+  left: 0;
+  top: 0;
+}
+
+.tree-events > li {
+  min-height: 112px;
+  padding-left: 46px;
+  position: relative;
+}
+
+.tree-events > li:last-child {
+  min-height: 72px;
+}
+
+.tree-events h3 {
+  font-size: 16px;
+  margin-bottom: 6px;
+}
+
+.tree-year:last-child::after {
+  background: var(--bg);
+  bottom: 0;
+  content: "";
+  left: -48px;
+  position: absolute;
+  top: 19px;
+  width: 2px;
+}
+
+.error-page {
+  min-height: calc(100vh - 170px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.secret-page {
+  min-height: calc(100vh - 170px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.error-page h1 {
+  max-width: 680px;
+  font-size: clamp(38px, 7vw, 72px);
+  line-height: 1.08;
+}
+
+.error-home {
+  color: var(--green);
+  font-size: 20px;
+  font-weight: 700;
+  margin-top: 14px;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 6px;
+  width: fit-content;
+}
+
+.error-home:hover {
+  color: var(--accent);
+}
+
+.album-head {
+  margin-bottom: 28px;
+}
+
+.album-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.album-thumb {
+  aspect-ratio: 4 / 3;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  cursor: pointer;
+  overflow: hidden;
+  padding: 0;
+}
+
+.album-thumb:hover,
+.album-thumb:focus-visible {
+  border-color: var(--green);
+}
+
+.album-thumb img {
+  height: 100%;
+  object-fit: cover;
+  transition: transform 160ms ease;
+  width: 100%;
+}
+
+.album-thumb:hover img {
+  transform: scale(1.035);
+}
+
+.album-empty {
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  padding-top: 18px;
+}
+
+.album-open {
+  overflow: hidden;
+}
+
+.album-lightbox {
+  align-items: center;
+  background: rgba(2, 8, 5, 0.88);
+  display: grid;
+  grid-template-columns: 54px minmax(0, 1fr) 54px;
+  inset: 0;
+  padding: 34px;
+  position: fixed;
+  z-index: 50;
+}
+
+.album-lightbox[hidden] {
+  display: none;
+}
+
+.album-lightbox figure {
+  margin: 0;
+  min-width: 0;
+  text-align: center;
+}
+
+.album-lightbox figure img {
+  margin: 0 auto;
+  max-height: calc(100vh - 124px);
+  object-fit: contain;
+  width: auto;
+}
+
+.album-lightbox figcaption {
+  color: var(--text);
+  font-size: 14px;
+  margin-top: 12px;
+}
+
+.album-close,
+.album-cycle {
+  background: rgba(16, 26, 19, 0.92);
+  border: 1px solid var(--line-strong);
+  color: var(--text);
+  cursor: pointer;
+  font: inherit;
+}
+
+.album-close:hover,
+.album-cycle:hover,
+.album-close:focus-visible,
+.album-cycle:focus-visible {
+  border-color: var(--green);
+  color: var(--green);
+}
+
+.album-close {
+  font-size: 28px;
+  height: 42px;
+  position: absolute;
+  right: 22px;
+  top: 18px;
+  width: 42px;
+}
+
+.album-cycle {
+  font-size: 24px;
+  height: 48px;
+  width: 42px;
+}
+
+.album-next {
+  justify-self: end;
+}
+
 @media (max-width: 980px) {
   .header-inner {
     align-items: flex-start;
@@ -1071,6 +1440,10 @@ tr:last-child td {
     justify-self: start;
   }
 
+  .album-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
 }
 
 @media (max-width: 560px) {
@@ -1102,5 +1475,98 @@ tr:last-child td {
 
   .summary-item:first-child {
     border-top: 0;
+  }
+
+  .symbol-item,
+  .symbol-origin {
+    display: grid;
+    grid-template-columns: 74px minmax(0, 1fr);
+    min-height: 72px;
+    text-align: left;
+  }
+
+  .symbol-origin .timeline-entry,
+  .symbol-left .timeline-entry,
+  .symbol-right .timeline-entry {
+    grid-column: 2;
+    width: auto;
+    margin: 0;
+    text-align: left;
+  }
+
+  .symbol-flow {
+    display: block;
+  }
+
+  .symbol-branch {
+    grid-column: 1;
+    width: 74px;
+  }
+
+  .symbol-flow::before,
+  .symbol-branch::before {
+    left: 37px;
+  }
+
+  .symbol-left .symbol-arrow {
+    display: none;
+  }
+
+  .symbol-left .symbol-branch::after {
+    color: var(--green);
+    content: "---->";
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+    font-size: 14px;
+    font-weight: 700;
+    left: calc(50% + 1ch);
+    letter-spacing: -1px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .tree-timeline {
+    margin-left: 6px;
+  }
+
+  .tree-year {
+    padding-left: 32px;
+  }
+
+  .tree-year:last-child::after {
+    left: -32px;
+  }
+
+  .tree-events {
+    margin-left: 12px;
+  }
+
+  .tree-events > li {
+    padding-left: 30px;
+  }
+
+  .tree-year::before,
+  .tree-events > li::before {
+    width: 16px;
+  }
+
+  .album-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .album-lightbox {
+    grid-template-columns: 40px minmax(0, 1fr) 40px;
+    padding: 18px 8px;
+  }
+
+  .album-close {
+    right: 10px;
+    top: 10px;
+  }
+
+  .album-cycle {
+    font-size: 20px;
+    height: 42px;
+    width: 34px;
   }
 }

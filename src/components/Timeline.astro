@@ -1,0 +1,81 @@
+---
+import { timeline } from "../data/team";
+
+const timelineByYear = Array.from(
+  timeline.reduce((years, item) => {
+    const year = item.date.split(" ")[0];
+    const entries = years.get(year) ?? [];
+    entries.push(item);
+    years.set(year, entries);
+    return years;
+  }, new Map<string, typeof timeline>()),
+).map(([year, entries]) => ({ year, entries }));
+
+---
+
+<section class="timeline-preview">
+  <p class="timeline-preview-label">Version A / symbol waterfall</p>
+  <ol class="symbol-timeline" aria-label="flagaholic symbol timeline">
+    {timeline.map((item, index) => {
+      const isOrigin = item.origin === true;
+      const side = index % 2 === 1 ? "right" : "left";
+
+      return (
+        <>
+          {index > 0 && (
+            <li class="symbol-flow" aria-hidden="true"></li>
+          )}
+          <li class:list={["symbol-item", isOrigin ? "symbol-origin" : `symbol-${side}`]}>
+            <article class="timeline-entry">
+              <time>{item.date}</time>
+              <h2>
+                {item.title}
+                {item.rank && <span> ({item.rank})</span>}
+              </h2>
+              <p>
+                {item.detailParts?.map((part) => (
+                  part.href ? <a href={part.href}>{part.text}</a> : part.text
+                )) ?? item.detail}
+              </p>
+            </article>
+            {!isOrigin && (
+              <span class="symbol-branch" aria-hidden="true">
+                {side === "left" && <span class="symbol-arrow">{"<----"}</span>}
+                {side === "right" && <span class="symbol-arrow">{"---->"}</span>}
+              </span>
+            )}
+          </li>
+        </>
+      );
+    })}
+  </ol>
+</section>
+
+<section class="timeline-preview">
+  <p class="timeline-preview-label">Version B / hierarchy tree</p>
+  <ol class="tree-timeline" aria-label="flagaholic hierarchy timeline">
+    {timelineByYear.map(({ year, entries }) => (
+      <li class="tree-year">
+        <h2>{year}</h2>
+        <ol class="tree-events">
+          {entries.map((item) => (
+            <li>
+              <article class="timeline-entry">
+                <time>{item.date}</time>
+                <h3>
+                  {item.title}
+                  {item.rank && <span> ({item.rank})</span>}
+                </h3>
+                <p>
+                  {item.detailParts?.map((part) => (
+                    part.href ? <a href={part.href}>{part.text}</a> : part.text
+                  )) ?? item.detail}
+                </p>
+              </article>
+            </li>
+          ))}
+        </ol>
+      </li>
+    ))}
+  </ol>
+</section>
