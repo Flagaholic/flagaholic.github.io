@@ -29,14 +29,19 @@ const timelineByYear = Array.from(
             <article class="timeline-entry">
               <time>{item.date}</time>
               <h2>
-                {item.title}
-                {item.rank && <span> ({item.rank})</span>}
+                {item.href ? (
+                  <a href={item.href} target="_blank" rel="noopener noreferrer">
+                    {item.title}
+                    {item.rank && <span> ({item.rank})</span>}
+                  </a>
+                ) : (
+                  <>
+                    {item.title}
+                    {item.rank && <span> ({item.rank})</span>}
+                  </>
+                )}
               </h2>
-              <p>
-                {item.detailParts?.map((part) => (
-                  part.href ? <a href={part.href}>{part.text}</a> : part.text
-                )) ?? item.detail}
-              </p>
+              <p>{item.detail}</p>
             </article>
             {!isOrigin && (
               <span class="symbol-branch" aria-hidden="true">
@@ -63,14 +68,19 @@ const timelineByYear = Array.from(
               <article class="timeline-entry">
                 <time>{item.date}</time>
                 <h3>
-                  {item.title}
-                  {item.rank && <span> ({item.rank})</span>}
+                  {item.href ? (
+                    <a href={item.href} target="_blank" rel="noopener noreferrer">
+                      {item.title}
+                      {item.rank && <span> ({item.rank})</span>}
+                    </a>
+                  ) : (
+                    <>
+                      {item.title}
+                      {item.rank && <span> ({item.rank})</span>}
+                    </>
+                  )}
                 </h3>
-                <p>
-                  {item.detailParts?.map((part) => (
-                    part.href ? <a href={part.href}>{part.text}</a> : part.text
-                  )) ?? item.detail}
-                </p>
+                <p>{item.detail}</p>
               </article>
             </li>
           ))}

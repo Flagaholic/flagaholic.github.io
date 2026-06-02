@@ -26,21 +26,13 @@ export const accomplishments = [
   },
 ];
 
-// Replace the placeholder entries as the team history is filled in.
-// Keep the entries ordered from oldest to newest.
-// Use \n inside detail for a line break. Use detailParts for inline links.
-type TimelineDetailPart = {
-  text: string;
-  href?: string;
-};
-
 type TimelineItem = {
   date: string;
   title: string;
-  detail?: string;
-  detailParts?: TimelineDetailPart[];
+  detail: string;
   rank?: string;
   origin?: boolean;
+  href?: string;
 };
 
 export const timeline: TimelineItem[] = [
@@ -54,23 +46,99 @@ export const timeline: TimelineItem[] = [
     date: "2025 May",
     title: "WSUCTF",
     rank: "#1",
-    detailParts: [
-      { text: "we all cleared " },
-      { text: "WSUCTF", href: "https://ctftime.org/event/2757" },
-      { text: " (still no scoreboard) -v-" },
-    ],
+    detail: "we all cleared WSUCTF (still no scoreboard) -v-",
+    href: "https://ctftime.org/event/2757",
   },
   {
     date: "2025 June",
     title: "BCACTF",
-    rank: "#17",
+    rank: "#17/277",
     detail: "almost solo beat prime blitzhack :skull:\nalso tien STILL havent give me the badge",
+    href: "https://ctftime.org/event/2836",
+  },
+  {
+    date: "2025 Aug",
+    title: "Full Weak Engineer CTF",
+    rank: "#25/733",
+    detail: "i think i wanted do writeup on a minecraft chall but forgot",
+    href: "https://ctftime.org/event/2864",
+  },
+  {
+    date: "2025 Sep",
+    title: "ImaginaryCTF",
+    rank: "#49/1414",
+    detail: "when is ictf daily coming back",
+    href: "https://2025.imaginaryctf.org/Team/392.html",
+  },
+  {
+    date: "2025 Sep",
+    title: "CUHKCTF #3/189",
+    rank: "#2 in guest div.",
+    detail: "we blooded 10 challs :>",
+    href: "/album/#cuhk-scoreboard",
   },
   {
     date: "2025 Oct",
-    title: "CUHKCTF #3",
-    rank: "#2 in guest div.",
-    detail: "we blooded 10 challs :>",
+    title: "osu!gaming CTF",
+    rank: "#38/740",
+    detail: "kaijuu ni naritai~",
+    href: "https://2025.osugaming.sekai.team/scores",
+  },
+  {
+    date: "2025 Nov",
+    title: "V1t CTF",
+    rank: "#5/1237",
+    detail: "our first int'l top 5 :o",
+    href: "https://2025.v1t.site/scoreboard/",
+  },
+  {
+    date: "2025 Nov",
+    title: "PatriotCTF",
+    rank: "#5/1343",
+    detail: "our second ak + top 5 int'l :o",
+    href: "/album/#patriot-ak",
+  },
+  {
+    date: "2025 Dec",
+    title: "HKCERT CTF",
+    rank: "#40/573",
+    detail: "#5 in tertiary div., qualified to final\nhonestly one of the worst ctf played",
+    href: "/album/#hkcert-scoreboard",
+  },
+  {
+    date: "2026 Jan",
+    title: "Swimmer OSINT CTF",
+    rank: "#19/687",
+    detail: "our 3rd ak!! fun ctf imo :D",
+    href: "/album/#swimmer-scoreboard",
+  },
+  {
+    date: "2026 Jan",
+    title: "PascalCTF",
+    rank: "#12/855",
+    detail: "4th ak! our team carried :p",
+    href: "/album/#pascal-ak",
+  },
+  {
+    date: "2026 Mar",
+    title: "ApoorvCTF",
+    rank: "#32/850",
+    detail: "whole lotta fake flag ctf.",
+    href: "https://ctftime.org/event/3171",
+  },
+  {
+    date: "2026 May",
+    title: "TJCTF",
+    rank: "#44/948",
+    detail: "Whole lotta w challs ctf <3",
+    href: "https://ctf.tjctf.org/scores",
+  },
+  {
+    date: "2026 May",
+    title: "0xV01D CTF",
+    rank: "#4/689",
+    detail: "One of the weirder CTF we've played..\nlwk hated it but top 5 is top 5",
+    href: "https://ctftime.org/event/3269",
   },
 ];
 
