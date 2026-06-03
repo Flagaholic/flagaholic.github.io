@@ -1063,16 +1063,6 @@ tr:last-child td {
   white-space: pre-line;
 }
 
-.timeline-entry h2 a,
-.timeline-entry h3 a {
-  color: var(--timeline-accent, var(--green));
-}
-
-.timeline-entry h2 a:hover,
-.timeline-entry h3 a:hover {
-  color: var(--accent);
-}
-
 .symbol-item {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 0 minmax(0, 1fr);
@@ -1090,6 +1080,21 @@ tr:last-child td {
   padding: 28px 30px 26px;
   place-items: center;
   position: relative;
+}
+
+a.timeline-entry {
+  color: inherit;
+  cursor: pointer;
+}
+
+a.timeline-entry:hover .timeline-flag-fill,
+a.timeline-entry:focus-visible .timeline-flag-fill {
+  fill: color-mix(in srgb, var(--timeline-accent) 18%, transparent);
+}
+
+a.timeline-entry:hover h2,
+a.timeline-entry:focus-visible h2 {
+  color: var(--timeline-accent);
 }
 
 .timeline-entry-plain {

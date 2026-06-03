@@ -8,6 +8,9 @@ const flagStrokeAttachLeft =
 const flagStrokeAttachRight =
   "M228 20 C188 12 146 12 114 20 C82 28 42 28 0 20 L0 112 C42 120 82 120 114 112 C146 104 188 104 228 112";
 const flagPolePath = "M0 20 L0 170";
+
+const linkAttrs = (href?: string) =>
+  href?.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {};
 ---
 
 <section class="timeline-preview">
@@ -15,6 +18,8 @@ const flagPolePath = "M0 20 L0 170";
     {timeline.map((item, index) => {
       const isOrigin = item.origin === true;
       const side = index % 2 === 1 ? "right" : "left";
+      const EntryTag = item.href && !isOrigin ? "a" : "article";
+      const OriginSideTag = originSideEvent.href ? "a" : "article";
 
       return (
         <>
@@ -23,7 +28,12 @@ const flagPolePath = "M0 20 L0 170";
           )}
           <li class:list={["symbol-item", isOrigin ? "symbol-origin" : `symbol-${side}`]}>
             {isOrigin && (
-              <article class:list={["timeline-entry", "timeline-origin-side", `timeline-tier-${originSideEvent.tier ?? "normal"}`]}>
+              <OriginSideTag
+                class:list={["timeline-entry", "timeline-origin-side", `timeline-tier-${originSideEvent.tier ?? "normal"}`]}
+                href={originSideEvent.href}
+                {...linkAttrs(originSideEvent.href)}
+                aria-label={`Open ${originSideEvent.title}${originSideEvent.rank ? ` ${originSideEvent.rank}` : ""}`}
+              >
                 <svg class="timeline-flag" viewBox="0 0 228 128" preserveAspectRatio="none" aria-hidden="true" focusable="false">
                   <path class="timeline-flag-fill" d={flagFillPath}></path>
                   <path class="timeline-flag-pole" d={flagPolePath}></path>
@@ -32,23 +42,19 @@ const flagPolePath = "M0 20 L0 170";
                 <div class="timeline-entry-body">
                   <time>{originSideEvent.date}</time>
                   <h2>
-                    {originSideEvent.href ? (
-                      <a href={originSideEvent.href} target="_blank" rel="noopener noreferrer">
-                        {originSideEvent.title}
-                        {originSideEvent.rank && <span> ({originSideEvent.rank})</span>}
-                      </a>
-                    ) : (
-                      <>
-                        {originSideEvent.title}
-                        {originSideEvent.rank && <span> ({originSideEvent.rank})</span>}
-                      </>
-                    )}
+                    {originSideEvent.title}
+                    {originSideEvent.rank && <span> ({originSideEvent.rank})</span>}
                   </h2>
                   <p>{originSideEvent.detail}</p>
                 </div>
-              </article>
+              </OriginSideTag>
             )}
-            <article class:list={["timeline-entry", `timeline-tier-${item.tier ?? "normal"}`, isOrigin && "timeline-origin-entry", isOrigin && "timeline-entry-plain"]}>
+            <EntryTag
+              class:list={["timeline-entry", `timeline-tier-${item.tier ?? "normal"}`, isOrigin && "timeline-origin-entry", isOrigin && "timeline-entry-plain"]}
+              href={item.href}
+              {...linkAttrs(item.href)}
+              aria-label={item.href ? `Open ${item.title}${item.rank ? ` ${item.rank}` : ""}` : undefined}
+            >
               {!isOrigin && (
                 <svg class="timeline-flag" viewBox="0 0 228 128" preserveAspectRatio="none" aria-hidden="true" focusable="false">
                   <path class="timeline-flag-fill" d={flagFillPath}></path>
@@ -58,21 +64,12 @@ const flagPolePath = "M0 20 L0 170";
               <div class="timeline-entry-body">
                 <time>{item.date}</time>
                 <h2>
-                  {item.href ? (
-                    <a href={item.href} target="_blank" rel="noopener noreferrer">
-                      {item.title}
-                      {item.rank && <span> ({item.rank})</span>}
-                    </a>
-                  ) : (
-                    <>
-                      {item.title}
-                      {item.rank && <span> ({item.rank})</span>}
-                    </>
-                  )}
+                  {item.title}
+                  {item.rank && <span> ({item.rank})</span>}
                 </h2>
                 <p>{item.detail}</p>
               </div>
-            </article>
+            </EntryTag>
             {!isOrigin && (
               <span class="symbol-branch" aria-hidden="true">
                 <span class="symbol-arrow"></span>
