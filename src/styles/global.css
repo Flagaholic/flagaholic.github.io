@@ -139,6 +139,7 @@ img {
   grid-template-columns: 120px minmax(0, 1fr);
   align-items: center;
   gap: 28px;
+  margin-bottom: 22px;
   max-width: 680px;
   text-align: left;
 }
@@ -363,7 +364,7 @@ h3 {
 .home-sections {
   display: grid;
   gap: 58px;
-  padding-top: 48px;
+  padding-top: 8px;
 }
 
 .home-sections section {
@@ -1026,11 +1027,25 @@ tr:last-child td {
   list-style: none;
   margin: 0;
   padding: 0;
+  position: relative;
+}
+
+.symbol-timeline::before {
+  background: var(--green);
+  bottom: 0;
+  content: "";
+  left: 50%;
+  pointer-events: none;
+  position: absolute;
+  top: 136px;
+  transform: translateX(-50%);
+  width: 2.25px;
+  z-index: 3;
 }
 
 .timeline-entry time {
   display: block;
-  color: var(--green);
+  color: var(--timeline-accent, var(--green));
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
   font-size: 13px;
   margin-bottom: 6px;
@@ -1050,7 +1065,7 @@ tr:last-child td {
 
 .timeline-entry h2 a,
 .timeline-entry h3 a {
-  color: var(--green);
+  color: var(--timeline-accent, var(--green));
 }
 
 .timeline-entry h2 a:hover,
@@ -1060,29 +1075,163 @@ tr:last-child td {
 
 .symbol-item {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 108px minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr) 0 minmax(0, 1fr);
   align-items: center;
-  min-height: 58px;
+  min-height: 124px;
   position: relative;
 }
 
+.timeline-entry {
+  --timeline-accent: var(--green);
+  --timeline-fill: rgba(34, 197, 94, 0.08);
+  display: grid;
+  isolation: isolate;
+  min-height: 160px;
+  padding: 28px 30px 26px;
+  place-items: center;
+  position: relative;
+}
+
+.timeline-entry-plain {
+  min-height: auto;
+  padding: 10px 0;
+}
+
+.timeline-tier-origin {
+  --timeline-accent: var(--text);
+  --timeline-fill: rgba(232, 245, 236, 0.08);
+}
+
+.timeline-tier-good {
+  --timeline-accent: #38bdf8;
+  --timeline-fill: rgba(56, 189, 248, 0.1);
+}
+
+.timeline-tier-very-good {
+  --timeline-accent: #facc15;
+  --timeline-fill: rgba(250, 204, 21, 0.13);
+}
+
+.timeline-tier-ak {
+  --timeline-accent: #fb7185;
+  --timeline-fill: rgba(251, 113, 133, 0.11);
+}
+
+.timeline-flag {
+  height: calc(100% + 26px);
+  left: 0;
+  overflow: visible;
+  pointer-events: none;
+  position: absolute;
+  top: -13px;
+  width: 100%;
+  z-index: -1;
+}
+
+.timeline-flag-fill {
+  fill: var(--timeline-fill);
+  stroke: none;
+}
+
+.timeline-flag-stroke {
+  fill: none;
+  stroke: var(--timeline-accent);
+  stroke-linecap: butt;
+  stroke-linejoin: round;
+  stroke-width: 2.25px;
+  vector-effect: non-scaling-stroke;
+}
+
+.timeline-flag-pole {
+  fill: none;
+  stroke: var(--timeline-accent);
+  stroke-linecap: butt;
+  stroke-width: 2.25px;
+  vector-effect: non-scaling-stroke;
+}
+
+.timeline-entry-body {
+  min-width: 0;
+  position: relative;
+  width: 100%;
+}
+
+.timeline-tier-very-good .timeline-flag-stroke {
+  filter: drop-shadow(0 0 10px rgba(250, 204, 21, 0.26));
+  stroke-width: 3px;
+}
+
 .symbol-origin {
-  display: block;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(300px, 330px) minmax(0, 1fr);
   text-align: center;
 }
 
-.symbol-origin .timeline-entry {
-  width: min(340px, 100%);
+.symbol-origin .timeline-origin-entry {
+  grid-column: 2;
+  justify-self: center;
   margin: 0 auto;
+  text-align: center;
+  width: 330px;
+}
+
+.timeline-origin-side {
+  grid-column: 1;
+  justify-self: end;
+  position: relative;
+  text-align: middle;
+  width: 250px;
+}
+
+.timeline-origin-side::before {
+  content: none;
+}
+
+.timeline-origin-side::after {
+  color: var(--text);
+  content: "====>";
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  font-size: 14px;
+  font-weight: 700;
+  left: calc(100% + 16px);
+  letter-spacing: 0;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  white-space: pre;
+}
+
+.timeline-origin-side .timeline-flag-stroke {
+  stroke-width: 2.25px;
+}
+
+.timeline-origin-side .timeline-entry-body {
+  font-size: 0.94em;
+}
+
+.timeline-origin-side h2 {
+  font-size: 15px;
+}
+
+.timeline-origin-side p {
+  font-size: 13px;
+}
+
+.timeline-origin-side time {
+  font-size: 12px;
 }
 
 .symbol-left .timeline-entry {
-  grid-column: 1;
+  grid-column: 1 / 3;
+  justify-self: end;
   text-align: right;
+  width: 330px;
 }
 
 .symbol-right .timeline-entry {
-  grid-column: 3;
+  grid-column: 2 / 4;
+  justify-self: start;
+  width: 330px;
 }
 
 .symbol-flow,
@@ -1098,8 +1247,8 @@ tr:last-child td {
 
 .symbol-flow {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 108px minmax(0, 1fr);
-  min-height: 30px;
+  grid-template-columns: minmax(0, 1fr) 0 minmax(0, 1fr);
+  min-height: 14px;
   position: relative;
 }
 
@@ -1108,40 +1257,16 @@ tr:last-child td {
   grid-row: 1;
   align-self: stretch;
   position: relative;
-  width: 100%;
+  width: 0;
 }
 
 .symbol-flow::before,
 .symbol-branch::before {
-  background: linear-gradient(
-    to right,
-    transparent 0 3px,
-    var(--green) 3px 5px,
-    transparent 5px 11px,
-    var(--green) 11px 13px,
-    transparent 13px
-  );
-  bottom: -2px;
-  content: "";
-  left: 50%;
-  position: absolute;
-  top: -2px;
-  transform: translateX(-50%);
-  width: 16px;
+  content: none;
 }
 
 .symbol-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.symbol-right .symbol-arrow {
-  left: calc(50% + 8px);
-}
-
-.symbol-left .symbol-arrow {
-  right: calc(50% + 8px);
+  display: none;
 }
 
 .tree-timeline,
@@ -1268,6 +1393,33 @@ tr:last-child td {
   margin-bottom: 28px;
 }
 
+.album-sections {
+  display: grid;
+  gap: 42px;
+}
+
+.album-year {
+  display: grid;
+  gap: 16px;
+}
+
+.album-year h2 {
+  color: var(--green);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  font-size: 18px;
+  margin-bottom: 0;
+}
+
+.album-pinned {
+  border-bottom: 1px solid var(--line);
+  border-top: 1px solid var(--line);
+  padding: 18px 0 22px;
+}
+
+.album-pinned h2 {
+  color: #facc15;
+}
+
 .album-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1286,6 +1438,15 @@ tr:last-child td {
 .album-thumb:hover,
 .album-thumb:focus-visible {
   border-color: var(--green);
+}
+
+.album-thumb-pinned {
+  border-color: rgba(250, 204, 21, 0.72);
+}
+
+.album-thumb-pinned:hover,
+.album-thumb-pinned:focus-visible {
+  border-color: #facc15;
 }
 
 .album-thumb img {
@@ -1487,6 +1648,11 @@ tr:last-child td {
     text-align: left;
   }
 
+  .symbol-timeline::before {
+    left: 37px;
+    top: 120px;
+  }
+
   .symbol-origin .timeline-entry,
   .symbol-left .timeline-entry,
   .symbol-right .timeline-entry {
@@ -1494,6 +1660,28 @@ tr:last-child td {
     width: auto;
     margin: 0;
     text-align: left;
+  }
+
+  .timeline-entry {
+    min-height: 124px;
+    padding: 30px 24px 28px;
+  }
+
+  .timeline-entry-plain {
+    min-height: auto;
+    padding: 4px 0 14px;
+  }
+
+  .timeline-origin-side {
+    border-bottom: 1px solid var(--line);
+    justify-self: stretch;
+    margin-bottom: 16px;
+    max-width: none;
+    padding-bottom: 14px;
+  }
+
+  .timeline-origin-side::after {
+    display: none;
   }
 
   .symbol-flow {
@@ -1510,21 +1698,11 @@ tr:last-child td {
     left: 37px;
   }
 
-  .symbol-left .symbol-arrow {
-    display: none;
-  }
-
-  .symbol-left .symbol-branch::after {
-    color: var(--green);
-    content: "---->";
-    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
-    font-size: 14px;
-    font-weight: 700;
-    left: calc(50% + 1ch);
-    letter-spacing: -1px;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+  .symbol-left .symbol-arrow,
+  .symbol-right .symbol-arrow {
+    left: 37px;
+    right: auto;
+    width: 30px;
   }
 
   .tree-timeline {

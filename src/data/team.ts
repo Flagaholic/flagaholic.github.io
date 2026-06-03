@@ -26,20 +26,30 @@ export const accomplishments = [
   },
 ];
 
-type TimelineItem = {
+export type TimelineItem = {
   date: string;
   title: string;
   detail: string;
   rank?: string;
   origin?: boolean;
   href?: string;
+  tier?: "normal" | "origin" | "good" | "very-good" | "ak";
+};
+
+export const originSideEvent: TimelineItem = {
+  date: "2025 April",
+  title: "PolyUCTF 2025",
+  rank: "#36/92",
+  detail: "#4 in sub-degree category. \nthis is where it all started :b",
+  href: "https://2025.polyuctf.com/scoreboard/index.html",
+  tier: "origin",
 };
 
 export const timeline: TimelineItem[] = [
   {
     date: "2025 May",
     title: "Start of flagaholic",
-    detail: "i made flagaholic cuz polyuctf 2025.",
+    detail: "i made flagaholic cuz polyuctf 2025 :>",
     origin: true,
   },
   {
@@ -48,6 +58,7 @@ export const timeline: TimelineItem[] = [
     rank: "#1",
     detail: "we all cleared WSUCTF (still no scoreboard) -v-",
     href: "https://ctftime.org/event/2757",
+    tier: "very-good",
   },
   {
     date: "2025 June",
@@ -57,74 +68,81 @@ export const timeline: TimelineItem[] = [
     href: "https://ctftime.org/event/2836",
   },
   {
-    date: "2025 Aug",
+    date: "2025 August",
     title: "Full Weak Engineer CTF",
     rank: "#25/733",
-    detail: "i think i wanted do writeup on a minecraft chall but forgot",
+    detail: "i think i wanted do writeup on a minecraft chall but forgot so guess i'll do it next year",
     href: "https://ctftime.org/event/2864",
   },
   {
-    date: "2025 Sep",
+    date: "2025 September",
     title: "ImaginaryCTF",
     rank: "#49/1414",
     detail: "when is ictf daily coming back",
     href: "https://2025.imaginaryctf.org/Team/392.html",
   },
   {
-    date: "2025 Sep",
+    date: "2025 September",
     title: "CUHKCTF #3/189",
     rank: "#2 in guest div.",
     detail: "we blooded 10 challs :>",
-    href: "/album/#cuhk-scoreboard",
+    href: "/album/#2025-cuhk-scoreboard",
+    tier: "good",
   },
   {
-    date: "2025 Oct",
+    date: "2025 October",
     title: "osu!gaming CTF",
     rank: "#38/740",
     detail: "kaijuu ni naritai~",
     href: "https://2025.osugaming.sekai.team/scores",
   },
   {
-    date: "2025 Nov",
+    date: "2025 November",
     title: "V1t CTF",
     rank: "#5/1237",
     detail: "our first int'l top 5 :o",
     href: "https://2025.v1t.site/scoreboard/",
+    tier: "good",
   },
   {
-    date: "2025 Nov",
+    date: "2025 November",
     title: "PatriotCTF",
     rank: "#5/1343",
     detail: "our second ak + top 5 int'l :o",
-    href: "/album/#patriot-ak",
+    href: "/album/#2025-patriot-ak",
+    tier: "ak",
   },
   {
-    date: "2025 Dec",
+    date: "2025 December",
     title: "HKCERT CTF",
     rank: "#40/573",
     detail: "#5 in tertiary div., qualified to final\nhonestly one of the worst ctf played",
-    href: "/album/#hkcert-scoreboard",
+    href: "/album/#2025-hkcert-scoreboard",
+    tier: "good",
   },
   {
-    date: "2026 Jan",
+    date: "2026 January",
     title: "Swimmer OSINT CTF",
     rank: "#19/687",
     detail: "our 3rd ak!! fun ctf imo :D",
-    href: "/album/#swimmer-scoreboard",
+    href: "/album/#2026-swimmer-scoreboard",
+    tier: "ak",
   },
   {
-    date: "2026 Jan",
+    date: "2026 January",
     title: "PascalCTF",
     rank: "#12/855",
     detail: "4th ak! our team carried :p",
-    href: "/album/#pascal-ak",
+    href: "/album/#2026-pascal-ak",
+    tier: "ak",
   },
   {
-    date: "2026 Mar",
-    title: "ApoorvCTF",
-    rank: "#32/850",
-    detail: "whole lotta fake flag ctf.",
-    href: "https://ctftime.org/event/3171",
+    date: "2026 March",
+    title: "PolyUCTF 2026",
+    rank: "#7/176",
+    detail: "#1 IN SUB-DEGREE CATEGORY!\nPlayed under 3Failures1Noob alias :D",
+    href: "https://2026.polyuctf.com/scoreboard/",
+    tier: "very-good",
   },
   {
     date: "2026 May",
@@ -139,6 +157,7 @@ export const timeline: TimelineItem[] = [
     rank: "#4/689",
     detail: "One of the weirder CTF we've played..\nlwk hated it but top 5 is top 5",
     href: "https://ctftime.org/event/3269",
+    tier: "good",
   },
 ];
 

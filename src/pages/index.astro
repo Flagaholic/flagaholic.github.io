@@ -1,17 +1,11 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import Timeline from "../components/Timeline.astro";
 import WriteupList from "../components/WriteupList.astro";
-import { accomplishments, members, team } from "../data/team";
+import { team } from "../data/team";
 import { getCollection } from "astro:content";
-import ctftime from "../data/ctftime.json";
 
 const writeups = await getCollection("writeups");
-const stats = [
-  { label: "Ranked", value: ctftime.currentYear.globalRank ? `#${ctftime.currentYear.globalRank}` : "--", note: "Globally" },
-  { label: "Ranked", value: ctftime.currentYear.countryRank ? `#${ctftime.currentYear.countryRank}` : "--", note: "in Hong Kong" },
-  { label: "Rated", value: ctftime.currentYear.ratingPoints ? ctftime.currentYear.ratingPoints.toFixed(3) : "--", note: "points" },
-  { label: "Listed", value: String(members.length), note: "members" },
-];
 ---
 
 <BaseLayout title="flagaholic">
@@ -26,29 +20,8 @@ const stats = [
       </div>
     </section>
 
-    <section class="home-stats" aria-label="Overview">
-        <p class="stats-source">according to CTFTime</p>
-        {stats.map((stat) => (
-          <div>
-            <span class="row-kicker">{stat.label}</span>
-            <strong>{stat.value}</strong>
-            <span class="muted">{stat.note}</span>
-          </div>
-        ))}
-    </section>
-
     <div class="home-sections">
-      <section>
-        <h2>Accomplishments</h2>
-        <div class="accomplishment-list">
-        {accomplishments.map((item) => (
-          <div class="accomplishment-item">
-            <span class="row-kicker">{item.title}</span>
-            <p>{item.detail}</p>
-          </div>
-        ))}
-        </div>
-      </section>
+      <Timeline />
       <section>
         <h2>Latest writeups</h2>
         <WriteupList writeups={writeups.slice(0, 3)} compact={true} />

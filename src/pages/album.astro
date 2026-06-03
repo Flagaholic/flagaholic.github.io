@@ -1,6 +1,14 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { albumImages } from "../data/album";
+import { albumSections, pinnedAlbumImages } from "../data/album";
+
+const displayAlbumImages = [
+  ...pinnedAlbumImages,
+  ...albumSections
+    .flatMap((section) => section.images)
+    .filter((image) => !pinnedAlbumImages.some((pinnedImage) => pinnedImage.id === image.id)),
+];
+const albumIndexById = new Map(displayAlbumImages.map((image, index) => [image.id, index]));
 ---
 
 <BaseLayout title="Album / flagaholic">
@@ -12,12 +20,31 @@ import { albumImages } from "../data/album";
       </div>
     </div>
 
-    {albumImages.length ? (
-      <div class="album-grid">
-        {albumImages.map((image, index) => (
-          <button class="album-thumb" type="button" data-album-index={index} id={image.id} aria-label={`Open ${image.alt}`}>
-            <img src={image.src} alt={image.alt} loading="lazy" />
-          </button>
+    {displayAlbumImages.length ? (
+      <div class="album-sections">
+        {pinnedAlbumImages.length > 0 && (
+          <section class="album-year album-pinned" aria-labelledby="album-pinned">
+            <h2 id="album-pinned">pinned</h2>
+            <div class="album-grid">
+              {pinnedAlbumImages.map((image) => (
+                <button class="album-thumb album-thumb-pinned" type="button" data-album-index={albumIndexById.get(image.id)} id={image.id} aria-label={`Open ${image.alt}`}>
+                  <img src={image.src} alt={image.alt} loading="lazy" />
+                </button>
+              ))}
+            </div>
+          </section>
+        )}
+        {albumSections.map((section) => (
+          <section class="album-year" aria-labelledby={`album-${section.year}`}>
+            <h2 id={`album-${section.year}`}>{section.year}</h2>
+            <div class="album-grid">
+              {section.images.map((image) => (
+                <button class="album-thumb" type="button" data-album-index={albumIndexById.get(image.id)} id={image.id} aria-label={`Open ${image.alt}`}>
+                  <img src={image.src} alt={image.alt} loading="lazy" />
+                </button>
+              ))}
+            </div>
+          </section>
         ))}
       </div>
     ) : (
@@ -35,7 +62,7 @@ import { albumImages } from "../data/album";
     <button class="album-cycle album-next" type="button" aria-label="Next image">&gt;</button>
   </div>
 
-  <script define:vars={{ albumImages }}>
+  <script define:vars={{ albumImages: displayAlbumImages }}>
     const lightbox = document.querySelector("[data-album-lightbox]");
     const fullImage = document.querySelector("[data-album-full]");
     const caption = document.querySelector("[data-album-caption]");

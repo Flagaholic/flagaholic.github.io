@@ -1,20 +1,16 @@
 ---
-import { timeline } from "../data/team";
+import { originSideEvent, timeline } from "../data/team";
 
-const timelineByYear = Array.from(
-  timeline.reduce((years, item) => {
-    const year = item.date.split(" ")[0];
-    const entries = years.get(year) ?? [];
-    entries.push(item);
-    years.set(year, entries);
-    return years;
-  }, new Map<string, typeof timeline>()),
-).map(([year, entries]) => ({ year, entries }));
-
+const flagFillPath =
+  "M0 20 C42 28 82 28 114 20 C146 12 188 12 228 20 L228 112 C188 104 146 104 114 112 C82 120 42 120 0 112 Z";
+const flagStrokeAttachLeft =
+  "M0 20 C42 28 82 28 114 20 C146 12 188 12 228 20 L228 112 C188 104 146 104 114 112 C82 120 42 120 0 112";
+const flagStrokeAttachRight =
+  "M228 20 C188 12 146 12 114 20 C82 28 42 28 0 20 L0 112 C42 120 82 120 114 112 C146 104 188 104 228 112";
+const flagPolePath = "M0 20 L0 170";
 ---
 
 <section class="timeline-preview">
-  <p class="timeline-preview-label">Version A / symbol waterfall</p>
   <ol class="symbol-timeline" aria-label="flagaholic symbol timeline">
     {timeline.map((item, index) => {
       const isOrigin = item.origin === true;
@@ -26,48 +22,42 @@ const timelineByYear = Array.from(
             <li class="symbol-flow" aria-hidden="true"></li>
           )}
           <li class:list={["symbol-item", isOrigin ? "symbol-origin" : `symbol-${side}`]}>
-            <article class="timeline-entry">
-              <time>{item.date}</time>
-              <h2>
-                {item.href ? (
-                  <a href={item.href} target="_blank" rel="noopener noreferrer">
-                    {item.title}
-                    {item.rank && <span> ({item.rank})</span>}
-                  </a>
-                ) : (
-                  <>
-                    {item.title}
-                    {item.rank && <span> ({item.rank})</span>}
-                  </>
-                )}
-              </h2>
-              <p>{item.detail}</p>
-            </article>
-            {!isOrigin && (
-              <span class="symbol-branch" aria-hidden="true">
-                {side === "left" && <span class="symbol-arrow">{"<----"}</span>}
-                {side === "right" && <span class="symbol-arrow">{"---->"}</span>}
-              </span>
+            {isOrigin && (
+              <article class:list={["timeline-entry", "timeline-origin-side", `timeline-tier-${originSideEvent.tier ?? "normal"}`]}>
+                <svg class="timeline-flag" viewBox="0 0 228 128" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+                  <path class="timeline-flag-fill" d={flagFillPath}></path>
+                  <path class="timeline-flag-pole" d={flagPolePath}></path>
+                  <path class="timeline-flag-stroke" d={flagStrokeAttachLeft}></path>
+                </svg>
+                <div class="timeline-entry-body">
+                  <time>{originSideEvent.date}</time>
+                  <h2>
+                    {originSideEvent.href ? (
+                      <a href={originSideEvent.href} target="_blank" rel="noopener noreferrer">
+                        {originSideEvent.title}
+                        {originSideEvent.rank && <span> ({originSideEvent.rank})</span>}
+                      </a>
+                    ) : (
+                      <>
+                        {originSideEvent.title}
+                        {originSideEvent.rank && <span> ({originSideEvent.rank})</span>}
+                      </>
+                    )}
+                  </h2>
+                  <p>{originSideEvent.detail}</p>
+                </div>
+              </article>
             )}
-          </li>
-        </>
-      );
-    })}
-  </ol>
-</section>
-
-<section class="timeline-preview">
-  <p class="timeline-preview-label">Version B / hierarchy tree</p>
-  <ol class="tree-timeline" aria-label="flagaholic hierarchy timeline">
-    {timelineByYear.map(({ year, entries }) => (
-      <li class="tree-year">
-        <h2>{year}</h2>
-        <ol class="tree-events">
-          {entries.map((item) => (
-            <li>
-              <article class="timeline-entry">
+            <article class:list={["timeline-entry", `timeline-tier-${item.tier ?? "normal"}`, isOrigin && "timeline-origin-entry", isOrigin && "timeline-entry-plain"]}>
+              {!isOrigin && (
+                <svg class="timeline-flag" viewBox="0 0 228 128" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+                  <path class="timeline-flag-fill" d={flagFillPath}></path>
+                  <path class="timeline-flag-stroke" d={side === "right" ? flagStrokeAttachLeft : flagStrokeAttachRight}></path>
+                </svg>
+              )}
+              <div class="timeline-entry-body">
                 <time>{item.date}</time>
-                <h3>
+                <h2>
                   {item.href ? (
                     <a href={item.href} target="_blank" rel="noopener noreferrer">
                       {item.title}
@@ -79,13 +69,18 @@ const timelineByYear = Array.from(
                       {item.rank && <span> ({item.rank})</span>}
                     </>
                   )}
-                </h3>
+                </h2>
                 <p>{item.detail}</p>
-              </article>
-            </li>
-          ))}
-        </ol>
-      </li>
-    ))}
+              </div>
+            </article>
+            {!isOrigin && (
+              <span class="symbol-branch" aria-hidden="true">
+                <span class="symbol-arrow"></span>
+              </span>
+            )}
+          </li>
+        </>
+      );
+    })}
   </ol>
 </section>
