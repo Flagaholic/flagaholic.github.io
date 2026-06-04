@@ -55,10 +55,17 @@ const linkAttrs = (href?: string) =>
               {...linkAttrs(item.href)}
               aria-label={item.href ? `Open ${item.title}${item.rank ? ` ${item.rank}` : ""}` : undefined}
             >
+              {isOrigin && (
+                <svg class="timeline-flag timeline-origin-entry-flag" viewBox="0 0 228 128" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+                  <path class="timeline-flag-fill" d={flagFillPath}></path>
+                  <path class="timeline-flag-stroke timeline-flag-stroke-mobile" d={flagStrokeAttachLeft}></path>
+                </svg>
+              )}
               {!isOrigin && (
                 <svg class="timeline-flag" viewBox="0 0 228 128" preserveAspectRatio="none" aria-hidden="true" focusable="false">
                   <path class="timeline-flag-fill" d={flagFillPath}></path>
-                  <path class="timeline-flag-stroke" d={side === "right" ? flagStrokeAttachLeft : flagStrokeAttachRight}></path>
+                  <path class="timeline-flag-stroke timeline-flag-stroke-desktop" d={side === "right" ? flagStrokeAttachLeft : flagStrokeAttachRight}></path>
+                  <path class="timeline-flag-stroke timeline-flag-stroke-mobile" d={flagStrokeAttachLeft}></path>
                 </svg>
               )}
               <div class="timeline-entry-body">

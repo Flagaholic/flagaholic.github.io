@@ -41,6 +41,23 @@ const currentPath = Astro.url.pathname;
               </a>
             ))}
           </nav>
+          <details class="nav-dropdown">
+            <summary aria-label="Open main navigation" title="Menu">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 7h16M4 12h16M4 17h16"></path>
+              </svg>
+            </summary>
+            <nav class="nav-dropdown-panel" aria-label="Main navigation menu">
+              {nav.map((item) => (
+                <a
+                  href={item.href}
+                  aria-current={currentPath === item.href ? "page" : undefined}
+                >
+                  {item.label}
+                </a>
+              ))}
+            </nav>
+          </details>
         </div>
       </header>
 
