@@ -44,22 +44,40 @@ function decodeHtml(value) {
     .replace(/&gt;/g, ">");
 }
 
+function stripTags(value) {
+  return value.replace(/<[^>]*>/g, "").trim();
+}
+
+function parseNumberCell(value) {
+  const match = stripTags(value).match(/[\d.]+/);
+  return match ? Number(match[0]) : null;
+}
+
 function parseRatingTable(html, year) {
   const paneMatch = html.match(new RegExp(`<div class="tab-pane[^"]*" id="rating_${year}">([\\s\\S]*?)</table>`, "i"));
   if (!paneMatch) return [];
 
-  const rows = paneMatch[1].matchAll(
-    /<tr><td class="place_ico"><\/td><td class="place">(\d+)<\/td><td><a href="\/event\/(\d+)">([\s\S]*?)<\/a><\/td><td>([\d.]+)<\/td><td>([\d.]+)<\/td><\/tr>/g
-  );
+  return Array.from(paneMatch[1].matchAll(/<tr\b[^>]*>([\s\S]*?)<\/tr>/gi), ([, row]) => {
+    const cells = Array.from(row.matchAll(/<td\b[^>]*>([\s\S]*?)<\/td>/gi), ([, cell]) => cell);
+    if (cells.length < 5) return null;
 
-  return Array.from(rows, ([, place, eventId, title, points, ratingPoints]) => ({
-    eventId,
-    title: decodeHtml(title),
-    year,
-    place: Number(place),
-    points: Number(points),
-    ratingPoints: Number(ratingPoints),
-  }));
+    const eventMatch = cells[2].match(/<a\b[^>]*href="\/event\/(\d+)"[^>]*>([\s\S]*?)<\/a>/i);
+    if (!eventMatch) return null;
+
+    const place = parseNumberCell(cells[1]);
+    const points = parseNumberCell(cells[3]);
+    const ratingPoints = parseNumberCell(cells[4]);
+    if (place === null || points === null || ratingPoints === null) return null;
+
+    return {
+      eventId: eventMatch[1],
+      title: decodeHtml(stripTags(eventMatch[2])),
+      year,
+      place,
+      points,
+      ratingPoints,
+    };
+  }).filter(Boolean);
 }
 
 function extractTeamEvents(results, year) {

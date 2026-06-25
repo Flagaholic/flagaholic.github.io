@@ -1,6 +1,6 @@
 {
-  "fetchedAt": "2026-05-28T19:30:46.633Z",
-  "fetchMs": 5975,
+  "fetchedAt": "2026-06-25T03:02:31.719Z",
+  "fetchMs": 16319,
   "team": {
     "id": 113364,
     "name": "flagaholic",
@@ -8,11 +8,74 @@
   },
   "currentYear": {
     "year": 2026,
-    "globalRank": 144,
+    "globalRank": 148,
     "countryRank": 3,
-    "ratingPoints": 250.757299283
+    "ratingPoints": 261.527220697
   },
   "events": [
+    {
+      "eventId": "3297",
+      "title": "RIFFHACK: Black Market Break-In",
+      "year": 2026,
+      "date": "2026-06-19",
+      "place": 376,
+      "points": 200,
+      "ratingPoints": 0
+    },
+    {
+      "eventId": "3299",
+      "title": "Sieberrsec CTF 7.0",
+      "year": 2026,
+      "date": "2026-06-17",
+      "place": 15,
+      "points": 7611,
+      "ratingPoints": 16.11
+    },
+    {
+      "eventId": "3272",
+      "title": "Anti-Slop CTF 2026",
+      "year": 2026,
+      "date": "2026-06-13",
+      "place": 23,
+      "points": 4363,
+      "ratingPoints": 18.272
+    },
+    {
+      "eventId": "3309",
+      "title": "boroCTF 2026",
+      "year": 2026,
+      "date": "2026-06-12",
+      "place": 54,
+      "points": 13600,
+      "ratingPoints": 18.743
+    },
+    {
+      "eventId": "3041",
+      "title": "GPN CTF 2026",
+      "year": 2026,
+      "date": "2026-06-05",
+      "place": 100,
+      "points": 926,
+      "ratingPoints": 14.788
+    },
+    {
+      "eventId": "3209",
+      "title": "THEM?!CTF 2026",
+      "year": 2026,
+      "date": "2026-05-29",
+      "place": 18,
+      "points": 7973,
+      "ratingPoints": 12.996
+    },
+    {
+      "eventId": "3205",
+      "title": "DEF CON CTF Qualifier 2026",
+      "year": 2026,
+      "date": "2026-05-22",
+      "place": 101,
+      "points": 433,
+      "ratingPoints": 3.34
+    },
     {
       "eventId": "3269",
       "title": "0xV01D CTF 2026",
@@ -20,7 +83,7 @@
       "date": "2026-05-18",
       "place": 4,
       "points": 7903,
-      "ratingPoints": 21.139
+      "ratingPoints": 21.348
     },
     {
       "eventId": "3195",
@@ -56,7 +119,7 @@
       "date": "2026-03-31",
       "place": 137,
       "points": 700,
-      "ratingPoints": 5.089
+      "ratingPoints": 5.095
     },
     {
       "eventId": "3131",
@@ -200,7 +263,7 @@
       "date": "2026-01-31",
       "place": 12,
       "points": 7403,
-      "ratingPoints": 25.935
+      "ratingPoints": 25.967
     },
     {
       "eventId": "3053",
@@ -250,13 +313,76 @@
   ],
   "latestEvents": [
     {
+      "eventId": "3297",
+      "title": "RIFFHACK: Black Market Break-In",
+      "year": 2026,
+      "date": "2026-06-19",
+      "place": 376,
+      "points": 200,
+      "ratingPoints": 0
+    },
+    {
+      "eventId": "3299",
+      "title": "Sieberrsec CTF 7.0",
+      "year": 2026,
+      "date": "2026-06-17",
+      "place": 15,
+      "points": 7611,
+      "ratingPoints": 16.11
+    },
+    {
+      "eventId": "3272",
+      "title": "Anti-Slop CTF 2026",
+      "year": 2026,
+      "date": "2026-06-13",
+      "place": 23,
+      "points": 4363,
+      "ratingPoints": 18.272
+    },
+    {
+      "eventId": "3309",
+      "title": "boroCTF 2026",
+      "year": 2026,
+      "date": "2026-06-12",
+      "place": 54,
+      "points": 13600,
+      "ratingPoints": 18.743
+    },
+    {
+      "eventId": "3041",
+      "title": "GPN CTF 2026",
+      "year": 2026,
+      "date": "2026-06-05",
+      "place": 100,
+      "points": 926,
+      "ratingPoints": 14.788
+    },
+    {
+      "eventId": "3209",
+      "title": "THEM?!CTF 2026",
+      "year": 2026,
+      "date": "2026-05-29",
+      "place": 18,
+      "points": 7973,
+      "ratingPoints": 12.996
+    },
+    {
+      "eventId": "3205",
+      "title": "DEF CON CTF Qualifier 2026",
+      "year": 2026,
+      "date": "2026-05-22",
+      "place": 101,
+      "points": 433,
+      "ratingPoints": 3.34
+    },
+    {
       "eventId": "3269",
       "title": "0xV01D CTF 2026",
       "year": 2026,
       "date": "2026-05-18",
       "place": 4,
       "points": 7903,
-      "ratingPoints": 21.139
+      "ratingPoints": 21.348
     },
     {
       "eventId": "3195",
@@ -292,7 +418,7 @@
       "date": "2026-03-31",
       "place": 137,
       "points": 700,
-      "ratingPoints": 5.089
+      "ratingPoints": 5.095
     },
     {
       "eventId": "3131",
@@ -436,7 +562,7 @@
       "date": "2026-01-31",
       "place": 12,
       "points": 7403,
-      "ratingPoints": 25.935
+      "ratingPoints": 25.967
     },
     {
       "eventId": "3053",
@@ -519,7 +645,7 @@
       "date": "2026-01-31",
       "place": 12,
       "points": 7403,
-      "ratingPoints": 25.935
+      "ratingPoints": 25.967
     },
     {
       "eventId": "3269",
@@ -528,7 +654,16 @@
       "date": "2026-05-18",
       "place": 4,
       "points": 7903,
-      "ratingPoints": 21.139
+      "ratingPoints": 21.348
+    },
+    {
+      "eventId": "3309",
+      "title": "boroCTF 2026",
+      "year": 2026,
+      "date": "2026-06-12",
+      "place": 54,
+      "points": 13600,
+      "ratingPoints": 18.743
     },
     {
       "eventId": "3130",
@@ -540,6 +675,24 @@
       "ratingPoints": 18.499
     },
     {
+      "eventId": "3272",
+      "title": "Anti-Slop CTF 2026",
+      "year": 2026,
+      "date": "2026-06-13",
+      "place": 23,
+      "points": 4363,
+      "ratingPoints": 18.272
+    },
+    {
+      "eventId": "3299",
+      "title": "Sieberrsec CTF 7.0",
+      "year": 2026,
+      "date": "2026-06-17",
+      "place": 15,
+      "points": 7611,
+      "ratingPoints": 16.11
+    },
+    {
       "eventId": "3105",
       "title": "Midnight Flag CTF - EXECUTION",
       "year": 2026,
@@ -547,33 +700,6 @@
       "place": 55,
       "points": 2638,
       "ratingPoints": 14.84
-    },
-    {
-      "eventId": "3171",
-      "title": "ApoorvCTF 2026",
-      "year": 2026,
-      "date": "2026-03-06",
-      "place": 32,
-      "points": 5282,
-      "ratingPoints": 14.638
-    },
-    {
-      "eventId": "3098",
-      "title": "Batman's Kitchen CTF 2026",
-      "year": 2026,
-      "date": "2026-02-21",
-      "place": 40,
-      "points": 7864,
-      "ratingPoints": 14.629
-    },
-    {
-      "eventId": "2981",
-      "title": "Scarlet CTF 2026",
-      "year": 2026,
-      "date": "2026-01-09",
-      "place": 19,
-      "points": 6303,
-      "ratingPoints": 13.329
     }
   ]
 }
