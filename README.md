@@ -3,7 +3,7 @@
 re-written with [astro js](https://astro.build/)
 
 ## site
-[www.flagaholic.xyz](https://www.flagaholic.xyz)
+[www.flagaholic.hk](https://www.flagaholic.hk)
 
 ## features
 have overview, members, achievements, writeups and contact section
