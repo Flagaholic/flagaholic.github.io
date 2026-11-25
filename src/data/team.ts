@@ -164,30 +164,31 @@ export const timeline: TimelineItem[] = [
 export const members = [
   {
     name: "youstube_",
-    role: "Team leader",
+    role: "lwk im still playing ctf for puzzles solving only",
     focus: ["OSINT", "Forensics", "Misc"],
     avatar: "/assets/playerlogo/youstube.jpg",
     quote: "leader",
     socials: {
       github: "https://github.com/codestube",
       instagram: "https://www.instagram.com/youstube__",
+      blog: "https://youstube.xyz",
     },
   },
   {
     name: "Taokyle",
-    role: "Website maintainer",
+    role: "idk any stuff im shit",
     focus: ["Misc", "Web", "Forensics"],
     avatar: "/assets/playerlogo/taokyle.jpeg",
     quote: "dumbass++",
     socials: {
-      github: "https://github.com/TaokyleYT",
+      github: "https://github.com/taokyl",
       instagram: "https://www.instagram.com/taokyle415",
       discord: "https://discord.com/users/681426499794239519",
     },
   },
   {
     name: "SISUBENY",
-    role: "Web maintainer",
+    role: "wha? what do you mean? (repeated 3x)",
     focus: ["Rev", "Pwn"],
     avatar: "/assets/playerlogo/sisubeny.png",
     quote: "english level U",
@@ -199,7 +200,7 @@ export const members = [
   },
   {
     name: "xzhiyouu",
-    role: "Web maintainer",
+    role: "muse to win",
     focus: ["Crypto", "Misc"],
     avatar: "/assets/playerlogo/Nelson.jpg",
     socials: {
@@ -207,18 +208,8 @@ export const members = [
     },
   },
   {
-    name: "twopus",
-    role: "Web maintainer",
-    focus: ["Brainrot", "Roblox"],
-    avatar: "/assets/playerlogo/twopus.png",
-    quote: "roblox lover",
-    socials: {
-      github: "https://github.com/twopus",
-    },
-  },
-  {
     name: "Demonster",
-    role: "Staff team",
+    role: "raccoon... wuwa...",
     focus: ["Web"],
     avatar: "/assets/playerlogo/demonster.png",
     quote: "raccoon goes maur maur",
@@ -227,28 +218,53 @@ export const members = [
     },
   },
   {
-    name: "owo",
-    role: "Braindead individual",
-    focus: ["Web"],
-    avatar: "/assets/playerlogo/owo.png",
+    name: "Laggy",
+    role: "technical minecraft player",
+    focus: ["Pwn", "Rev"],
+    avatar: "/assets/playerlogo/laggy.png",
+    quote: "check out coordsfinder, a proj he made!",
     socials: {
-      github: "https://github.com/sunny7890987",
-    },
+      github: "https://github.com/alaggydev",
+      blog: "https://alaggydev.github.io/",
+      minecraft: "https://github.com/ALaggyDev/CoordsFinder/"
+    }
+  },
+  {
+    name: "bakachi",
+    role: "uhm sometimes unhinged",
+    focus: ["Pwn", "Web"],
+    avatar: "/assets/playerlogo/bakachi.png",
   },
   {
     name: "HarryBOB",
-    role: "Ice cweam enjoyerr",
-    focus: ["Blockchain"],
+    role: "why did youtube put blockchain here ;_;",
+    focus: ["Any"],
     avatar: "/assets/playerlogo/harrybob.jpg",
     socials: {
       github: "https://github.com/harry-bob",
     },
   },
   {
-    name: "Carz",
-    role: "A car",
-    focus: ["Crypto", "Forensics"],
-    avatar: "/assets/playerlogo/carz.jpeg",
+    name: "CosmicCrusader",
+    role: "the actual gay person on the team",
+    focus: ["Any"],
+    avatar: "/assets/playerlogo/cosmic.png",
+  },
+  {
+    name: "mr_poopybutthole",
+    role: "f.4 ctf player :orz:",
+    focus: ["Web", "Forensics"],
+    avatar: "/assets/playerlogo/M_PB.png",
+  },
+  {
+    name: "twopus",
+    role: "to yap",
+    focus: ["Brainrot", "Roblox"],
+    avatar: "/assets/playerlogo/twopus.png",
+    quote: "roblox lover",
+    socials: {
+      github: "https://github.com/twopus",
+    },
   },
   {
     name: "B34RN00B",
@@ -260,15 +276,21 @@ export const members = [
     },
   },
   {
+    name: "Carz",
+    role: "vroom..",
+    focus: ["Crypto", "Forensics"],
+    avatar: "/assets/playerlogo/carz.jpeg",
+  },
+  {
     name: "damwan21",
-    role: "always fatshaming",
+    role: "im stupid and dumb",
     focus: ["OSINT", "Crypto"],
     avatar: "/assets/playerlogo/damwan.jpg",
-    quote: "weirdo?",
+    quote: "weirdo.",
   },
   {
     name: "Zwique",
-    role: "so good at everything",
+    role: "too busy with life",
     focus: ["Crypto", "OSINT", "Forensics"],
     avatar: "/assets/playerlogo/zwique.png",
     socials: {
@@ -277,66 +299,25 @@ export const members = [
     },
   },
   {
-    name: "Laggy",
-    role: "the carry of our team orz orz orz",
-    focus: ["Pwn", "Rev"],
-    avatar: "/assets/playerlogo/laggy.png",
-    socials: {
-      github: "https://github.com/alaggydev",
-      blog: "https://alaggydev.github.io/",
-    }
-  },
-  {
-    name: "Acacia",
-    role: "viet 1",
-    focus: ["Web"],
-    avatar: "/assets/playerlogo/acacia.png",
-  },
-  {
     name: "igtanova06",
-    role: "viet 2",
+    role: "viet 1",
     focus: ["Rev"],
     avatar: "/assets/playerlogo/igtanova.png",
   },
   {
     name: "zuytrinh",
-    role: "viet 3",
+    role: "viet 2",
     focus: ["Forensics", "Misc"],
     avatar: "/assets/playerlogo/zuytrinh.png",
   },
   {
-    name: "Kaiyasi",
-    role: "Player",
-    focus: ["Web", "AI"],
-    avatar: "/assets/playerlogo/kaiyasi.png",
-  },
-  {
-    name: "Akitenten",
-    role: "Player",
-    focus: ["OSINT"],
-    avatar: "/assets/playerlogo/aki.png",
-  },
-  {
-    name: "shay",
-    role: "Player",
-    focus: ["OSINT"],
-    avatar: "/assets/playerlogo/shay.png",
-  },
-  {
-    name: "JustCat",
-    role: "Player",
-    focus: ["Pwn", "Rev", "Misc"],
-    avatar: "/assets/playerlogo/jst.png",
+    name: "owo",
+    role: "OG braindead",
+    focus: ["Web"],
+    avatar: "/assets/playerlogo/owo.png",
     socials: {
-      github: "https://github.com/AJustcaTA",
-      blog: "https://ajustcata.github.io/",
-    }
-  },
-  {
-    name: "Chung",
-    role: "Player",
-    focus: ["OSINT"],
-    avatar: "/assets/playerlogo/chung.png",
+      github: "https://github.com/sunny7890987",
+    },
   },
   {
     name: "Kazuya",
