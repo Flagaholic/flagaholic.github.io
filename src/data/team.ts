@@ -259,12 +259,18 @@ export const members = [
   {
     name: "twopus",
     role: "to yap",
-    focus: ["Brainrot", "Roblox"],
+    focus: ["OSINT"],
     avatar: "/assets/playerlogo/twopus.png",
     quote: "roblox lover",
     socials: {
       github: "https://github.com/twopus",
     },
+  },
+  {
+    name: "Carz",
+    role: "vroom..",
+    focus: ["Crypto", "Forensics"],
+    avatar: "/assets/playerlogo/carz.jpeg",
   },
   {
     name: "B34RN00B",
@@ -274,12 +280,6 @@ export const members = [
     socials: {
       discord: "https://discord.com/users/1379831907784855712",
     },
-  },
-  {
-    name: "Carz",
-    role: "vroom..",
-    focus: ["Crypto", "Forensics"],
-    avatar: "/assets/playerlogo/carz.jpeg",
   },
   {
     name: "damwan21",
@@ -335,7 +335,7 @@ export const members = [
   {
     name: "Nsnzero",
     role: "OG Member",
-    focus: ["Hardware"],
+    focus: ["Misc"],
     avatar: "/assets/playerlogo/nsn.png",
     socials: {
       github: "https://github.com/nsnzero",
